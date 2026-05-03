@@ -9,10 +9,10 @@ interface BrainWavesProps {
 export default function BrainWaves({ visible = true, compact = false }: BrainWavesProps) {
   const height = compact ? 24 : 40
 
-  // Slow oscillation path — wide smooth sine
+  // Slow oscillation path - wide smooth sine
   const slowPath = `M0,${height / 2} C50,${height * 0.1} 100,${height * 0.9} 200,${height / 2} C250,${height * 0.1} 300,${height * 0.9} 400,${height / 2} C450,${height * 0.1} 500,${height * 0.9} 600,${height / 2} C650,${height * 0.1} 700,${height * 0.9} 800,${height / 2} C850,${height * 0.1} 900,${height * 0.9} 1000,${height / 2} C1050,${height * 0.1} 1100,${height * 0.9} 1200,${height / 2} C1250,${height * 0.1} 1300,${height * 0.9} 1400,${height / 2} C1450,${height * 0.1} 1500,${height * 0.9} 1600,${height / 2} C1650,${height * 0.1} 1700,${height * 0.9} 1800,${height / 2} C1850,${height * 0.1} 1900,${height * 0.9} 2000,${height / 2}`
 
-  // Sleep spindle — tight clustered spikes
+  // Sleep spindle - tight clustered spikes
   const spindlePath = (() => {
     let d = `M0,${height / 2}`
     for (let i = 0; i <= 100; i++) {
@@ -30,7 +30,7 @@ export default function BrainWaves({ visible = true, compact = false }: BrainWav
     return d
   })()
 
-  // Sharp-wave ripple — dense micro-oscillations
+  // Sharp-wave ripple - dense micro-oscillations
   const ripplePath = (() => {
     let d = `M0,${height / 2}`
     for (let i = 0; i <= 400; i++) {
@@ -45,7 +45,7 @@ export default function BrainWaves({ visible = true, compact = false }: BrainWav
 
   return (
     <div className="w-full overflow-hidden" style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.5s' }}>
-      {/* Wave 1 — Slow Oscillation */}
+      {/* Wave 1 - Slow Oscillation */}
       <div className="relative w-full" style={{ height: `${height}px` }}>
         {!compact && (
           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 text-xs tracking-widest z-10 font-mono">
@@ -87,7 +87,7 @@ export default function BrainWaves({ visible = true, compact = false }: BrainWav
         </svg>
       </div>
 
-      {/* Wave 2 — Sleep Spindle */}
+      {/* Wave 2 - Sleep Spindle */}
       <div className="relative w-full" style={{ height: `${height}px` }}>
         {!compact && (
           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 text-xs tracking-widest z-10 font-mono">
@@ -128,7 +128,7 @@ export default function BrainWaves({ visible = true, compact = false }: BrainWav
         </svg>
       </div>
 
-      {/* Wave 3 — Sharp-Wave Ripple */}
+      {/* Wave 3 - Sharp-Wave Ripple */}
       <div className="relative w-full" style={{ height: `${height}px` }}>
         {!compact && (
           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 text-xs tracking-widest z-10 font-mono">

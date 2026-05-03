@@ -143,7 +143,7 @@ export default function SolutionPage() {
             transition={{ delay: 0.7 }}
             className="text-white/60 text-xl max-w-xl leading-relaxed mt-4"
           >
-            Loci is not a sleep tracker. It does not observe — it intervenes. At the moment of
+            Loci is not a sleep tracker. It does not observe - it intervenes. At the moment of
             learning. During rest. And at the exact right millisecond during sleep.
           </motion.p>
         </div>
@@ -153,10 +153,10 @@ export default function SolutionPage() {
         </div>
       </section>
 
-      {/* ── PIPELINE — HORIZONTAL SCROLL PANELS ─────────────── */}
+      {/* ── PIPELINE - HORIZONTAL SCROLL PANELS ─────────────── */}
       <ScrollPin panelCount={3}>
 
-        {/* PANEL 1 — ENCODING */}
+        {/* PANEL 1 - ENCODING */}
         <div
           className="flex-shrink-0 flex flex-col md:flex-row h-full"
           style={{ width: '100vw' }}
@@ -173,7 +173,7 @@ export default function SolutionPage() {
               <div className="bg-surface rounded-2xl p-6 mb-6">
                 <p className="text-white/40 text-xs uppercase mb-3">💡 In plain language</p>
                 <p className="text-white/70 text-base leading-relaxed">
-                  Right now, while you study, your brain hasn't decided whether to keep this memory yet. Loci intervenes at this exact moment to flag it as important — before the decision is made.
+                  Right now, while you study, your brain hasn't decided whether to keep this memory yet. Loci intervenes at this exact moment to flag it as important - before the decision is made.
                 </p>
               </div>
 
@@ -187,7 +187,7 @@ export default function SolutionPage() {
 
               <ExpandableDetail
                 preview="For the curious →"
-                detail="Loci Band Day monitors HRV and galvanic skin response to detect peak cognitive engagement. At that moment, a precise arousal stimulus triggers norepinephrine release, artificially elevating amygdala salience — flagging the memory trace for preferential hippocampal replay."
+                detail="Loci Band Day monitors HRV and galvanic skin response to detect peak cognitive engagement. At that moment, a precise arousal stimulus triggers norepinephrine release, artificially elevating amygdala salience - flagging the memory trace for preferential hippocampal replay."
               />
 
               <div className="mt-6">
@@ -203,7 +203,7 @@ export default function SolutionPage() {
           </div>
         </div>
 
-        {/* PANEL 2 — REPLAY WINDOW */}
+        {/* PANEL 2 - REPLAY WINDOW */}
         <div
           className="flex-shrink-0 flex flex-col md:flex-row h-full"
           style={{ width: '100vw' }}
@@ -220,18 +220,18 @@ export default function SolutionPage() {
               <div className="bg-surface rounded-2xl p-6 mb-6">
                 <p className="text-white/40 text-xs uppercase mb-3">💡 In plain language</p>
                 <p className="text-white/70 text-base leading-relaxed">
-                  When you close your laptop and sit quietly for 10 minutes, your hippocampus is already replaying what you just learned. This isn't a metaphor — it's a measurable biological signal. Loci detects it and makes it stronger.
+                  When you close your laptop and sit quietly for 10 minutes, your hippocampus is already replaying what you just learned. This isn't a metaphor - it's a measurable biological signal. Loci detects it and makes it stronger.
                 </p>
               </div>
 
               <ExpandableDetail
                 preview="For the curious →"
-                detail="Loren Frank (2013) discovered that hippocampal sharp-wave ripples — the signals that carry memory replays — fire during quiet wakefulness, not only during sleep. Loci's EEG layer detects these awake-state ripples and delivers phase-locked acoustic pulses to amplify them."
+                detail="Loren Frank (2013) discovered that hippocampal sharp-wave ripples - the signals that carry memory replays - fire during quiet wakefulness, not only during sleep. Loci's EEG layer detects these awake-state ripples and delivers phase-locked acoustic pulses to amplify them."
               />
 
               <div className="mt-6 bg-surface/50 rounded-xl p-4 border border-white/5">
                 <p className="text-white/30 text-xs italic">
-                  "Loren Frank, 2013 — unexploited commercially until now."
+                  "Loren Frank, 2013 - unexploited commercially until now."
                 </p>
               </div>
             </div>
@@ -264,7 +264,7 @@ export default function SolutionPage() {
           </div>
         </div>
 
-        {/* PANEL 3 — SYNC PHASE */}
+        {/* PANEL 3 - SYNC PHASE */}
         <div
           className="flex-shrink-0 flex flex-col md:flex-row h-full"
           style={{ width: '100vw' }}
@@ -281,7 +281,7 @@ export default function SolutionPage() {
               <div className="bg-surface rounded-2xl p-6 mb-6">
                 <p className="text-white/40 text-xs uppercase mb-3">💡 In plain language</p>
                 <p className="text-white/70 text-base leading-relaxed">
-                  While you sleep, Loci detects the exact millisecond your brain opens the memory transfer window, delivers two synchronized signals to complete the handshake — then releases the scent linked to the memory you flagged this morning.
+                  While you sleep, Loci detects the exact millisecond your brain opens the memory transfer window, delivers two synchronized signals to complete the handshake - then releases the scent linked to the memory you flagged this morning.
                 </p>
               </div>
 

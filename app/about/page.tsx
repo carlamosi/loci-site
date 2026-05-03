@@ -8,7 +8,7 @@ const values = [
   {
     title: 'RADICAL HONESTY',
     color: 'border-t-acid',
-    body: "We name what we don't know. The spindle-ripple coupling question is still open. We say that — because it is the research that makes this worth building.",
+    body: "We name what we don't know. The spindle-ripple coupling question is still open. We say that - because it is the research that makes this worth building.",
   },
   {
     title: 'SCIENCE FIRST',
@@ -38,13 +38,13 @@ const sdgs = [
     num: 'SDG 4',
     title: 'Quality Education',
     color: '#C5192D',
-    body: "When memory consolidation fails, learning fails. A student can study 8 hours and lose 40% of it overnight — not from lack of effort, but from biology. Loci gives that back.",
+    body: "When memory consolidation fails, learning fails. A student can study 8 hours and lose 40% of it overnight - not from lack of effort, but from biology. Loci gives that back.",
   },
   {
     num: 'SDG 10',
     title: 'Reduced Inequalities',
     color: '#DD1367',
-    body: "Students with disrupted sleep schedules — working students, commuters, caregivers — are disproportionately lower-income. Loci is designed for them, not for those who already sleep well.",
+    body: "Students with disrupted sleep schedules - working students, commuters, caregivers - are disproportionately lower-income. Loci is designed for them, not for those who already sleep well.",
   },
 ]
 
@@ -53,8 +53,9 @@ const founders = [
     initials: 'CM',
     name: 'Carla Monté',
     role: 'Co-Founder',
-    bio: 'Neuroscience meets design. Building the first system to control which memories consolidate — targeting the gap nobody else is filling.',
+    bio: 'Neuroscience meets design. Building the first system to control which memories consolidate - targeting the gap nobody else is filling.',
     linkedin: 'https://www.linkedin.com/in/carlamontesihuro/',
+    photo: '/carla.jpg'
   },
   {
     initials: 'ÖK',
@@ -108,7 +109,7 @@ export default function AboutPage() {
               It is not. It is a systemic failure with a biological solution.
             </p>
             <p className="text-white/60 text-base leading-relaxed mb-4">
-              We are building the system that gives students back what sleep takes away — not through
+              We are building the system that gives students back what sleep takes away - not through
               longer nights, not through drugs, but through precision neuroscience that intervenes
               where the biology breaks.
             </p>
@@ -196,9 +197,15 @@ export default function AboutPage() {
               <SectionReveal key={i}>
                 <div className="bg-surface rounded-3xl p-10 border border-white/5 card-hover hover:border-violet/30">
                   {/* Avatar */}
-                  <div className="w-24 h-24 rounded-full bg-violet/20 flex items-center justify-center mb-6">
-                    <span className="text-white font-bold text-3xl">{f.initials}</span>
-                  </div>
+                  {f.photo ? (
+                    <div className="w-24 h-24 rounded-full overflow-hidden mb-6 border border-white/10 hover:border-violet/40 transition-colors">
+                      <img src={f.photo} alt={f.name} className="w-full h-full object-cover" />
+                    </div>
+                  ) : (
+                    <div className="w-24 h-24 rounded-full bg-violet/20 flex items-center justify-center mb-6 border border-transparent hover:border-violet/40 transition-colors">
+                      <span className="text-white font-bold text-3xl">{f.initials}</span>
+                    </div>
+                  )}
 
                   <h3 className="text-white font-bold text-2xl">{f.name}</h3>
                   <p className="text-violet text-xs uppercase tracking-widest mt-1 mb-3 font-medium">
@@ -210,9 +217,12 @@ export default function AboutPage() {
                     href={f.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-violet text-sm mt-5 hover:text-white transition-colors duration-200"
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 hover:bg-violet/20 border border-white/10 hover:border-violet/50 text-white/70 hover:text-white transition-all duration-300 mt-5"
+                    aria-label={`${f.name} LinkedIn`}
                   >
-                    → Connect on LinkedIn
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
                   </Link>
                 </div>
               </SectionReveal>

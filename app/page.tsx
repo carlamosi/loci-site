@@ -268,14 +268,14 @@ export default function Home() {
                   <span className="text-white/80 font-medium">spindle-ripple handshake</span>.
                 </p>
                 <p className="text-white/60 text-lg leading-relaxed mb-8">
-                  When that sequence works, you remember. When it fails — which happens every time
-                  sleep is disrupted — the memory is gone. Not stored somewhere you can't reach.{' '}
+                  When that sequence works, you remember. When it fails - which happens every time
+                  sleep is disrupted - the memory is gone. Not stored somewhere you can't reach.{' '}
                   <span className="text-white/90 font-medium">Actually gone.</span>
                 </p>
                 <div className="border-l-4 border-violet bg-surface rounded-r-xl px-6 py-4">
                   <p className="text-white text-base font-medium leading-relaxed">
                     "This is not a productivity problem. It is a learning disability at
-                    civilizational scale — and nobody has named it as such."
+                    civilizational scale - and nobody has named it as such."
                   </p>
                 </div>
               </SectionReveal>
@@ -290,7 +290,7 @@ export default function Home() {
                     <CountUp end={1.5} suffix="B" decimals={1} />
                   </div>
                   <p className="text-white/50 text-sm leading-relaxed">
-                    people live with chronically disrupted sleep globally — losing memory every single night
+                    people live with chronically disrupted sleep globally - losing memory every single night
                   </p>
                 </div>
               </SectionReveal>
@@ -302,7 +302,7 @@ export default function Home() {
                     20–40%
                   </div>
                   <p className="text-white/50 text-sm leading-relaxed">
-                    of what you study tonight will not consolidate — not because of how long you slept,
+                    of what you study tonight will not consolidate - not because of how long you slept,
                     but because the coupling between signals degraded
                   </p>
                 </div>
@@ -328,7 +328,7 @@ export default function Home() {
                     <CountUp end={55} suffix="M" />
                   </div>
                   <p className="text-white/50 text-sm leading-relaxed">
-                    people with dementia today. Disrupted sleep is a primary causal driver — not a
+                    people with dementia today. Disrupted sleep is a primary causal driver - not a
                     symptom. The number doubles every 20 years.
                   </p>
                 </div>
@@ -344,19 +344,35 @@ export default function Home() {
           <SectionReveal>
             <p className="text-violet text-xs uppercase tracking-widest font-medium mb-4">THE MECHANISM</p>
             <h2 className="text-white font-bold leading-tight mb-6" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>
-              Three signals. One sequence.<br />
-              Miss the nesting — the memory is gone.
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="block"
+              >
+                Three signals. One sequence.
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="block text-violet"
+              >
+                Miss the nesting, the memory is gone.
+              </motion.span>
             </h2>
             <p className="text-white/60 text-xl leading-relaxed max-w-2xl mx-auto mb-2">
               While you sleep, your brain runs a biological program to permanently store what you
-              learned. It requires three signals to arrive in perfect sequence — nested inside each
+              learned. It requires three signals to arrive in perfect sequence - nested inside each
               other like Russian dolls.
             </p>
 
             <HandshakeDiagram />
 
             <p className="text-white/50 text-base mt-8 max-w-xl mx-auto">
-              Loci engineers this sequence — every night — for the memories that matter most to you.
+              Loci engineers this sequence - every night - for the memories that matter most to you.
             </p>
 
             <Link

@@ -31,7 +31,7 @@ const nextItems = [
   'EEG signal processing at consumer grade',
   'Dual-channel synchronization validation',
   'Depth electrode coupling study (the open scientific question)',
-  'University pilot — 20 students, 4 weeks',
+  'University pilot - 20 students, 4 weeks',
 ]
 
 const roadmap = [
@@ -49,7 +49,7 @@ const roadmap = [
     tag: 'NEAR TERM',
     tagStyle: 'border border-cyan text-cyan',
     title: 'Add Wedge 1',
-    body: 'Dual-channel headband. Clinical pilot — ICU population. First peer-reviewed publication.',
+    body: 'Dual-channel headband. Clinical pilot - ICU population. First peer-reviewed publication.',
   },
   {
     label: 'Year 3–5',
@@ -160,10 +160,10 @@ export default function PrototypePage() {
       <section className="bg-surface py-24 px-6">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
 
-          {/* Left — build status */}
+          {/* Left - build status */}
           <SectionReveal>
             <div>
-              <h2 className="text-white font-bold text-3xl mb-3">V0 — Concept Prototype</h2>
+              <h2 className="text-white font-bold text-3xl mb-3">V0 - Concept Prototype</h2>
               <span className="inline-block bg-acid/10 border border-acid text-acid text-xs uppercase rounded-full px-4 py-2 mb-8 font-medium">
                 IN DEVELOPMENT
               </span>
@@ -184,11 +184,11 @@ export default function PrototypePage() {
             </div>
           </SectionReveal>
 
-          {/* Right — Live Demo */}
+          {/* Right - Live Demo */}
           <SectionReveal>
             <div>
               <p className="text-violet text-xs uppercase tracking-widest font-medium mb-3">
-                LIVE DEMO — WEDGE 3 SIMULATOR
+                LIVE DEMO - WEDGE 3 SIMULATOR
               </p>
               <div className="bg-midnight rounded-2xl p-2 border border-white/10">
                 <div className="w-full rounded-xl overflow-hidden border border-white/5 bg-surface" style={{ height: '500px' }}>
@@ -235,7 +235,7 @@ export default function PrototypePage() {
                 <div className="relative bg-surface rounded-2xl p-8 border-l-4 border-violet opacity-60 overflow-hidden">
                   <span className="text-violet text-6xl leading-none block mb-2">"</span>
                   <p className="text-white/40 text-base italic">[VALIDATION DATA BEING COLLECTED]</p>
-                  <p className="text-white/20 text-sm mt-4">— Role · Date</p>
+                  <p className="text-white/20 text-sm mt-4">- Role · Date</p>
                   <div className="absolute inset-0 bg-midnight/60 flex items-center justify-center rounded-2xl">
                     <p className="text-white/20 text-xs uppercase tracking-widest">QUOTE PENDING</p>
                   </div>

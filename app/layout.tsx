@@ -74,8 +74,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>Loci — Memory Consolidation System</title>
-        <meta name="description" content="Loci is a 24-hour memory consolidation system for university students. Not less sleep — denser consolidation. Remember What Matters." />
+        <title>Loci - Memory Consolidation System</title>
+        <meta name="description" content="Loci is a 24-hour memory consolidation system for university students. Not less sleep - denser consolidation. Remember What Matters." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#080A0F" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

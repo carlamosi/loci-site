@@ -67,9 +67,13 @@ export default function Nav() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center">
-            <button className="bg-violet text-white font-bold text-sm px-5 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-violet/40">
+            <Link
+              href="https://loci-access.lovable.app/"
+              target="_blank"
+              className="bg-violet text-white font-bold text-sm px-5 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-violet/40"
+            >
               Join Waitlist →
-            </button>
+            </Link>
           </div>
 
           {/* Hamburger */}
@@ -131,9 +135,14 @@ export default function Nav() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navLinks.length * 0.06 + 0.1 }}
               >
-                <button className="bg-violet text-white font-bold text-lg px-8 py-3 rounded-xl mt-4">
+                <Link 
+                  href="https://loci-access.lovable.app/"
+                  target="_blank"
+                  className="inline-block bg-violet text-white font-bold text-lg px-8 py-3 rounded-xl mt-4"
+                  onClick={() => setMobileOpen(false)}
+                >
                   Join Waitlist →
-                </button>
+                </Link>
               </motion.div>
             </div>
           </motion.div>

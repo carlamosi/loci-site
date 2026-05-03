@@ -15,7 +15,7 @@ export default function Footer() {
     <footer className="bg-surface border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 pt-12 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* Left — Brand */}
+          {/* Left - Brand */}
           <div>
             <div className="flex items-center gap-1">
               <span className="text-white font-bold text-lg">〰 Loci</span>
@@ -25,11 +25,11 @@ export default function Footer() {
               Remember What Matters.
             </p>
             <p className="text-white/40 text-sm mt-3 max-w-xs leading-relaxed">
-              A 24-hour memory consolidation system. Not less sleep — denser consolidation.
+              A 24-hour memory consolidation system. Not less sleep - denser consolidation.
             </p>
           </div>
 
-          {/* Center — Links */}
+          {/* Center - Links */}
           <div className="flex flex-col gap-3">
             {navLinks.map((link) => (
               <Link
@@ -42,10 +42,9 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Right — Info */}
+          {/* Right - Info */}
           <div className="md:text-right">
-            <p className="text-white/30 text-xs">A Moonshot Project · 2026</p>
-            <p className="text-white/20 text-xs mt-2">University memory consolidation system</p>
+            <p className="text-white/20 text-xs">University memory consolidation system</p>
             <p className="text-white/20 text-xs mt-1">Targeting civilizational-scale learning loss</p>
           </div>
         </div>

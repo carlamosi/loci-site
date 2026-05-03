@@ -1,4 +1,4 @@
-# 〰 Loci — Memory Consolidation System
+# 〰 Loci - Memory Consolidation System
 
 > "Remember What Matters."  
 > Not less sleep. Denser consolidation.
@@ -90,7 +90,7 @@ loci-site/
 
 ## Deploy to Vercel
 
-### Option A — GitHub Integration (Recommended)
+### Option A - GitHub Integration (Recommended)
 
 1. Push to GitHub:
 ```bash
@@ -108,7 +108,7 @@ git push -u origin main
 
 Every push to `main` triggers automatic redeployment.
 
-### Option B — Vercel CLI
+### Option B - Vercel CLI
 
 ```bash
 npm i -g vercel
@@ -143,18 +143,18 @@ To embed the Wedge 3 Simulator on the `/prototype` page:
 
 | Paper | Finding | Loci Application |
 |-------|---------|------------------|
-| Ngo et al., 2013 (Nature) | +40-60% UP phases with acoustic stim | Channel 1 — acoustic sync |
-| Ladenbauer et al., 2017 (Curr. Biol.) | tACS induces spindles on demand | Channel 2 — tACS spindle |
-| Loren Frank, 2013 (Neuron) | Awake replay in hippocampus | Wedge 2 — Replay Window |
+| Ngo et al., 2013 (Nature) | +40-60% UP phases with acoustic stim | Channel 1 - acoustic sync |
+| Ladenbauer et al., 2017 (Curr. Biol.) | tACS induces spindles on demand | Channel 2 - tACS spindle |
+| Loren Frank, 2013 (Neuron) | Awake replay in hippocampus | Wedge 2 - Replay Window |
 | Nedergaard et al., 2013 (Science) | Glymphatic clearance during sleep | Stakes: disease-level urgency |
 
 ---
 
 ## SDG Alignment
 
-- **SDG 3** — Good Health & Wellbeing (dementia prevention)
-- **SDG 4** — Quality Education (memory consolidation = learning)
-- **SDG 10** — Reduced Inequalities (built for disrupted sleepers, not optimizers)
+- **SDG 3** - Good Health & Wellbeing (dementia prevention)
+- **SDG 4** - Quality Education (memory consolidation = learning)
+- **SDG 10** - Reduced Inequalities (built for disrupted sleepers, not optimizers)
 
 ---
 
