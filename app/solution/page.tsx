@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
 import BrainWaves from '@/components/BrainWaves'
 import SectionReveal from '@/components/SectionReveal'
 import ScrollPin from '@/components/ScrollPin'
+import InteractiveCard from '@/components/InteractiveCard'
 
 const ParticleCanvas = dynamic(() => import('@/components/ParticleCanvas'), { ssr: false })
 
@@ -170,12 +171,14 @@ export default function SolutionPage() {
                 Tag it before it disappears.
               </h2>
 
-              <div className="bg-surface rounded-2xl p-6 mb-6">
-                <p className="text-white/40 text-xs uppercase mb-3">💡 In plain language</p>
-                <p className="text-white/70 text-base leading-relaxed">
-                  Right now, while you study, your brain hasn't decided whether to keep this memory yet. Loci intervenes at this exact moment to flag it as important - before the decision is made.
-                </p>
-              </div>
+              <InteractiveCard effect="pulse" className="mb-6">
+                <div className="bg-surface p-6">
+                  <p className="text-white/40 text-xs uppercase mb-3">💡 In plain language</p>
+                  <p className="text-white/70 text-base leading-relaxed">
+                    Right now, while you study, your brain hasn't decided whether to keep this memory yet. Loci intervenes at this exact moment to flag it as important - before the decision is made.
+                  </p>
+                </div>
+              </InteractiveCard>
 
               <ul className="flex flex-col gap-2 mb-6">
                 {['⚡ HRV + GSR biometric sensing', '🏷️ Encoding strength score (0–100)', '👃 Olfactory anchor pairing'].map((item, i) => (
@@ -217,12 +220,14 @@ export default function SolutionPage() {
                 Your brain replays while you rest. We amplify it.
               </h2>
 
-              <div className="bg-surface rounded-2xl p-6 mb-6">
-                <p className="text-white/40 text-xs uppercase mb-3">💡 In plain language</p>
-                <p className="text-white/70 text-base leading-relaxed">
-                  When you close your laptop and sit quietly for 10 minutes, your hippocampus is already replaying what you just learned. This isn't a metaphor - it's a measurable biological signal. Loci detects it and makes it stronger.
-                </p>
-              </div>
+              <InteractiveCard effect="pulse" className="mb-6">
+                <div className="bg-surface p-6">
+                  <p className="text-white/40 text-xs uppercase mb-3">💡 In plain language</p>
+                  <p className="text-white/70 text-base leading-relaxed">
+                    When you close your laptop and sit quietly for 10 minutes, your hippocampus is already replaying what you just learned. This isn't a metaphor - it's a measurable biological signal. Loci detects it and makes it stronger.
+                  </p>
+                </div>
+              </InteractiveCard>
 
               <ExpandableDetail
                 preview="For the curious →"
@@ -278,12 +283,14 @@ export default function SolutionPage() {
                 The handshake, engineered.
               </h2>
 
-              <div className="bg-surface rounded-2xl p-6 mb-6">
-                <p className="text-white/40 text-xs uppercase mb-3">💡 In plain language</p>
-                <p className="text-white/70 text-base leading-relaxed">
-                  While you sleep, Loci detects the exact millisecond your brain opens the memory transfer window, delivers two synchronized signals to complete the handshake - then releases the scent linked to the memory you flagged this morning.
-                </p>
-              </div>
+              <InteractiveCard effect="pulse" className="mb-6">
+                <div className="bg-surface p-6">
+                  <p className="text-white/40 text-xs uppercase mb-3">💡 In plain language</p>
+                  <p className="text-white/70 text-base leading-relaxed">
+                    While you sleep, Loci detects the exact millisecond your brain opens the memory transfer window, delivers two synchronized signals to complete the handshake - then releases the scent linked to the memory you flagged this morning.
+                  </p>
+                </div>
+              </InteractiveCard>
 
               {/* Dual channel diagram */}
               <div className="bg-surface rounded-2xl p-4 mb-4">
@@ -330,44 +337,48 @@ export default function SolutionPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Band Day */}
             <SectionReveal>
-              <div className="bg-surface rounded-3xl p-10 border border-white/5 card-hover group hover:border-acid/40">
-                <p className="text-acid text-xs uppercase tracking-widest font-medium mb-6">LOCI BAND DAY</p>
-                <WristbandIllustration color="#C6FF00" />
-                <h3 className="text-white font-bold text-3xl mt-4 mb-3">Worn during learning.</h3>
-                <p className="text-white/60 text-base leading-relaxed mb-8">
-                  Monitors your engagement in real time. Tags memories at peak learning moments.
-                  Assigns an olfactory anchor to each Trace.
-                </p>
-                <div className="flex flex-col">
-                  {specs1.map((s, i) => (
-                    <div key={i} className="flex justify-between border-b border-white/5 py-4">
-                      <span className="text-white/70 text-sm">{s.name}</span>
-                      <span className="text-white/40 text-sm">{s.value}</span>
-                    </div>
-                  ))}
+              <InteractiveCard effect="glass">
+                <div className="bg-surface p-10 border border-white/5 group h-full">
+                  <p className="text-acid text-xs uppercase tracking-widest font-medium mb-6">LOCI BAND DAY</p>
+                  <WristbandIllustration color="#C6FF00" />
+                  <h3 className="text-white font-bold text-3xl mt-4 mb-3">Worn during learning.</h3>
+                  <p className="text-white/60 text-base leading-relaxed mb-8">
+                    Monitors your engagement in real time. Tags memories at peak learning moments.
+                    Assigns an olfactory anchor to each Trace.
+                  </p>
+                  <div className="flex flex-col">
+                    {specs1.map((s, i) => (
+                      <div key={i} className="flex justify-between border-b border-white/5 py-4">
+                        <span className="text-white/70 text-sm">{s.name}</span>
+                        <span className="text-white/40 text-sm">{s.value}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </InteractiveCard>
             </SectionReveal>
 
             {/* Band Night */}
             <SectionReveal>
-              <div className="bg-surface rounded-3xl p-10 border border-white/5 card-hover group hover:border-violet/40">
-                <p className="text-violet text-xs uppercase tracking-widest font-medium mb-6">LOCI BAND NIGHT</p>
-                <WristbandIllustration color="#7B5CFF" />
-                <h3 className="text-white font-bold text-3xl mt-4 mb-3">Worn during sleep.</h3>
-                <p className="text-white/60 text-base leading-relaxed mb-8">
-                  Detects the exact moment to intervene. Engineers the spindle-ripple handshake.
-                  Delivers the scent that cues your brain to replay the right memory.
-                </p>
-                <div className="flex flex-col">
-                  {specs2.map((s, i) => (
-                    <div key={i} className="flex justify-between border-b border-white/5 py-4">
-                      <span className="text-white/70 text-sm">{s.name}</span>
-                      <span className="text-white/40 text-sm">{s.value}</span>
-                    </div>
-                  ))}
+              <InteractiveCard effect="glass">
+                <div className="bg-surface p-10 border border-white/5 group h-full">
+                  <p className="text-violet text-xs uppercase tracking-widest font-medium mb-6">LOCI BAND NIGHT</p>
+                  <WristbandIllustration color="#7B5CFF" />
+                  <h3 className="text-white font-bold text-3xl mt-4 mb-3">Worn during sleep.</h3>
+                  <p className="text-white/60 text-base leading-relaxed mb-8">
+                    Detects the exact moment to intervene. Engineers the spindle-ripple handshake.
+                    Delivers the scent that cues your brain to replay the right memory.
+                  </p>
+                  <div className="flex flex-col">
+                    {specs2.map((s, i) => (
+                      <div key={i} className="flex justify-between border-b border-white/5 py-4">
+                        <span className="text-white/70 text-sm">{s.name}</span>
+                        <span className="text-white/40 text-sm">{s.value}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </InteractiveCard>
             </SectionReveal>
           </div>
         </div>

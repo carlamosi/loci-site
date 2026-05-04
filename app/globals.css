@@ -24,4 +24,44 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* Neural Pulse */
+  .neural-pulse {
+    position: relative;
+    overflow: hidden;
+  }
+  .neural-pulse::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(123, 92, 255, 0.15) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+  .neural-pulse:hover::after {
+    opacity: 1;
+  }
+
+  /* Glassmorphic Lift */
+  .glass-lift {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .glass-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(123, 92, 255, 0.3);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(123, 92, 255, 0.1);
+  }
+}
+
+@keyframes neuralBreath {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+.animate-neural-breath {
+  animation: neuralBreath 4s ease-in-out infinite;
 }

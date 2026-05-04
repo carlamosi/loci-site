@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import BrainWaves from '@/components/BrainWaves'
 import SectionReveal from '@/components/SectionReveal'
+import InteractiveCard from '@/components/InteractiveCard'
 
 function WaveViz({ phase }: { phase: number }) {
   const w = 400, h = 180
@@ -200,15 +201,17 @@ export default function SciencePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {papers.map((paper, i) => (
               <SectionReveal key={i}>
-                <div className="bg-midnight rounded-2xl p-8 border border-white/5 card-hover hover:border-violet/30 flex flex-col gap-4 h-full">
-                  <span className={`text-xs rounded-full px-3 py-1 border w-fit font-medium ${paper.jColor} ${paper.jBg}`}>{paper.journal}</span>
-                  <p className="text-white/40 text-xs uppercase tracking-wide">{paper.authors}</p>
-                  <h3 className="text-white font-bold text-2xl leading-tight">{paper.headline}</h3>
-                  <p className="text-white/60 text-sm leading-relaxed flex-1">{paper.plain}</p>
-                  <div className="border-t border-white/5 pt-4">
-                    <p className="text-violet text-xs leading-relaxed">{paper.proves}</p>
+                <InteractiveCard effect="pulse">
+                  <div className="bg-midnight p-8 border border-white/5 flex flex-col gap-4 h-full">
+                    <span className={`text-xs rounded-full px-3 py-1 border w-fit font-medium ${paper.jColor} ${paper.jBg}`}>{paper.journal}</span>
+                    <p className="text-white/40 text-xs uppercase tracking-wide">{paper.authors}</p>
+                    <h3 className="text-white font-bold text-2xl leading-tight">{paper.headline}</h3>
+                    <p className="text-white/60 text-sm leading-relaxed flex-1">{paper.plain}</p>
+                    <div className="border-t border-white/5 pt-4">
+                      <p className="text-violet text-xs leading-relaxed">{paper.proves}</p>
+                    </div>
                   </div>
-                </div>
+                </InteractiveCard>
               </SectionReveal>
             ))}
           </div>

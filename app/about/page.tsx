@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import SectionReveal from '@/components/SectionReveal'
+import InteractiveCard from '@/components/InteractiveCard'
 
 const values = [
   {
@@ -143,10 +144,12 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {values.map((v, i) => (
               <SectionReveal key={i}>
-                <div className={`bg-surface rounded-2xl p-8 border border-white/5 border-t-4 ${v.color} card-hover`}>
-                  <h3 className="text-white font-bold text-lg mb-3 tracking-wide">{v.title}</h3>
-                  <p className="text-white/60 text-sm leading-relaxed">{v.body}</p>
-                </div>
+                <InteractiveCard effect="glass">
+                  <div className={`bg-surface rounded-2xl p-8 border-t-4 ${v.color}`}>
+                    <h3 className="text-white font-bold text-lg mb-3 tracking-wide">{v.title}</h3>
+                    <p className="text-white/60 text-sm leading-relaxed">{v.body}</p>
+                  </div>
+                </InteractiveCard>
               </SectionReveal>
             ))}
           </div>
@@ -195,36 +198,38 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {founders.map((f, i) => (
               <SectionReveal key={i}>
-                <div className="bg-surface rounded-3xl p-10 border border-white/5 card-hover hover:border-violet/30">
-                  {/* Avatar */}
-                  {f.photo ? (
-                    <div className="w-24 h-24 rounded-full overflow-hidden mb-6 border border-white/10 hover:border-violet/40 transition-colors">
-                      <img src={f.photo} alt={f.name} className="w-full h-full object-cover" />
-                    </div>
-                  ) : (
-                    <div className="w-24 h-24 rounded-full bg-violet/20 flex items-center justify-center mb-6 border border-transparent hover:border-violet/40 transition-colors">
-                      <span className="text-white font-bold text-3xl">{f.initials}</span>
-                    </div>
-                  )}
+                <InteractiveCard effect="magnetic" strength={20}>
+                  <div className="bg-surface p-10 border border-white/5 h-full">
+                    {/* Avatar */}
+                    {f.photo ? (
+                      <div className="w-24 h-24 rounded-full overflow-hidden mb-6 border border-white/10 hover:border-violet/40 transition-colors">
+                        <img src={f.photo} alt={f.name} className="w-full h-full object-cover" />
+                      </div>
+                    ) : (
+                      <div className="w-24 h-24 rounded-full bg-violet/20 flex items-center justify-center mb-6 border border-transparent hover:border-violet/40 transition-colors">
+                        <span className="text-white font-bold text-3xl">{f.initials}</span>
+                      </div>
+                    )}
 
-                  <h3 className="text-white font-bold text-2xl">{f.name}</h3>
-                  <p className="text-violet text-xs uppercase tracking-widest mt-1 mb-3 font-medium">
-                    {f.role}
-                  </p>
-                  <p className="text-white/60 text-sm leading-relaxed">{f.bio}</p>
+                    <h3 className="text-white font-bold text-2xl">{f.name}</h3>
+                    <p className="text-violet text-xs uppercase tracking-widest mt-1 mb-3 font-medium">
+                      {f.role}
+                    </p>
+                    <p className="text-white/60 text-sm leading-relaxed">{f.bio}</p>
 
-                  <Link
-                    href={f.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 hover:bg-violet/20 border border-white/10 hover:border-violet/50 text-white/70 hover:text-white transition-all duration-300 mt-5"
-                    aria-label={`${f.name} LinkedIn`}
-                  >
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                  </Link>
-                </div>
+                    <Link
+                      href={f.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 hover:bg-violet/20 border border-white/10 hover:border-violet/50 text-white/70 hover:text-white transition-all duration-300 mt-5"
+                      aria-label={`${f.name} LinkedIn`}
+                    >
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                      </svg>
+                    </Link>
+                  </div>
+                </InteractiveCard>
               </SectionReveal>
             ))}
           </div>

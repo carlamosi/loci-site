@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic'
 import BrainWaves from '@/components/BrainWaves'
 import SectionReveal from '@/components/SectionReveal'
 import CountUp from '@/components/CountUp'
+import InteractiveCard from '@/components/InteractiveCard'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { useGSAP } from '@gsap/react'
 
@@ -285,53 +286,61 @@ export default function Home() {
             <div className="lg:col-span-7 flex flex-col gap-6">
               {/* Card 1 */}
               <SectionReveal>
-                <div className="bg-surface rounded-2xl p-8 border border-white/5 border-t-4 border-t-acid">
-                  <div className="text-acid font-bold leading-none mb-3" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)' }}>
-                    <CountUp end={1.5} suffix="B" decimals={1} />
+                <InteractiveCard effect="pulse">
+                  <div className="bg-surface p-8 border-t-4 border-t-acid">
+                    <div className="text-acid font-bold leading-none mb-3" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)' }}>
+                      <CountUp end={1.5} suffix="B" decimals={1} />
+                    </div>
+                    <p className="text-white/50 text-sm leading-relaxed">
+                      people live with chronically disrupted sleep globally - losing memory every single night
+                    </p>
                   </div>
-                  <p className="text-white/50 text-sm leading-relaxed">
-                    people live with chronically disrupted sleep globally - losing memory every single night
-                  </p>
-                </div>
+                </InteractiveCard>
               </SectionReveal>
 
               {/* Card 2 */}
               <SectionReveal>
-                <div className="bg-surface rounded-2xl p-8 border border-white/5 border-t-4 border-t-coral">
-                  <div className="text-coral font-bold leading-none mb-3" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)' }}>
-                    20–40%
+                <InteractiveCard effect="pulse">
+                  <div className="bg-surface p-8 border-t-4 border-t-coral">
+                    <div className="text-coral font-bold leading-none mb-3" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)' }}>
+                      20–40%
+                    </div>
+                    <p className="text-white/50 text-sm leading-relaxed">
+                      of what you study tonight will not consolidate - not because of how long you slept,
+                      but because the coupling between signals degraded
+                    </p>
                   </div>
-                  <p className="text-white/50 text-sm leading-relaxed">
-                    of what you study tonight will not consolidate - not because of how long you slept,
-                    but because the coupling between signals degraded
-                  </p>
-                </div>
+                </InteractiveCard>
               </SectionReveal>
 
               {/* Card 3 */}
               <SectionReveal>
-                <div className="bg-surface rounded-2xl p-8 border border-white/5 border-t-4 border-t-cyan">
-                  <div className="text-cyan font-bold leading-none mb-3" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)' }}>
-                    0
+                <InteractiveCard effect="pulse">
+                  <div className="bg-surface p-8 border-t-4 border-t-cyan">
+                    <div className="text-cyan font-bold leading-none mb-3" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)' }}>
+                      0
+                    </div>
+                    <p className="text-white/50 text-sm leading-relaxed">
+                      existing systems that control <em>which</em> memories transfer. All of them boost
+                      the mechanism. None choose the content. Loci is first.
+                    </p>
                   </div>
-                  <p className="text-white/50 text-sm leading-relaxed">
-                    existing systems that control <em>which</em> memories transfer. All of them boost
-                    the mechanism. None choose the content. Loci is first.
-                  </p>
-                </div>
+                </InteractiveCard>
               </SectionReveal>
 
               {/* Card 4 */}
               <SectionReveal>
-                <div className="bg-surface rounded-2xl p-8 border border-white/5 border-t-4 border-t-violet">
-                  <div className="text-violet font-bold leading-none mb-3" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)' }}>
-                    <CountUp end={55} suffix="M" />
+                <InteractiveCard effect="pulse">
+                  <div className="bg-surface p-8 border-t-4 border-t-violet">
+                    <div className="text-violet font-bold leading-none mb-3" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)' }}>
+                      <CountUp end={55} suffix="M" />
+                    </div>
+                    <p className="text-white/50 text-sm leading-relaxed">
+                      people with dementia today. Disrupted sleep is a primary causal driver - not a
+                      symptom. The number doubles every 20 years.
+                    </p>
                   </div>
-                  <p className="text-white/50 text-sm leading-relaxed">
-                    people with dementia today. Disrupted sleep is a primary causal driver - not a
-                    symptom. The number doubles every 20 years.
-                  </p>
-                </div>
+                </InteractiveCard>
               </SectionReveal>
             </div>
           </div>
