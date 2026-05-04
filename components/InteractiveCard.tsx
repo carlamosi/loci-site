@@ -60,21 +60,38 @@ export default function InteractiveCard({
     }
   }
 
+  const isMagnetic = effect === 'magnetic'
+
+  if (isMagnetic) {
+    return (
+      <motion.div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          rotateX: rotateX,
+          rotateY: rotateY,
+          transformStyle: 'preserve-3d',
+        }}
+        className={`relative rounded-3xl overflow-hidden ${getEffectClasses()} ${className}`}
+      >
+        <div style={{ transform: 'translateZ(20px)', height: '100%' }}>
+          {children}
+        </div>
+      </motion.div>
+    )
+  }
+
   return (
-    <motion.div
+    <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={effect === 'magnetic' ? {
-        rotateX: rotateX,
-        rotateY: rotateY,
-        transformStyle: 'preserve-3d',
-      } : {}}
       className={`relative rounded-3xl overflow-hidden ${getEffectClasses()} ${className}`}
     >
-      <div style={{ transform: effect === 'magnetic' ? 'translateZ(20px)' : 'none', height: '100%' }}>
+      <div style={{ height: '100%' }}>
         {children}
       </div>
-    </motion.div>
+    </div>
   )
 }

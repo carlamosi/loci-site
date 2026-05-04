@@ -337,8 +337,8 @@ export default function SolutionPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Band Day */}
             <SectionReveal>
-              <InteractiveCard effect="glass" className="h-full bg-surface/40">
-                <div className="p-10 border border-white/5 group h-full">
+              <InteractiveCard effect="glass" className="h-full">
+                <div className="bg-surface/40 p-10 rounded-3xl border border-white/5 hover:bg-surface/60 transition-colors duration-300 group h-full">
                   <p className="text-acid text-xs uppercase tracking-widest font-medium mb-6">LOCI BAND DAY</p>
                   <WristbandIllustration color="#C6FF00" />
                   <h3 className="text-white font-bold text-3xl mt-4 mb-3">Worn during learning.</h3>
@@ -360,8 +360,8 @@ export default function SolutionPage() {
 
             {/* Band Night */}
             <SectionReveal>
-              <InteractiveCard effect="glass" className="h-full bg-surface/40">
-                <div className="p-10 border border-white/5 group h-full">
+              <InteractiveCard effect="glass" className="h-full">
+                <div className="bg-surface/40 p-10 rounded-3xl border border-white/5 hover:bg-surface/60 transition-colors duration-300 group h-full">
                   <p className="text-violet text-xs uppercase tracking-widest font-medium mb-6">LOCI BAND NIGHT</p>
                   <WristbandIllustration color="#7B5CFF" />
                   <h3 className="text-white font-bold text-3xl mt-4 mb-3">Worn during sleep.</h3>
