@@ -144,8 +144,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {values.map((v, i) => (
               <SectionReveal key={i}>
-                <InteractiveCard effect="glass">
-                  <div className={`bg-surface rounded-2xl p-8 border-t-4 ${v.color}`}>
+                <InteractiveCard effect="glass" className="h-full bg-surface/40">
+                  <div className={`p-8 border-t-4 ${v.color} h-full`}>
                     <h3 className="text-white font-bold text-lg mb-3 tracking-wide">{v.title}</h3>
                     <p className="text-white/60 text-sm leading-relaxed">{v.body}</p>
                   </div>

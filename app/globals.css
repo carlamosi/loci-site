@@ -34,6 +34,7 @@ body {
     content: '';
     position: absolute;
     inset: 0;
+    z-index: 10;
     background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(123, 92, 255, 0.15) 0%, transparent 60%);
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -48,11 +49,12 @@ body {
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
   }
   .glass-lift:hover {
     transform: translateY(-8px) scale(1.02);
     border-color: rgba(123, 92, 255, 0.3);
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.05);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(123, 92, 255, 0.1);
   }
 }

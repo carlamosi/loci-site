@@ -171,8 +171,8 @@ export default function SolutionPage() {
                 Tag it before it disappears.
               </h2>
 
-              <InteractiveCard effect="pulse" className="mb-6">
-                <div className="bg-surface p-6">
+              <InteractiveCard effect="pulse" className="mb-6 bg-surface">
+                <div className="p-6 h-full">
                   <p className="text-white/40 text-xs uppercase mb-3">💡 In plain language</p>
                   <p className="text-white/70 text-base leading-relaxed">
                     Right now, while you study, your brain hasn't decided whether to keep this memory yet. Loci intervenes at this exact moment to flag it as important - before the decision is made.
@@ -220,8 +220,8 @@ export default function SolutionPage() {
                 Your brain replays while you rest. We amplify it.
               </h2>
 
-              <InteractiveCard effect="pulse" className="mb-6">
-                <div className="bg-surface p-6">
+              <InteractiveCard effect="pulse" className="mb-6 bg-surface">
+                <div className="p-6 h-full">
                   <p className="text-white/40 text-xs uppercase mb-3">💡 In plain language</p>
                   <p className="text-white/70 text-base leading-relaxed">
                     When you close your laptop and sit quietly for 10 minutes, your hippocampus is already replaying what you just learned. This isn't a metaphor - it's a measurable biological signal. Loci detects it and makes it stronger.
@@ -283,8 +283,8 @@ export default function SolutionPage() {
                 The handshake, engineered.
               </h2>
 
-              <InteractiveCard effect="pulse" className="mb-6">
-                <div className="bg-surface p-6">
+              <InteractiveCard effect="pulse" className="mb-6 bg-surface">
+                <div className="p-6 h-full">
                   <p className="text-white/40 text-xs uppercase mb-3">💡 In plain language</p>
                   <p className="text-white/70 text-base leading-relaxed">
                     While you sleep, Loci detects the exact millisecond your brain opens the memory transfer window, delivers two synchronized signals to complete the handshake - then releases the scent linked to the memory you flagged this morning.
@@ -337,8 +337,8 @@ export default function SolutionPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Band Day */}
             <SectionReveal>
-              <InteractiveCard effect="glass">
-                <div className="bg-surface p-10 border border-white/5 group h-full">
+              <InteractiveCard effect="glass" className="h-full bg-surface/40">
+                <div className="p-10 border border-white/5 group h-full">
                   <p className="text-acid text-xs uppercase tracking-widest font-medium mb-6">LOCI BAND DAY</p>
                   <WristbandIllustration color="#C6FF00" />
                   <h3 className="text-white font-bold text-3xl mt-4 mb-3">Worn during learning.</h3>
@@ -360,8 +360,8 @@ export default function SolutionPage() {
 
             {/* Band Night */}
             <SectionReveal>
-              <InteractiveCard effect="glass">
-                <div className="bg-surface p-10 border border-white/5 group h-full">
+              <InteractiveCard effect="glass" className="h-full bg-surface/40">
+                <div className="p-10 border border-white/5 group h-full">
                   <p className="text-violet text-xs uppercase tracking-widest font-medium mb-6">LOCI BAND NIGHT</p>
                   <WristbandIllustration color="#7B5CFF" />
                   <h3 className="text-white font-bold text-3xl mt-4 mb-3">Worn during sleep.</h3>

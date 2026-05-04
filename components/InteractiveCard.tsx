@@ -65,14 +65,14 @@ export default function InteractiveCard({
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX: effect === 'magnetic' ? rotateX : 0,
-        rotateY: effect === 'magnetic' ? rotateY : 0,
+      style={effect === 'magnetic' ? {
+        rotateX: rotateX,
+        rotateY: rotateY,
         transformStyle: 'preserve-3d',
-      }}
+      } : {}}
       className={`relative rounded-3xl overflow-hidden ${getEffectClasses()} ${className}`}
     >
-      <div style={{ transform: effect === 'magnetic' ? 'translateZ(20px)' : 'none' }}>
+      <div style={{ transform: effect === 'magnetic' ? 'translateZ(20px)' : 'none', height: '100%' }}>
         {children}
       </div>
     </motion.div>

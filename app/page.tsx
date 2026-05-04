@@ -286,8 +286,8 @@ export default function Home() {
             <div className="lg:col-span-7 flex flex-col gap-6">
               {/* Card 1 */}
               <SectionReveal>
-                <InteractiveCard effect="pulse">
-                  <div className="bg-surface p-8 border-t-4 border-t-acid">
+                <InteractiveCard effect="pulse" className="bg-surface border-t-4 border-t-acid">
+                  <div className="p-8">
                     <div className="text-acid font-bold leading-none mb-3" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)' }}>
                       <CountUp end={1.5} suffix="B" decimals={1} />
                     </div>
@@ -300,8 +300,8 @@ export default function Home() {
 
               {/* Card 2 */}
               <SectionReveal>
-                <InteractiveCard effect="pulse">
-                  <div className="bg-surface p-8 border-t-4 border-t-coral">
+                <InteractiveCard effect="pulse" className="bg-surface border-t-4 border-t-coral">
+                  <div className="p-8">
                     <div className="text-coral font-bold leading-none mb-3" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)' }}>
                       20–40%
                     </div>
@@ -315,8 +315,8 @@ export default function Home() {
 
               {/* Card 3 */}
               <SectionReveal>
-                <InteractiveCard effect="pulse">
-                  <div className="bg-surface p-8 border-t-4 border-t-cyan">
+                <InteractiveCard effect="pulse" className="bg-surface border-t-4 border-t-cyan">
+                  <div className="p-8">
                     <div className="text-cyan font-bold leading-none mb-3" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)' }}>
                       0
                     </div>
@@ -330,8 +330,8 @@ export default function Home() {
 
               {/* Card 4 */}
               <SectionReveal>
-                <InteractiveCard effect="pulse">
-                  <div className="bg-surface p-8 border-t-4 border-t-violet">
+                <InteractiveCard effect="pulse" className="bg-surface border-t-4 border-t-violet">
+                  <div className="p-8">
                     <div className="text-violet font-bold leading-none mb-3" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)' }}>
                       <CountUp end={55} suffix="M" />
                     </div>

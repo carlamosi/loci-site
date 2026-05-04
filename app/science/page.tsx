@@ -201,8 +201,8 @@ export default function SciencePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {papers.map((paper, i) => (
               <SectionReveal key={i}>
-                <InteractiveCard effect="pulse">
-                  <div className="bg-midnight p-8 border border-white/5 flex flex-col gap-4 h-full">
+                <InteractiveCard effect="pulse" className="bg-midnight h-full">
+                  <div className="p-8 border border-white/5 flex flex-col gap-4 h-full">
                     <span className={`text-xs rounded-full px-3 py-1 border w-fit font-medium ${paper.jColor} ${paper.jBg}`}>{paper.journal}</span>
                     <p className="text-white/40 text-xs uppercase tracking-wide">{paper.authors}</p>
                     <h3 className="text-white font-bold text-2xl leading-tight">{paper.headline}</h3>
