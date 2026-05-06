@@ -1,6 +1,7 @@
 // ═══ FILE: app/about/page.tsx ═══
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import SectionReveal from '@/components/SectionReveal'
 import GlassmorphicLift from '@/components/effects/GlassmorphicLift'
@@ -206,8 +207,8 @@ export default function AboutPage() {
                   <div className="bg-surface p-10 border border-white/5 rounded-2xl h-full flex flex-col transition-colors duration-500 group-hover:border-white/10 group-hover:bg-white/[0.02]">
                     {/* Avatar */}
                     {f.photo ? (
-                      <div className="w-24 h-24 rounded-full overflow-hidden mb-6 border border-white/10 group-hover:border-violet/60 transition-colors shrink-0">
-                        <img src={f.photo} alt={f.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                      <div className="relative w-24 h-24 rounded-full overflow-hidden mb-6 border border-white/10 group-hover:border-violet/60 transition-colors shrink-0">
+                        <Image src={f.photo} alt={f.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
                       </div>
                     ) : (
                       <div className="w-24 h-24 rounded-full bg-violet/20 flex items-center justify-center mb-6 border border-transparent group-hover:border-violet/60 transition-colors shrink-0">

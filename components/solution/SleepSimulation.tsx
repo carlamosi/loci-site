@@ -63,9 +63,9 @@ export default function SleepSimulation() {
 
   const progress = (simState.tick / 90) * 100
 
-  // Count consolidated memories per side
-  const leftConsolidated = simState.traces.filter(t => t.leftStatus === 'consolidated').length
-  const rightConsolidated = simState.traces.filter(t => t.rightStatus === 'consolidated' || t.rightStatus === 'partial').length
+  // Count consolidated memories per side if needed in the future
+  // const leftConsolidated = simState.traces.filter(t => t.leftStatus === 'consolidated').length
+  // const rightConsolidated = simState.traces.filter(t => t.rightStatus === 'consolidated' || t.rightStatus === 'partial').length
 
   return (
     <div className="bg-[#080A0F] w-full relative" id="simulation">

@@ -48,7 +48,6 @@ export default function HandshakeExperience() {
     const trackMouse = (e: MouseEvent) => {
       const root = rootRef.current
       if (!root) return
-      const rect = root.getBoundingClientRect()
       // Use viewport coords for the fixed cursor
       mouseX.current = e.clientX
       mouseY.current = e.clientY

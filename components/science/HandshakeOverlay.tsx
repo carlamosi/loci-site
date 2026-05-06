@@ -11,7 +11,7 @@ const ease = [0.16, 1, 0.3, 1] as const
 const enter = { opacity: 0, y: 24 }
 const visible = { opacity: 1, y: 0 }
 const exit = { opacity: 0, y: -16 }
-const transition = { duration: 0.55, ease }
+
 
 const PulsingDot = ({ color }: { color: string }) => (
   <span className="relative flex h-2 w-2 shrink-0 mt-1">

@@ -68,7 +68,11 @@ export default function WaveColumn({ side, simState }: Props) {
       ctx.beginPath()
       for (let x = 0; x <= w; x += 1) {
         const y = getSlowY(x)
-        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y)
+        if (x === 0) {
+          ctx.moveTo(x, y)
+        } else {
+          ctx.lineTo(x, y)
+        }
       }
       ctx.stroke()
       ctx.restore()
