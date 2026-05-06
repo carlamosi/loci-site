@@ -65,6 +65,7 @@ const founders = [
     role: 'Co-Founder',
     bio: 'Research and product strategy. Translating peer-reviewed neuroscience into something people can actually wear, use, and trust.',
     linkedin: 'https://www.linkedin.com/in/oyku-nur-kesek/',
+    photo: '/oyku.png'
   },
 ]
 
@@ -145,10 +146,10 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {values.map((v, i) => (
               <SectionReveal key={i}>
-                <GlassmorphicLift className="h-full rounded-2xl">
-                  <div className={`p-8 border-t-4 ${v.color} h-full`}>
-                    <h3 className="text-white font-bold text-lg mb-3 tracking-wide">{v.title}</h3>
-                    <p className="text-white/60 text-sm leading-relaxed">{v.body}</p>
+                <GlassmorphicLift className="h-full rounded-2xl group cursor-default">
+                  <div className={`p-8 border-t-4 ${v.color} h-full transition-colors duration-300 group-hover:bg-white/[0.03]`}>
+                    <h3 className="text-white font-bold text-lg mb-3 tracking-wide group-hover:text-white transition-colors">{v.title}</h3>
+                    <p className="text-white/60 text-sm leading-relaxed group-hover:text-white/80 transition-colors">{v.body}</p>
                   </div>
                 </GlassmorphicLift>
               </SectionReveal>
@@ -172,16 +173,16 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {sdgs.map((sdg, i) => (
               <SectionReveal key={i}>
-                <GlassmorphicLift className="h-full rounded-2xl">
+                <GlassmorphicLift className="h-full rounded-2xl group cursor-default">
                   <div
-                    className="p-8 border-t-4 h-full"
+                    className="p-8 border-t-4 h-full transition-colors duration-300 group-hover:bg-white/[0.03]"
                     style={{ borderTopColor: sdg.color }}
                   >
-                    <div className="font-bold text-5xl mb-2" style={{ color: sdg.color }}>
+                    <div className="font-bold text-5xl mb-2 transition-transform duration-300 group-hover:scale-105 origin-left" style={{ color: sdg.color }}>
                       {sdg.num}
                     </div>
                     <h3 className="text-white font-bold text-lg mb-4">{sdg.title}</h3>
-                    <p className="text-white/50 text-sm leading-relaxed">{sdg.body}</p>
+                    <p className="text-white/50 text-sm leading-relaxed group-hover:text-white/70 transition-colors">{sdg.body}</p>
                   </div>
                 </GlassmorphicLift>
               </SectionReveal>
@@ -201,24 +202,24 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {founders.map((f, i) => (
               <SectionReveal key={i}>
-                <MagneticFloat strength={0.2} className="h-full">
-                  <div className="bg-surface p-10 border border-white/5 rounded-2xl h-full flex flex-col">
+                <MagneticFloat strength={0.05} className="h-full group">
+                  <div className="bg-surface p-10 border border-white/5 rounded-2xl h-full flex flex-col transition-colors duration-500 group-hover:border-white/10 group-hover:bg-white/[0.02]">
                     {/* Avatar */}
                     {f.photo ? (
-                      <div className="w-24 h-24 rounded-full overflow-hidden mb-6 border border-white/10 hover:border-violet/40 transition-colors shrink-0">
-                        <img src={f.photo} alt={f.name} className="w-full h-full object-cover" />
+                      <div className="w-24 h-24 rounded-full overflow-hidden mb-6 border border-white/10 group-hover:border-violet/60 transition-colors shrink-0">
+                        <img src={f.photo} alt={f.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
                       </div>
                     ) : (
-                      <div className="w-24 h-24 rounded-full bg-violet/20 flex items-center justify-center mb-6 border border-transparent hover:border-violet/40 transition-colors shrink-0">
+                      <div className="w-24 h-24 rounded-full bg-violet/20 flex items-center justify-center mb-6 border border-transparent group-hover:border-violet/60 transition-colors shrink-0">
                         <span className="text-white font-bold text-3xl">{f.initials}</span>
                       </div>
                     )}
 
-                    <h3 className="text-white font-bold text-2xl">{f.name}</h3>
+                    <h3 className="text-white font-bold text-2xl group-hover:text-acid transition-colors duration-300">{f.name}</h3>
                     <p className="text-violet text-xs uppercase tracking-widest mt-1 mb-3 font-medium">
                       {f.role}
                     </p>
-                    <p className="text-white/60 text-sm leading-relaxed flex-1">{f.bio}</p>
+                    <p className="text-white/60 text-sm leading-relaxed flex-1 group-hover:text-white/80 transition-colors">{f.bio}</p>
 
                     <Link
                       href={f.linkedin}
@@ -235,6 +236,87 @@ export default function AboutPage() {
                 </MagneticFloat>
               </SectionReveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5 YEAR PLAN & BUSINESS CASE ─────────────────────── */}
+      <section className="bg-surface py-24 px-6 relative overflow-hidden">
+        {/* Subtle background element */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-violet/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
+        
+        <div className="max-w-5xl mx-auto relative z-10">
+          <SectionReveal className="text-center mb-16">
+            <p className="text-violet text-xs uppercase tracking-widest font-medium mb-4">THE ROADMAP</p>
+            <h2 className="text-white font-bold text-5xl mb-6">5-Year Plan & Economic Viability</h2>
+            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+              From benchtop validation to global clinical application. The sequence that builds the moat.
+            </p>
+          </SectionReveal>
+
+          <div className="space-y-12">
+            {/* Year 1-5 Grid */}
+            <div className="grid grid-cols-1 gap-4">
+              {[
+                { year: 'Year 1', title: 'Validate before spending', goal: 'Proof of concept. Scientific and commercial credibility assembled before capital is deployed.', rev: '€0', color: 'border-t-acid' },
+                { year: 'Year 2', title: 'First users. First data.', goal: 'Produce the one asset that changes every conversation — a published peer-reviewed pilot study.', rev: '€35k-50k ARR', color: 'border-t-cyan' },
+                { year: 'Year 3', title: 'Hardware launch.', goal: 'Get hardware into student hands. Learn whether the recall loop drives real retention.', rev: '€400k-600k ARR', color: 'border-t-violet' },
+                { year: 'Year 4', title: 'Clinical validation.', goal: 'Produce the clinical data that separates Loci from every wellness device.', rev: '€2M-2.8M ARR', color: 'border-t-coral' },
+                { year: 'Year 5', title: 'The platform.', goal: 'CE marking received. FDA filing submitted. The aging mission begins.', rev: '€8M-11M ARR', color: 'border-t-acid' }
+              ].map((phase, i) => (
+                <SectionReveal key={i}>
+                  <div className={`bg-midnight rounded-xl p-8 border-l-4 ${phase.color.replace('border-t-', 'border-l-')} hover:bg-white/[0.02] transition-colors duration-300 group`}>
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
+                      <div>
+                        <span className="text-violet font-bold text-xl mr-3 group-hover:text-white transition-colors">{phase.year}</span>
+                        <h3 className="text-white font-bold text-2xl inline">{phase.title}</h3>
+                      </div>
+                      <span className="bg-surface border border-white/10 px-4 py-1.5 rounded-full text-white/70 text-xs font-medium whitespace-nowrap group-hover:border-white/30 transition-colors">Target: {phase.rev}</span>
+                    </div>
+                    <p className="text-white/60 text-base leading-relaxed group-hover:text-white/80 transition-colors">{phase.goal}</p>
+                  </div>
+                </SectionReveal>
+              ))}
+            </div>
+
+            {/* Business Case Summary */}
+            <SectionReveal>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
+                <div className="bg-midnight p-8 rounded-2xl border border-white/5 hover:border-white/10 hover:bg-white/[0.02] transition-colors duration-300 group">
+                  <h3 className="text-white font-bold text-xl mb-6 group-hover:text-acid transition-colors">Unit Economics</h3>
+                  <ul className="space-y-4 text-white/60 text-sm">
+                    <li className="flex justify-between items-center"><span className="text-white/40">Loci One</span> <span className="font-mono text-white/80 bg-surface px-2 py-1 rounded">€149 + €9.99/mo</span></li>
+                    <li className="flex justify-between items-center"><span className="text-white/40">Hardware Margin</span> <span className="font-medium text-white/80">25–35%</span></li>
+                    <li className="flex justify-between items-center"><span className="text-white/40">Subscription Margin</span> <span className="font-medium text-white/80">~80%</span></li>
+                    <li className="flex justify-between items-center"><span className="text-white/40">90-Day Churn Model</span> <span className="font-medium text-white/80">45% (conservative)</span></li>
+                    <li className="flex justify-between items-center"><span className="text-white/40">CAC Target (Yr 3)</span> <span className="font-medium text-white/80">&lt;€60</span></li>
+                  </ul>
+                  <div className="mt-8 pt-6 border-t border-white/5">
+                    <p className="text-sm text-white/50 leading-relaxed group-hover:text-white/70 transition-colors">
+                      <strong className="text-white/80 font-medium">Why churn survives:</strong> Hardware margin is captured at purchase. Pure software margin from month two onward.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-midnight p-8 rounded-2xl border border-white/5 hover:border-white/10 hover:bg-white/[0.02] transition-colors duration-300 group">
+                  <h3 className="text-white font-bold text-xl mb-6 group-hover:text-cyan transition-colors">The Market Context</h3>
+                  <ul className="space-y-6 text-white/60 text-sm">
+                    <li>
+                      <strong className="text-white/90 block mb-1 text-base">158 Million Students</strong>
+                      <span className="group-hover:text-white/80 transition-colors">60% of 264M global university students experience measurably impaired memory consolidation.</span>
+                    </li>
+                    <li>
+                      <strong className="text-white/90 block mb-1 text-base">$10.95B Brain Health Market</strong>
+                      <span className="group-hover:text-white/80 transition-colors">Students already pay for memory products with no peer-reviewed mechanism.</span>
+                    </li>
+                    <li>
+                      <strong className="text-white/90 block mb-1 text-base">The Moat</strong>
+                      <span className="group-hover:text-white/80 transition-colors">Hospital pilot dataset + depth electrode study builds an irreplicable asset.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </SectionReveal>
           </div>
         </div>
       </section>

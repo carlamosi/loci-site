@@ -217,19 +217,19 @@ export default function Home() {
             className="flex flex-wrap gap-4 justify-center mb-16"
           >
             <Link
-              href="/solution"
+              href="/solution#simulation"
               className="inline-flex items-center gap-2 bg-acid text-midnight font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 hover:scale-105"
               style={{ boxShadow: '0 0 0px rgba(198,255,0,0)' }}
               onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 0 40px rgba(198,255,0,0.3)')}
               onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 0 0px rgba(198,255,0,0)')}
             >
-              Explore the Solution →
+              Explore Simulation →
             </Link>
             <Link
-              href="/science"
+              href="/science#handshake"
               className="inline-flex items-center gap-2 border border-violet text-white font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 hover:bg-violet/10 hover:scale-[1.02]"
             >
-              The Science ↓
+              See the Handshake ↓
             </Link>
           </motion.div>
 

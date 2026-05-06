@@ -387,7 +387,7 @@ export default function SolutionPage() {
       </section>
 
       {/* ── LIVE SIMULATION ────────────────────────────────────── */}
-      <section className="w-full bg-[#080A0F] py-24">
+      <section id="simulation" className="w-full bg-[#080A0F] py-24 scroll-mt-24">
         <div className="max-w-6xl mx-auto px-6">
           <SectionReveal>
             <p className="text-[#7B5CFF] text-xs uppercase tracking-[0.2em] mb-4">

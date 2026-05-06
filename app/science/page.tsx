@@ -239,7 +239,7 @@ export default function SciencePage() {
       </section>
 
       {/* ═══ EXPERIENCE THE MECHANISM ═══ */}
-      <section className="bg-[#080A0F] w-full">
+      <section id="handshake" className="bg-[#080A0F] w-full scroll-mt-24">
         {/* Intro copy — contained */}
         <div className="max-w-6xl mx-auto px-6 pt-24 pb-12">
           <SectionReveal>
