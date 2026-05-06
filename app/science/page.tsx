@@ -4,7 +4,8 @@ import { useRef, useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import BrainWaves from '@/components/BrainWaves'
 import SectionReveal from '@/components/SectionReveal'
-import InteractiveCard from '@/components/InteractiveCard'
+import NeuralPulse from '@/components/effects/NeuralPulse'
+import GlassmorphicLift from '@/components/effects/GlassmorphicLift'
 
 function WaveViz({ phase }: { phase: number }) {
   const w = 400, h = 180
@@ -132,32 +133,34 @@ function ScienceScrolly() {
         <div className="flex flex-col gap-24">
           {sciencePanels.map((p, i) => (
             <div key={i} ref={el => { panelRefs.current[i] = el }} className="min-h-[60vh] flex flex-col justify-center py-16">
-              <p className={`${p.color} text-xs uppercase tracking-widest font-medium mb-4`}>{p.counter}</p>
-              <h3 className="text-white font-bold text-4xl mb-6">{p.title}</h3>
-              <p className="text-white/60 text-lg leading-relaxed mb-4">{p.plain}</p>
-              <p className={`${p.labelColor} text-xs uppercase tracking-widest font-mono mb-6`}>{p.label}</p>
-              <div className="mb-6">
-                <button onClick={() => setExpandedTech(expandedTech === i ? null : i)}
-                  className="text-white/40 text-xs uppercase tracking-widest hover:text-white/70 transition-colors flex items-center gap-2">
-                  {expandedTech === i ? '▼' : '▶'} Technical depth
-                </button>
-                <AnimatePresence>
-                  {expandedTech === i && (
-                    <motion.p initial={{height:0,opacity:0}} animate={{height:'auto',opacity:1}} exit={{height:0,opacity:0}}
-                      className="text-white/40 text-sm leading-relaxed mt-3 border-l-2 border-white/10 pl-4 overflow-hidden">
-                      {p.technical}
-                    </motion.p>
-                  )}
-                </AnimatePresence>
-              </div>
-              <div className={`border-l-4 ${p.borderColor} bg-surface rounded-r-xl px-4 py-3`}>
-                <p className="text-white/70 text-sm leading-relaxed">{p.loci}</p>
-              </div>
-              {i === 2 && (
-                <div className="mt-6 bg-acid/10 border border-acid rounded-xl px-4 py-3">
-                  <p className="text-acid font-bold text-lg">✓ Transfer complete.</p>
+              <GlassmorphicLift className="p-8 rounded-3xl">
+                <p className={`${p.color} text-xs uppercase tracking-widest font-medium mb-4`}>{p.counter}</p>
+                <h3 className="text-white font-bold text-4xl mb-6">{p.title}</h3>
+                <p className="text-white/60 text-lg leading-relaxed mb-4">{p.plain}</p>
+                <p className={`${p.labelColor} text-xs uppercase tracking-widest font-mono mb-6`}>{p.label}</p>
+                <div className="mb-6">
+                  <button onClick={() => setExpandedTech(expandedTech === i ? null : i)}
+                    className="text-white/40 text-xs uppercase tracking-widest hover:text-white/70 transition-colors flex items-center gap-2">
+                    {expandedTech === i ? '▼' : '▶'} Technical depth
+                  </button>
+                  <AnimatePresence>
+                    {expandedTech === i && (
+                      <motion.p initial={{height:0,opacity:0}} animate={{height:'auto',opacity:1}} exit={{height:0,opacity:0}}
+                        className="text-white/40 text-sm leading-relaxed mt-3 border-l-2 border-white/10 pl-4 overflow-hidden">
+                        {p.technical}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
                 </div>
-              )}
+                <div className={`border-l-4 ${p.borderColor} bg-surface rounded-r-xl px-4 py-3`}>
+                  <p className="text-white/70 text-sm leading-relaxed">{p.loci}</p>
+                </div>
+                {i === 2 && (
+                  <div className="mt-6 bg-acid/10 border border-acid rounded-xl px-4 py-3">
+                    <p className="text-acid font-bold text-lg">✓ Transfer complete.</p>
+                  </div>
+                )}
+              </GlassmorphicLift>
             </div>
           ))}
         </div>
@@ -201,8 +204,8 @@ export default function SciencePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {papers.map((paper, i) => (
               <SectionReveal key={i}>
-                <InteractiveCard effect="pulse" className="bg-midnight h-full">
-                  <div className="p-8 border border-white/5 flex flex-col gap-4 h-full">
+                <NeuralPulse className={`bg-midnight h-full rounded-3xl ${paper.jColor}`}>
+                  <div className="text-foreground p-8 border border-white/5 flex flex-col gap-4 h-full rounded-3xl">
                     <span className={`text-xs rounded-full px-3 py-1 border w-fit font-medium ${paper.jColor} ${paper.jBg}`}>{paper.journal}</span>
                     <p className="text-white/40 text-xs uppercase tracking-wide">{paper.authors}</p>
                     <h3 className="text-white font-bold text-2xl leading-tight">{paper.headline}</h3>
@@ -211,7 +214,7 @@ export default function SciencePage() {
                       <p className="text-violet text-xs leading-relaxed">{paper.proves}</p>
                     </div>
                   </div>
-                </InteractiveCard>
+                </NeuralPulse>
               </SectionReveal>
             ))}
           </div>
@@ -220,3 +223,4 @@ export default function SciencePage() {
     </div>
   )
 }
+

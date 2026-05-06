@@ -6,7 +6,8 @@ import dynamic from 'next/dynamic'
 import BrainWaves from '@/components/BrainWaves'
 import SectionReveal from '@/components/SectionReveal'
 import ScrollPin from '@/components/ScrollPin'
-import InteractiveCard from '@/components/InteractiveCard'
+import GlassmorphicLift from '@/components/effects/GlassmorphicLift'
+import MagneticFloat from '@/components/effects/MagneticFloat'
 
 const ParticleCanvas = dynamic(() => import('@/components/ParticleCanvas'), { ssr: false })
 
@@ -171,14 +172,14 @@ export default function SolutionPage() {
                 Tag it before it disappears.
               </h2>
 
-              <InteractiveCard effect="pulse" className="mb-6 bg-surface">
+              <GlassmorphicLift className="mb-6 bg-surface rounded-2xl">
                 <div className="p-6 h-full">
                   <p className="text-white/40 text-xs uppercase mb-3">💡 In plain language</p>
                   <p className="text-white/70 text-base leading-relaxed">
                     Right now, while you study, your brain hasn't decided whether to keep this memory yet. Loci intervenes at this exact moment to flag it as important - before the decision is made.
                   </p>
                 </div>
-              </InteractiveCard>
+              </GlassmorphicLift>
 
               <ul className="flex flex-col gap-2 mb-6">
                 {['⚡ HRV + GSR biometric sensing', '🏷️ Encoding strength score (0–100)', '👃 Olfactory anchor pairing'].map((item, i) => (
@@ -220,14 +221,14 @@ export default function SolutionPage() {
                 Your brain replays while you rest. We amplify it.
               </h2>
 
-              <InteractiveCard effect="pulse" className="mb-6 bg-surface">
+              <GlassmorphicLift className="mb-6 bg-surface rounded-2xl">
                 <div className="p-6 h-full">
                   <p className="text-white/40 text-xs uppercase mb-3">💡 In plain language</p>
                   <p className="text-white/70 text-base leading-relaxed">
                     When you close your laptop and sit quietly for 10 minutes, your hippocampus is already replaying what you just learned. This isn't a metaphor - it's a measurable biological signal. Loci detects it and makes it stronger.
                   </p>
                 </div>
-              </InteractiveCard>
+              </GlassmorphicLift>
 
               <ExpandableDetail
                 preview="For the curious →"
@@ -283,14 +284,14 @@ export default function SolutionPage() {
                 The handshake, engineered.
               </h2>
 
-              <InteractiveCard effect="pulse" className="mb-6 bg-surface">
+              <GlassmorphicLift className="mb-6 bg-surface rounded-2xl">
                 <div className="p-6 h-full">
                   <p className="text-white/40 text-xs uppercase mb-3">💡 In plain language</p>
                   <p className="text-white/70 text-base leading-relaxed">
                     While you sleep, Loci detects the exact millisecond your brain opens the memory transfer window, delivers two synchronized signals to complete the handshake - then releases the scent linked to the memory you flagged this morning.
                   </p>
                 </div>
-              </InteractiveCard>
+              </GlassmorphicLift>
 
               {/* Dual channel diagram */}
               <div className="bg-surface rounded-2xl p-4 mb-4">
@@ -337,7 +338,7 @@ export default function SolutionPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Band Day */}
             <SectionReveal>
-              <InteractiveCard effect="glass" className="h-full">
+              <MagneticFloat strength={0.3} className="h-full">
                 <div className="bg-surface/40 p-10 rounded-3xl border border-white/5 hover:bg-surface/60 transition-colors duration-300 group h-full">
                   <p className="text-acid text-xs uppercase tracking-widest font-medium mb-6">LOCI BAND DAY</p>
                   <WristbandIllustration color="#C6FF00" />
@@ -355,12 +356,12 @@ export default function SolutionPage() {
                     ))}
                   </div>
                 </div>
-              </InteractiveCard>
+              </MagneticFloat>
             </SectionReveal>
 
             {/* Band Night */}
             <SectionReveal>
-              <InteractiveCard effect="glass" className="h-full">
+              <MagneticFloat strength={0.3} className="h-full">
                 <div className="bg-surface/40 p-10 rounded-3xl border border-white/5 hover:bg-surface/60 transition-colors duration-300 group h-full">
                   <p className="text-violet text-xs uppercase tracking-widest font-medium mb-6">LOCI BAND NIGHT</p>
                   <WristbandIllustration color="#7B5CFF" />
@@ -378,7 +379,7 @@ export default function SolutionPage() {
                     ))}
                   </div>
                 </div>
-              </InteractiveCard>
+              </MagneticFloat>
             </SectionReveal>
           </div>
         </div>
@@ -386,3 +387,4 @@ export default function SolutionPage() {
     </div>
   )
 }
+

@@ -3,7 +3,8 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import SectionReveal from '@/components/SectionReveal'
-import InteractiveCard from '@/components/InteractiveCard'
+import GlassmorphicLift from '@/components/effects/GlassmorphicLift'
+import MagneticFloat from '@/components/effects/MagneticFloat'
 
 const values = [
   {
@@ -144,12 +145,12 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {values.map((v, i) => (
               <SectionReveal key={i}>
-                <InteractiveCard effect="glass" className="h-full bg-surface/40">
+                <GlassmorphicLift className="h-full rounded-2xl">
                   <div className={`p-8 border-t-4 ${v.color} h-full`}>
                     <h3 className="text-white font-bold text-lg mb-3 tracking-wide">{v.title}</h3>
                     <p className="text-white/60 text-sm leading-relaxed">{v.body}</p>
                   </div>
-                </InteractiveCard>
+                </GlassmorphicLift>
               </SectionReveal>
             ))}
           </div>
@@ -171,16 +172,18 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {sdgs.map((sdg, i) => (
               <SectionReveal key={i}>
-                <div
-                  className="bg-midnight rounded-2xl p-8 border border-white/5 card-hover border-t-4"
-                  style={{ borderTopColor: sdg.color }}
-                >
-                  <div className="font-bold text-5xl mb-2" style={{ color: sdg.color }}>
-                    {sdg.num}
+                <GlassmorphicLift className="h-full rounded-2xl">
+                  <div
+                    className="p-8 border-t-4 h-full"
+                    style={{ borderTopColor: sdg.color }}
+                  >
+                    <div className="font-bold text-5xl mb-2" style={{ color: sdg.color }}>
+                      {sdg.num}
+                    </div>
+                    <h3 className="text-white font-bold text-lg mb-4">{sdg.title}</h3>
+                    <p className="text-white/50 text-sm leading-relaxed">{sdg.body}</p>
                   </div>
-                  <h3 className="text-white font-bold text-lg mb-4">{sdg.title}</h3>
-                  <p className="text-white/50 text-sm leading-relaxed">{sdg.body}</p>
-                </div>
+                </GlassmorphicLift>
               </SectionReveal>
             ))}
           </div>
@@ -198,15 +201,15 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {founders.map((f, i) => (
               <SectionReveal key={i}>
-                <InteractiveCard effect="magnetic" strength={20}>
-                  <div className="bg-surface p-10 border border-white/5 h-full">
+                <MagneticFloat strength={0.2} className="h-full">
+                  <div className="bg-surface p-10 border border-white/5 rounded-2xl h-full flex flex-col">
                     {/* Avatar */}
                     {f.photo ? (
-                      <div className="w-24 h-24 rounded-full overflow-hidden mb-6 border border-white/10 hover:border-violet/40 transition-colors">
+                      <div className="w-24 h-24 rounded-full overflow-hidden mb-6 border border-white/10 hover:border-violet/40 transition-colors shrink-0">
                         <img src={f.photo} alt={f.name} className="w-full h-full object-cover" />
                       </div>
                     ) : (
-                      <div className="w-24 h-24 rounded-full bg-violet/20 flex items-center justify-center mb-6 border border-transparent hover:border-violet/40 transition-colors">
+                      <div className="w-24 h-24 rounded-full bg-violet/20 flex items-center justify-center mb-6 border border-transparent hover:border-violet/40 transition-colors shrink-0">
                         <span className="text-white font-bold text-3xl">{f.initials}</span>
                       </div>
                     )}
@@ -215,13 +218,13 @@ export default function AboutPage() {
                     <p className="text-violet text-xs uppercase tracking-widest mt-1 mb-3 font-medium">
                       {f.role}
                     </p>
-                    <p className="text-white/60 text-sm leading-relaxed">{f.bio}</p>
+                    <p className="text-white/60 text-sm leading-relaxed flex-1">{f.bio}</p>
 
                     <Link
                       href={f.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 hover:bg-violet/20 border border-white/10 hover:border-violet/50 text-white/70 hover:text-white transition-all duration-300 mt-5"
+                      className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 hover:bg-violet/20 border border-white/10 hover:border-violet/50 text-white/70 hover:text-white transition-all duration-300 mt-5 shrink-0"
                       aria-label={`${f.name} LinkedIn`}
                     >
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -229,7 +232,7 @@ export default function AboutPage() {
                       </svg>
                     </Link>
                   </div>
-                </InteractiveCard>
+                </MagneticFloat>
               </SectionReveal>
             ))}
           </div>
@@ -238,3 +241,4 @@ export default function AboutPage() {
     </div>
   )
 }
+
