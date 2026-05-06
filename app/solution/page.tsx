@@ -8,6 +8,7 @@ import SectionReveal from '@/components/SectionReveal'
 import ScrollPin from '@/components/ScrollPin'
 import GlassmorphicLift from '@/components/effects/GlassmorphicLift'
 import MagneticFloat from '@/components/effects/MagneticFloat'
+import SleepSimulation from '@/components/solution/SleepSimulation'
 
 const ParticleCanvas = dynamic(() => import('@/components/ParticleCanvas'), { ssr: false })
 
@@ -382,6 +383,35 @@ export default function SolutionPage() {
               </MagneticFloat>
             </SectionReveal>
           </div>
+        </div>
+      </section>
+
+      {/* ── LIVE SIMULATION ────────────────────────────────────── */}
+      <section className="w-full bg-[#080A0F] py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <SectionReveal>
+            <p className="text-[#7B5CFF] text-xs uppercase tracking-[0.2em] mb-4">
+              LIVE SIMULATION
+            </p>
+            <h2 className="text-white font-bold text-5xl leading-tight mb-4 max-w-xl">
+              6 hours. Two outcomes.
+            </h2>
+            <p className="text-white/60 text-lg leading-relaxed max-w-2xl mb-8">
+              The same student. The same night. The same 6 hours of sleep. One with Loci. One without.
+            </p>
+            
+            <button
+              id="sleep-sim-start"
+              className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#C6FF00] transition-colors duration-300 mb-16"
+            >
+              Begin Simulation
+            </button>
+
+            {/* Render the simulation component */}
+            <div className="border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+              <SleepSimulation />
+            </div>
+          </SectionReveal>
         </div>
       </section>
     </div>
