@@ -6,26 +6,31 @@ import { motion } from 'framer-motion'
 import SectionReveal from '@/components/SectionReveal'
 import GlassmorphicLift from '@/components/effects/GlassmorphicLift'
 import MagneticFloat from '@/components/effects/MagneticFloat'
+import NeuralPulse from '@/components/effects/NeuralPulse'
 
 const values = [
   {
     title: 'RADICAL HONESTY',
     color: 'border-t-acid',
+    hoverBorder: 'hover:border-[#C6FF00]/30',
     body: "We name what we don't know. The spindle-ripple coupling question is still open. We say that - because it is the research that makes this worth building.",
   },
   {
     title: 'SCIENCE FIRST',
     color: 'border-t-cyan',
+    hoverBorder: 'hover:border-[#00D4FF]/30',
     body: "Every mechanism has a peer-reviewed basis. If the paper doesn't exist, the feature doesn't ship.",
   },
   {
     title: 'HUMAN MISSION',
     color: 'border-t-violet',
+    hoverBorder: 'hover:border-[#7B5CFF]/30',
     body: "We are not building a wellness gadget. We are building for the people whose sleep is broken and who nobody else is designing for.",
   },
   {
     title: 'OPEN SCIENCE',
     color: 'border-t-coral',
+    hoverBorder: 'hover:border-[#FF4A62]/30',
     body: 'Our research findings will be published. Memory consolidation is too important to sit behind a patent wall.',
   },
 ]
@@ -146,12 +151,12 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {values.map((v, i) => (
               <SectionReveal key={i}>
-                <GlassmorphicLift className="h-full rounded-2xl group cursor-default">
-                  <div className={`p-8 border-t-4 ${v.color} h-full transition-colors duration-300 group-hover:bg-white/[0.03]`}>
+                <NeuralPulse className="h-full rounded-2xl group transition-all duration-[250ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(0,0,0,0.25)] cursor-default">
+                  <div className={`p-8 border-t-4 ${v.color} border border-transparent ${v.hoverBorder} h-full transition-all duration-300 group-hover:bg-white/[0.03]`}>
                     <h3 className="text-white font-bold text-lg mb-3 tracking-wide group-hover:text-white transition-colors">{v.title}</h3>
                     <p className="text-white/60 text-sm leading-relaxed group-hover:text-white/80 transition-colors">{v.body}</p>
                   </div>
-                </GlassmorphicLift>
+                </NeuralPulse>
               </SectionReveal>
             ))}
           </div>
@@ -173,12 +178,12 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {sdgs.map((sdg, i) => (
               <SectionReveal key={i}>
-                <GlassmorphicLift className="h-full rounded-2xl group cursor-default">
+                <GlassmorphicLift className="h-full rounded-2xl group transition-all duration-300 cursor-default">
                   <div
                     className="p-8 border-t-4 h-full transition-colors duration-300 group-hover:bg-white/[0.03]"
                     style={{ borderTopColor: sdg.color }}
                   >
-                    <div className="font-bold text-5xl mb-2 transition-transform duration-300 group-hover:scale-105 origin-left" style={{ color: sdg.color }}>
+                    <div className="font-bold text-5xl mb-2 opacity-70 group-hover:opacity-100 transition-all duration-[250ms] ease group-hover:scale-105 origin-left" style={{ color: sdg.color }}>
                       {sdg.num}
                     </div>
                     <h3 className="text-white font-bold text-lg mb-4">{sdg.title}</h3>
@@ -202,8 +207,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {founders.map((f, i) => (
               <SectionReveal key={i}>
-                <MagneticFloat strength={0.05} className="h-full group">
-                  <div className="bg-surface p-10 border border-white/5 rounded-2xl h-full flex flex-col transition-colors duration-500 group-hover:border-white/10 group-hover:bg-white/[0.02]">
+                <MagneticFloat strength={0.15} className="h-full group">
+                  <div className="bg-surface p-10 border border-white/5 rounded-2xl h-full flex flex-col transition-all duration-250 hover:border-[#7B5CFF]/25 group-hover:bg-white/[0.02]">
                     {/* Avatar */}
                     {f.photo ? (
                       <div className="relative w-32 h-32 mx-auto mb-6">
@@ -226,12 +231,11 @@ export default function AboutPage() {
                       href={f.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 hover:bg-violet/20 border border-white/10 hover:border-violet/50 text-white/70 hover:text-white transition-all duration-300 mt-5 shrink-0"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-violet/20 border border-white/10 hover:border-violet/50 text-white/70 hover:text-white transition-all duration-300 mt-5 w-fit"
                       aria-label={`${f.name} LinkedIn`}
                     >
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                      </svg>
+                      <span className="text-xs font-medium">LinkedIn</span>
+                      <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
                     </Link>
                   </div>
                 </MagneticFloat>
