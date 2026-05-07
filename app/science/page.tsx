@@ -1,13 +1,34 @@
 // ═══ FILE: app/science/page.tsx ═══
 'use client'
-import { useRef, useState, useEffect } from 'react'
+import { useMemo, useRef, useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import BrainWaves from '@/components/BrainWaves'
 import SectionReveal from '@/components/SectionReveal'
 import NeuralPulse from '@/components/effects/NeuralPulse'
 import GlassmorphicLift from '@/components/effects/GlassmorphicLift'
-import HandshakeExperience from '@/components/science/HandshakeExperience'
+
+const HandshakeExperience = dynamic(() => import('@/components/science/HandshakeExperience'), { ssr: false })
+
+function useNearViewport<T extends Element>(rootMargin = '800px') {
+  const ref = useRef<T | null>(null)
+  const [near, setNear] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    const obs = new IntersectionObserver(
+      ([e]) => setNear(e.isIntersecting),
+      { root: null, rootMargin, threshold: 0.01 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [rootMargin])
+
+  return useMemo(() => ({ ref, near }), [near])
+}
 
 function WaveViz({ phase }: { phase: number }) {
   const w = 400, h = 180
@@ -141,8 +162,10 @@ function ScienceScrolly() {
                 <p className="text-white/60 text-lg leading-relaxed mb-4">{p.plain}</p>
                 <p className={`${p.labelColor} text-xs uppercase tracking-widest font-mono mb-6`}>{p.label}</p>
                 <div className="mb-6">
-                  <button onClick={() => setExpandedTech(expandedTech === i ? null : i)}
-                    className="text-white/40 text-xs uppercase tracking-widest hover:text-white/70 transition-colors flex items-center gap-2">
+                  <button
+                    onClick={() => setExpandedTech(expandedTech === i ? null : i)}
+                    className="text-white/40 text-xs uppercase tracking-widest transition-all duration-200 ease-out hover:text-white/70 hover:underline decoration-[#C6FF00] underline-offset-4 flex items-center gap-2"
+                  >
                     {expandedTech === i ? '▼' : '▶'} Technical depth
                   </button>
                   <AnimatePresence>
@@ -178,6 +201,14 @@ function ScienceScrolly() {
 }
 
 export default function SciencePage() {
+  const { ref: handshakeMountRef, near: handshakeNear } = useNearViewport<HTMLDivElement>('900px')
+  const [forceHandshake, setForceHandshake] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    if (window.location.hash === '#handshake') setForceHandshake(true)
+  }, [])
+
   return (
     <div className="bg-midnight min-h-screen">
       <section className="pt-36 pb-16 px-6 text-center relative">
@@ -272,6 +303,7 @@ export default function SciencePage() {
 
         {/* Full-bleed canvas experience */}
         <div
+          ref={handshakeMountRef}
           className="w-full"
           style={{
             marginLeft: 'calc(-50vw + 50%)',
@@ -279,7 +311,11 @@ export default function SciencePage() {
             position: 'relative',
           }}
         >
-          <HandshakeExperience />
+          {(forceHandshake || handshakeNear) ? (
+            <HandshakeExperience />
+          ) : (
+            <div className="w-full" style={{ height: 'clamp(600px, 70vh, 900px)' }} />
+          )}
         </div>
       </section>
     </div>

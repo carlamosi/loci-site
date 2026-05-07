@@ -16,6 +16,9 @@ interface AmbientPoint { x: number; y: number; vx: number; vy: number; baseOpaci
 export default function HandshakeCanvas({ state, onTransferComplete }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const rafRef = useRef<number>(0)
+  const runningRef = useRef(false)
+  const visibleRef = useRef(true)
+  const inViewRef = useRef(true)
   const slowPhaseRef = useRef(0)
   const spindlePhaseRef = useRef(0)
   const ripplePhaseRef = useRef(0)
@@ -53,6 +56,22 @@ export default function HandshakeCanvas({ state, onTransferComplete }: Props) {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
+    // Pause when tab is hidden (battery + perf)
+    const onVis = () => {
+      visibleRef.current = document.visibilityState === 'visible'
+    }
+    document.addEventListener('visibilitychange', onVis)
+    onVis()
+
+    // Pause when offscreen
+    const io = new IntersectionObserver(
+      ([e]) => {
+        inViewRef.current = e.isIntersecting
+      },
+      { root: null, threshold: 0.01, rootMargin: '200px' }
+    )
+    io.observe(parent)
+
     const initAmbient = () => {
       ambientRef.current = Array.from({ length: 40 }, () => ({
         x: Math.random() * canvas.width, y: Math.random() * canvas.height,
@@ -61,7 +80,15 @@ export default function HandshakeCanvas({ state, onTransferComplete }: Props) {
       }))
     }
 
-    const resize = () => { canvas.width = parent.offsetWidth; canvas.height = parent.offsetHeight; initAmbient() }
+    const resize = () => {
+      const dpr = Math.min(2, window.devicePixelRatio || 1)
+      canvas.width = Math.floor(parent.offsetWidth * dpr)
+      canvas.height = Math.floor(parent.offsetHeight * dpr)
+      canvas.style.width = `${parent.offsetWidth}px`
+      canvas.style.height = `${parent.offsetHeight}px`
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+      initAmbient()
+    }
     resize()
     const ro = new ResizeObserver(resize)
     ro.observe(parent)
@@ -101,6 +128,14 @@ export default function HandshakeCanvas({ state, onTransferComplete }: Props) {
     const spEnv = (nx: number) => Math.max(0, Math.sin(nx * Math.PI * 5)) ** 2
 
     const loop = () => {
+      // If not visible, keep loop idle (don’t render)
+      if (!visibleRef.current || !inViewRef.current) {
+        runningRef.current = false
+        rafRef.current = requestAnimationFrame(loop)
+        return
+      }
+
+      runningRef.current = true
       const s = stateRef.current
       const w = canvas.width; const h = canvas.height; const cx = w / 2
       timeRef.current++
@@ -204,7 +239,12 @@ export default function HandshakeCanvas({ state, onTransferComplete }: Props) {
     }
 
     rafRef.current = requestAnimationFrame(loop)
-    return () => { cancelAnimationFrame(rafRef.current); ro.disconnect() }
+    return () => {
+      cancelAnimationFrame(rafRef.current)
+      ro.disconnect()
+      io.disconnect()
+      document.removeEventListener('visibilitychange', onVis)
+    }
   }, [addParticles])
 
   useEffect(() => {

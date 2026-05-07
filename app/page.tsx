@@ -21,23 +21,9 @@ const wordColors = ['text-white', 'text-white', 'text-acid']
 // Concentric arc diagram
 function HandshakeDiagram() {
   const [hovered, setHovered] = useState<number | null>(null)
-  const [step, setStep] = useState(0)
   const [complete, setComplete] = useState(false)
-
-  useEffect(() => {
-    const cycle = () => {
-      setStep(0)
-      setComplete(false)
-      const t1 = setTimeout(() => setStep(1), 800)
-      const t2 = setTimeout(() => setStep(2), 1800)
-      const t3 = setTimeout(() => setStep(3), 2800)
-      const t4 = setTimeout(() => setComplete(true), 3200)
-      const t5 = setTimeout(() => { setStep(0); setComplete(false); cycle() }, 5200)
-      return () => [t1, t2, t3, t4, t5].forEach(clearTimeout)
-    }
-    const cleanup = cycle()
-    return cleanup
-  }, [])
+  const [nearMiss, setNearMiss] = useState(false)
+  const rootRef = useRef<HTMLDivElement>(null)
 
   const arcs = [
     { label: 'Slow Wave · Door opens', color: '#7B5CFF', r: 100, tip: 'Opens the transfer window every 2 seconds during sleep.' },
@@ -45,42 +31,133 @@ function HandshakeDiagram() {
     { label: 'Ripple · Memory carried', color: '#00D4FF', r: 40, tip: 'The actual memory compressed into a 100ms burst.' },
   ]
 
+  useEffect(() => {
+    if (!rootRef.current) return
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) return
+
+    const root = rootRef.current
+    const gate = root.querySelector<SVGCircleElement>('[data-el="gate"]')
+    const spindle = root.querySelector<SVGCircleElement>('[data-el="spindle"]')
+    const ripple = root.querySelector<SVGCircleElement>('[data-el="ripple"]')
+    const spark = root.querySelector<SVGCircleElement>('[data-el="spark"]')
+    const packet = root.querySelector<SVGGElement>('[data-el="packet"]')
+    const missX = root.querySelector<SVGTextElement>('[data-el="miss-x"]')
+    if (!gate || !spindle || !ripple || !spark || !packet || !missX) return
+
+    const tl = gsap.timeline({
+      repeat: -1,
+      defaults: { ease: 'power2.out' },
+      onRepeat: () => {
+        // ~1/3 cycles show a near miss
+        setNearMiss(Math.random() < 0.33)
+      },
+    })
+
+    setComplete(false)
+    setNearMiss(false)
+
+    gsap.set([gate, spindle, ripple], { opacity: 0.18 })
+    gsap.set([spark, missX], { opacity: 0 })
+    gsap.set(packet, { rotate: 0, transformOrigin: '50% 50%' })
+
+    // Gate (slow wave window)
+    tl.to(gate, { opacity: 1, duration: 0.35 })
+      .to(gate, { opacity: 0.35, duration: 0.35 }, '+=0.35')
+
+    // Spindle aligns within the gate
+    tl.to(spindle, { opacity: 1, duration: 0.25 }, 0.25)
+      .to(packet, { rotate: 220, duration: 1.2, ease: 'none' }, 0)
+
+    // Ripple nested in the spindle moment
+    tl.to(ripple, { opacity: 1, duration: 0.18 }, 0.62)
+      .to(spark, { opacity: 1, scale: 1, duration: 0.12 }, 0.74)
+      .to(spark, { opacity: 0, scale: 0.92, duration: 0.18, ease: 'power1.out' }, 0.86)
+
+    tl.call(() => setComplete(true), [], 0.92)
+      .to({}, { duration: 0.5 })
+      .call(() => setComplete(false))
+
+    tl.call(() => {
+      if (!nearMiss) return
+      gsap.to(missX, { opacity: 0.7, duration: 0.15 })
+      gsap.to(missX, { opacity: 0, duration: 0.25, delay: 0.25 })
+    }, [], 0.58)
+
+    return () => {
+      tl.kill()
+    }
+  }, [nearMiss])
+
   return (
-    <div className="flex flex-col items-center gap-6 mt-10">
+    <div ref={rootRef} className="flex flex-col items-center gap-6 mt-10">
       <div className="relative w-56 h-56 flex items-center justify-center">
         <svg viewBox="-120 -120 240 240" className="w-full h-full">
+          <circle
+            data-el="gate"
+            cx="0"
+            cy="0"
+            r={arcs[0].r}
+            fill="none"
+            stroke={arcs[0].color}
+            strokeWidth={2.5}
+            strokeDasharray={`${arcs[0].r * Math.PI * 2 * 0.22} ${arcs[0].r * Math.PI * 2 * 0.78}`}
+            strokeLinecap="round"
+            style={{ filter: `drop-shadow(0 0 10px ${arcs[0].color}66)` }}
+          />
+
+          <circle
+            data-el="spindle"
+            cx="0"
+            cy="0"
+            r={arcs[1].r}
+            fill="none"
+            stroke={arcs[1].color}
+            strokeWidth={2}
+            strokeDasharray={`${arcs[1].r * Math.PI * 2 * 0.45} ${arcs[1].r * Math.PI * 2 * 0.55}`}
+            strokeLinecap="round"
+            style={{ filter: `drop-shadow(0 0 8px ${arcs[1].color}55)` }}
+          />
+
+          <g data-el="packet">
+            <circle cx="0" cy={-arcs[1].r} r="4" fill="#FF4A62" opacity="0.9" />
+            <circle cx="0" cy={-arcs[1].r} r="10" fill="#FF4A62" opacity="0.10" />
+          </g>
+
+          <circle
+            data-el="ripple"
+            cx="0"
+            cy="0"
+            r={arcs[2].r}
+            fill="none"
+            stroke={arcs[2].color}
+            strokeWidth={1.6}
+            strokeDasharray={`${arcs[2].r * Math.PI * 2 * 0.35} ${arcs[2].r * Math.PI * 2 * 0.65}`}
+            strokeLinecap="round"
+            style={{ filter: `drop-shadow(0 0 7px ${arcs[2].color}55)` }}
+          />
+
+          <circle data-el="spark" cx="0" cy="0" r="4" fill="#C6FF00" opacity="0" />
+          <text data-el="miss-x" x="0" y="7" textAnchor="middle" fill="#FF4A62" fontSize="16" fontFamily="DM Sans, sans-serif" fontWeight="800" opacity="0">
+            ×
+          </text>
+
           {arcs.map((arc, i) => (
             <g key={i}>
-              {step > i && (
-                <>
-                  <circle
-                    cx="0" cy="0" r={arc.r}
-                    fill="none"
-                    stroke={arc.color}
-                    strokeWidth={hovered === i ? 3 : 2}
-                    strokeDasharray={`${arc.r * Math.PI * 2 * 0.7} ${arc.r * Math.PI * 2 * 0.3}`}
-                    strokeLinecap="round"
-                    style={{
-                      filter: hovered === i ? `drop-shadow(0 0 12px ${arc.color})` : `drop-shadow(0 0 6px ${arc.color}66)`,
-                      transition: 'all 0.3s ease',
-                      opacity: step > i ? 1 : 0,
-                    }}
-                    onMouseEnter={() => setHovered(i)}
-                    onMouseLeave={() => setHovered(null)}
-                    className="cursor-pointer"
-                  />
-                  <text
-                    x="0" y={-arc.r - 6}
-                    textAnchor="middle"
-                    fill={arc.color}
-                    fontSize="6"
-                    fontFamily="DM Sans, sans-serif"
-                    opacity={step > i ? 0.8 : 0}
-                  >
-                    {arc.label}
-                  </text>
-                </>
-              )}
+              <text
+                x="0"
+                y={-arc.r - 6}
+                textAnchor="middle"
+                fill={arc.color}
+                fontSize="6"
+                fontFamily="DM Sans, sans-serif"
+                opacity={0.8}
+                onMouseEnter={() => setHovered(i)}
+                onMouseLeave={() => setHovered(null)}
+                className="cursor-pointer"
+              >
+                {arc.label}
+              </text>
             </g>
           ))}
           {complete && (
@@ -218,18 +295,21 @@ export default function Home() {
           >
             <Link
               href="/solution#simulation"
-              className="inline-flex items-center gap-2 bg-acid text-midnight font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 ease-out hover:bg-acid-hover hover:scale-[1.02] hover:shadow-md"
-              style={{ boxShadow: '0 0 0px rgba(198,255,0,0)' }}
-              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 0 18px rgba(198,255,0,0.25)')}
-              onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 0 0px rgba(198,255,0,0)')}
+              className="group relative inline-flex items-center gap-2 bg-acid text-midnight font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 ease-out hover:bg-acid-hover hover:-translate-y-[1px] hover:shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-acid/40"
             >
-              Explore Simulation →
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100"
+                style={{ background: 'radial-gradient(120% 120% at 50% 0%, rgba(198,255,0,0.18) 0%, transparent 60%)' }}
+              />
+              <span className="relative">Explore Simulation →</span>
             </Link>
             <Link
               href="/science#handshake"
-              className="inline-flex items-center gap-2 border border-violet text-white font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 ease-out hover:bg-violet/10 hover:scale-[1.01] hover:shadow-md"
+              className="group inline-flex items-center gap-2 border border-violet text-white font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 ease-out hover:bg-violet/10 hover:-translate-y-[1px] hover:shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet/40"
             >
-              See the Handshake ↓
+              <span>See the Handshake</span>
+              <span className="transition-transform duration-200 ease-out group-hover:translate-y-[1px]">↓</span>
             </Link>
           </motion.div>
 

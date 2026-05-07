@@ -21,22 +21,32 @@ export default function SectionReveal({ children, className = '', stagger = 0.09
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReduced) return
 
+    const el = ref.current
+
     const ctx = gsap.context(() => {
-      const childElements = ref.current ? Array.from(ref.current.children) : []
+      const childElements = el ? Array.from(el.children) : []
       if (childElements.length === 0) return
 
-      gsap.from(childElements, {
-        y: 12,
-        opacity: 0,
-        duration: 0.4,
-        ease: 'power2.out',
-        stagger: stagger,
-        scrollTrigger: {
-          trigger: ref.current,
-          start: 'top 88%',
-          toggleActions: 'play none none none',
-        },
-      })
+      try {
+        // Fail-safe: ensure elements never remain stuck invisible
+        gsap.set(childElements, { opacity: 1, y: 0 })
+
+        gsap.from(childElements, {
+          y: 12,
+          opacity: 0,
+          duration: 0.4,
+          ease: 'power2.out',
+          stagger: stagger,
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+        })
+      } catch {
+        // If ScrollTrigger/GSAP fails for any reason, keep content visible.
+        gsap.set(childElements, { opacity: 1, y: 0 })
+      }
     }, ref)
 
     return () => ctx.revert()
