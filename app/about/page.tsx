@@ -206,11 +206,12 @@ export default function AboutPage() {
                   <div className="bg-surface p-10 border border-white/5 rounded-2xl h-full flex flex-col transition-colors duration-500 group-hover:border-white/10 group-hover:bg-white/[0.02]">
                     {/* Avatar */}
                     {f.photo ? (
-                      <div className="relative w-24 h-24 rounded-full overflow-hidden mb-6 border border-white/10 group-hover:border-violet/60 transition-colors shrink-0">
-                        <Image src={f.photo} alt={f.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                      <div className="relative w-32 h-32 mx-auto mb-6">
+                        <Image src={f.photo} alt={f.name}
+                          fill className="object-cover rounded-full ring-2 ring-white/5 group-hover:ring-[#7B5CFF]/30 transition-all duration-300" priority />
                       </div>
                     ) : (
-                      <div className="w-24 h-24 rounded-full bg-violet/20 flex items-center justify-center mb-6 border border-transparent group-hover:border-violet/60 transition-colors shrink-0">
+                      <div className="w-32 h-32 rounded-full bg-violet/20 flex items-center justify-center mx-auto mb-6 border border-transparent group-hover:border-violet/60 transition-colors shrink-0">
                         <span className="text-white font-bold text-3xl">{f.initials}</span>
                       </div>
                     )}
