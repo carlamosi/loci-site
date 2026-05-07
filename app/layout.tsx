@@ -78,9 +78,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="description" content="Loci is a 24-hour memory consolidation system for university students. Not less sleep - denser consolidation. Remember What Matters." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#080A0F" />
-        <link rel="icon" href="/favicon.png" type="image/png" sizes="512x512" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
-        <link rel="shortcut icon" href="/favicon.png" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>

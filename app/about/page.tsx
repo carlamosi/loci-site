@@ -66,7 +66,7 @@ const founders = [
     role: 'Co-Founder',
     bio: 'Research and product strategy. Translating peer-reviewed neuroscience into something people can actually wear, use, and trust.',
     linkedin: 'https://www.linkedin.com/in/oyku-nur-kesek/',
-    photo: '/oyku.png'
+    photo: '/oyku.jpg'
   },
 ]
 
