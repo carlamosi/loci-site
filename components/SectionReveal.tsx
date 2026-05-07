@@ -26,9 +26,9 @@ export default function SectionReveal({ children, className = '', stagger = 0.09
       if (childElements.length === 0) return
 
       gsap.from(childElements, {
-        y: 36,
+        y: 12,
         opacity: 0,
-        duration: 0.75,
+        duration: 0.4,
         ease: 'power2.out',
         stagger: stagger,
         scrollTrigger: {

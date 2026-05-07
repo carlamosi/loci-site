@@ -340,7 +340,7 @@ export default function SolutionPage() {
             {/* Band Day */}
             <SectionReveal>
               <MagneticFloat strength={0.3} className="h-full">
-                <div className="bg-surface/40 p-10 rounded-3xl border border-white/5 hover:bg-surface/60 transition-colors duration-300 group h-full">
+                <div className="bg-surface/40 p-10 rounded-3xl border border-white/5 hover:bg-surface-hover transition-all duration-200 ease-out group h-full">
                   <p className="text-acid text-xs uppercase tracking-widest font-medium mb-6">LOCI BAND DAY</p>
                   <WristbandIllustration color="#C6FF00" />
                   <h3 className="text-white font-bold text-3xl mt-4 mb-3">Worn during learning.</h3>
@@ -363,7 +363,7 @@ export default function SolutionPage() {
             {/* Band Night */}
             <SectionReveal>
               <MagneticFloat strength={0.3} className="h-full">
-                <div className="bg-surface/40 p-10 rounded-3xl border border-white/5 hover:bg-surface/60 transition-colors duration-300 group h-full">
+                <div className="bg-surface/40 p-10 rounded-3xl border border-white/5 hover:bg-surface-hover transition-all duration-200 ease-out group h-full">
                   <p className="text-violet text-xs uppercase tracking-widest font-medium mb-6">LOCI BAND NIGHT</p>
                   <WristbandIllustration color="#7B5CFF" />
                   <h3 className="text-white font-bold text-3xl mt-4 mb-3">Worn during sleep.</h3>
@@ -402,13 +402,13 @@ export default function SolutionPage() {
             
             <button
               id="sleep-sim-start"
-              className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#C6FF00] transition-colors duration-300 mb-16"
+              className="bg-acid text-midnight px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-acid-hover transition-all duration-200 ease-out mb-16 hover:scale-[1.01] hover:shadow-md"
             >
               Begin Simulation
             </button>
 
             {/* Render the simulation component */}
-            <div className="border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="border border-white/10 rounded-2xl overflow-hidden shadow-md transition-all duration-200 ease-out hover:shadow-md">
               <SleepSimulation />
             </div>
           </SectionReveal>

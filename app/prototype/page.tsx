@@ -9,9 +9,9 @@ import SectionReveal from '@/components/SectionReveal'
 gsap.registerPlugin(useGSAP)
 
 const buildItems = [
-  { status: '✅', label: 'Wedge 3 concept app (web)', note: 'Simulates the encoding tagging experience', color: 'text-[#4ADE80]' },
-  { status: '✅', label: 'Encoding strength scoring model', note: 'Engagement detection + priority ranking', color: 'text-[#4ADE80]' },
-  { status: '✅', label: 'Brand identity system', note: 'Design language, naming, visual system', color: 'text-[#4ADE80]' },
+  { status: '✅', label: 'Wedge 3 concept app (web)', note: 'Simulates the encoding tagging experience', color: 'text-acid' },
+  { status: '✅', label: 'Encoding strength scoring model', note: 'Engagement detection + priority ranking', color: 'text-acid' },
+  { status: '✅', label: 'Brand identity system', note: 'Design language, naming, visual system', color: 'text-acid' },
   { status: '🔄', label: 'EEG signal processing pipeline', note: 'In research partnership discussions', color: 'text-acid' },
   { status: '🔄', label: 'Olfactory anchor pairing', note: 'Scent-memory link protocol', color: 'text-acid' },
   { status: '⬜', label: 'Dual-channel synchronization', note: 'Acoustic + tACS, <100ms timing', color: 'text-white/20' },
@@ -280,7 +280,7 @@ export default function PrototypePage() {
                 <div className="flex flex-col gap-4">
                   {confirms.map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <span className="text-[#4ADE80] text-lg flex-shrink-0">✅</span>
+                      <span className="text-acid text-lg flex-shrink-0">✅</span>
                       <p className="text-white/70 text-sm leading-relaxed">{item}</p>
                     </div>
                   ))}

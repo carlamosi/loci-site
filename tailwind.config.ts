@@ -12,19 +12,22 @@ const config: Config = {
       colors: {
         midnight: '#080A0F',
         surface: '#0E1018',
+        'surface-hover': '#131625',
         violet: '#7B5CFF',
         acid: '#C6FF00',
+        'acid-hover': '#B3E000',
         coral: '#FF4A62',
         cyan: '#00D4FF',
       },
       fontFamily: {
-        sans: ['DM Sans', 'sans-serif'],
+        sans: ['var(--font-dm-sans)', 'sans-serif'],
       },
       animation: {
         'ticker': 'ticker 35s linear infinite',
         'float': 'float 3s ease-in-out infinite',
         'scroll-bounce': 'scrollBounce 1.5s ease-in-out infinite',
         'pulse-acid': 'pulseAcid 2s ease-in-out infinite',
+        'fade-up': 'fadeUp 400ms ease-out both',
       },
       keyframes: {
         ticker: {
@@ -42,6 +45,10 @@ const config: Config = {
         pulseAcid: {
           '0%, 100%': { opacity: '1', transform: 'scale(1)' },
           '50%': { opacity: '0.7', transform: 'scale(1.05)' },
+        },
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(12px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
       backdropBlur: {

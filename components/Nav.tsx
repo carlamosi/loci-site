@@ -8,10 +8,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Solution', href: '/solution' },
-  { label: 'Simulation', href: '/solution#simulation' },
   { label: 'Science', href: '/science' },
-  { label: 'Handshake', href: '/science#handshake' },
-  { label: 'About', href: '/about' },
+  { label: 'About Us', href: '/about' },
 ]
 
 export default function Nav() {
@@ -71,7 +69,7 @@ export default function Nav() {
             <Link
               href="https://loci-access.lovable.app/"
               target="_blank"
-              className="bg-violet text-white font-bold text-sm px-5 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-violet/40"
+              className="bg-acid text-midnight font-bold text-sm px-5 py-2 rounded-lg transition-all duration-200 ease-out hover:bg-acid-hover hover:scale-[1.02] hover:shadow-md"
             >
               Join Waitlist →
             </Link>
@@ -139,7 +137,7 @@ export default function Nav() {
                 <Link 
                   href="https://loci-access.lovable.app/"
                   target="_blank"
-                  className="inline-block bg-violet text-white font-bold text-lg px-8 py-3 rounded-xl mt-4"
+                  className="inline-block bg-acid text-midnight font-bold text-lg px-8 py-3 rounded-xl mt-4 transition-all duration-200 ease-out hover:bg-acid-hover hover:scale-[1.02] hover:shadow-md"
                   onClick={() => setMobileOpen(false)}
                 >
                   Join Waitlist →

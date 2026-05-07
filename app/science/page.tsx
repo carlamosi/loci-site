@@ -224,13 +224,13 @@ export default function SciencePage() {
           <SectionReveal className="mt-16 flex justify-center">
             <Link
               href="/solution#simulation"
-              className="group flex items-center gap-3 bg-[#080A0F] border border-white/10 hover:border-[#7B5CFF]/50 rounded-full px-8 py-4 transition-all duration-300"
+              className="group flex items-center gap-3 bg-midnight border border-white/10 hover:border-violet/50 rounded-full px-8 py-4 transition-all duration-200 ease-out hover:bg-surface-hover hover:scale-[1.01] hover:shadow-md"
             >
               <div className="w-2 h-2 rounded-full bg-[#C6FF00] animate-pulse" />
-              <span className="text-white/70 text-sm font-medium group-hover:text-white transition-colors">
+              <span className="text-white/70 text-sm font-medium group-hover:text-white transition-all duration-200 ease-out">
                 See also: Sleep vs Loci simulation
               </span>
-              <span className="text-white/30 group-hover:text-[#7B5CFF] transition-colors translate-x-0 group-hover:translate-x-1 duration-300">
+              <span className="text-white/30 group-hover:text-violet transition-all duration-200 ease-out translate-x-0 group-hover:translate-x-0.5">
                 →
               </span>
             </Link>

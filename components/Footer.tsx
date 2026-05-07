@@ -5,11 +5,8 @@ import Link from 'next/link'
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Solution', href: '/solution' },
-  { label: 'Sleep vs Loci Simulation', href: '/solution#simulation' },
   { label: 'Science', href: '/science' },
-  { label: 'Handshake Experience', href: '/science#handshake' },
-  { label: 'Prototype', href: '/prototype' },
-  { label: 'About', href: '/about' },
+  { label: 'About Us', href: '/about' },
 ]
 
 export default function Footer() {
@@ -37,7 +34,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white/40 text-sm hover:text-white/70 transition-colors duration-200 w-fit"
+                className="text-white/40 text-sm transition-all duration-200 ease-out hover:text-white/70 hover:underline decoration-[#C6FF00] underline-offset-4 w-fit"
               >
                 {link.label}
               </Link>

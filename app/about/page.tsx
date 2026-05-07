@@ -39,19 +39,19 @@ const sdgs = [
   {
     num: 'SDG 3',
     title: 'Good Health & Wellbeing',
-    color: '#4C9F38',
+    color: '#C6FF00',
     body: "Loci targets the leading preventable driver of cognitive decline: the nightly failure of spindle-ripple coupling. 55 million people with dementia. The number doubles every 20 years. sleep as a significant modifiable risk factor for dementia.",
   },
   {
     num: 'SDG 4',
     title: 'Quality Education',
-    color: '#C5192D',
+    color: '#FF4A62',
     body: "When memory consolidation fails, learning fails. A single night without sleep reduces the brain's ability to form new memories by approximately 40% (Yoo et al., Nature Neuroscience, 2007) - not from lack of effort, but from biology. Loci gives that back.",
   },
   {
     num: 'SDG 10',
     title: 'Reduced Inequalities',
-    color: '#DD1367',
+    color: '#7B5CFF',
     body: "Students with disrupted sleep schedules - working students, commuters, caregivers - are disproportionately lower-income. Loci is designed for them, not for those who already sleep well.",
   },
 ]
@@ -151,8 +151,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {values.map((v, i) => (
               <SectionReveal key={i}>
-                <NeuralPulse className="h-full rounded-2xl group transition-all duration-[250ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(0,0,0,0.25)] cursor-default">
-                  <div className={`p-8 border-t-4 ${v.color} border border-transparent ${v.hoverBorder} h-full transition-all duration-300 group-hover:bg-white/[0.03]`}>
+                <NeuralPulse className="h-full rounded-2xl group transition-all duration-200 ease-out hover:scale-[1.01] hover:shadow-md cursor-default">
+                  <div className={`p-8 border-t-4 ${v.color} border border-transparent ${v.hoverBorder} h-full transition-all duration-200 ease-out group-hover:bg-surface-hover`}>
                     <h3 className="text-white font-bold text-lg mb-3 tracking-wide group-hover:text-white transition-colors">{v.title}</h3>
                     <p className="text-white/60 text-sm leading-relaxed group-hover:text-white/80 transition-colors">{v.body}</p>
                   </div>
@@ -180,10 +180,10 @@ export default function AboutPage() {
               <SectionReveal key={i}>
                 <GlassmorphicLift className="h-full rounded-2xl group transition-all duration-300 cursor-default">
                   <div
-                    className="p-8 border-t-4 h-full transition-colors duration-300 group-hover:bg-white/[0.03]"
+                    className="p-8 border-t-4 h-full transition-all duration-200 ease-out group-hover:bg-surface-hover"
                     style={{ borderTopColor: sdg.color }}
                   >
-                    <div className="font-bold text-5xl mb-2 opacity-70 group-hover:opacity-100 transition-all duration-[250ms] ease group-hover:scale-105 origin-left" style={{ color: sdg.color }}>
+                    <div className="font-bold text-5xl mb-2 opacity-70 group-hover:opacity-100 transition-all duration-200 ease-out group-hover:scale-[1.01] origin-left" style={{ color: sdg.color }}>
                       {sdg.num}
                     </div>
                     <h3 className="text-white font-bold text-lg mb-4">{sdg.title}</h3>
@@ -208,12 +208,12 @@ export default function AboutPage() {
             {founders.map((f, i) => (
               <SectionReveal key={i}>
                 <MagneticFloat strength={0.15} className="h-full group">
-                  <div className="bg-surface p-10 border border-white/5 rounded-2xl h-full flex flex-col transition-all duration-250 hover:border-[#7B5CFF]/25 group-hover:bg-white/[0.02]">
+                  <div className="bg-surface p-10 border border-white/5 rounded-2xl h-full flex flex-col transition-all duration-200 ease-out hover:border-violet/25 hover:bg-surface-hover">
                     {/* Avatar */}
                     {f.photo ? (
                       <div className="relative w-32 h-32 mx-auto mb-6">
                         <Image src={f.photo} alt={f.name}
-                          fill className="object-cover rounded-full ring-2 ring-white/5 group-hover:ring-[#7B5CFF]/30 transition-all duration-300" priority />
+                          fill className="object-cover rounded-full ring-2 ring-white/5 group-hover:ring-violet/30 transition-all duration-200 ease-out" priority />
                       </div>
                     ) : (
                       <div className="w-32 h-32 rounded-full bg-violet/20 flex items-center justify-center mx-auto mb-6 border border-transparent group-hover:border-violet/60 transition-colors shrink-0">
@@ -221,7 +221,7 @@ export default function AboutPage() {
                       </div>
                     )}
 
-                    <h3 className="text-white font-bold text-2xl group-hover:text-acid transition-colors duration-300">{f.name}</h3>
+                    <h3 className="text-white font-bold text-2xl group-hover:text-acid transition-all duration-200 ease-out">{f.name}</h3>
                     <p className="text-violet text-xs uppercase tracking-widest mt-1 mb-3 font-medium">
                       {f.role}
                     </p>
@@ -231,11 +231,11 @@ export default function AboutPage() {
                       href={f.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-violet/20 border border-white/10 hover:border-violet/50 text-white/70 hover:text-white transition-all duration-300 mt-5 w-fit"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface border border-white/10 hover:border-violet/50 text-white/70 hover:text-white transition-all duration-200 ease-out hover:bg-surface-hover mt-5 w-fit"
                       aria-label={`${f.name} LinkedIn`}
                     >
                       <span className="text-xs font-medium">LinkedIn</span>
-                      <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
+                      <span className="transition-transform duration-200 ease-out group-hover:translate-x-0.5">→</span>
                     </Link>
                   </div>
                 </MagneticFloat>
@@ -270,13 +270,13 @@ export default function AboutPage() {
                 { year: 'Year 5', title: 'The platform.', goal: 'CE marking received. FDA filing submitted. The aging mission begins.', rev: '€8M-11M ARR', color: 'border-t-acid' }
               ].map((phase, i) => (
                 <SectionReveal key={i}>
-                  <div className={`bg-midnight rounded-xl p-8 border-l-4 ${phase.color.replace('border-t-', 'border-l-')} hover:bg-white/[0.02] transition-colors duration-300 group`}>
+                  <div className={`bg-midnight rounded-xl p-8 border-l-4 ${phase.color.replace('border-t-', 'border-l-')} hover:bg-surface-hover transition-all duration-200 ease-out group`}>
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
                       <div>
                         <span className="text-violet font-bold text-xl mr-3 group-hover:text-white transition-colors">{phase.year}</span>
                         <h3 className="text-white font-bold text-2xl inline">{phase.title}</h3>
                       </div>
-                      <span className="bg-surface border border-white/10 px-4 py-1.5 rounded-full text-white/70 text-xs font-medium whitespace-nowrap group-hover:border-white/30 transition-colors">Target: {phase.rev}</span>
+                      <span className="bg-surface border border-white/10 px-4 py-1.5 rounded-full text-white/70 text-xs font-medium whitespace-nowrap group-hover:border-white/30 transition-all duration-200 ease-out">Target: {phase.rev}</span>
                     </div>
                     <p className="text-white/60 text-base leading-relaxed group-hover:text-white/80 transition-colors">{phase.goal}</p>
                   </div>
@@ -287,7 +287,7 @@ export default function AboutPage() {
             {/* Business Case Summary */}
             <SectionReveal>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
-                <div className="bg-midnight p-8 rounded-2xl border border-white/5 hover:border-white/10 hover:bg-white/[0.02] transition-colors duration-300 group">
+                <div className="bg-midnight p-8 rounded-2xl border border-white/5 hover:border-white/10 hover:bg-surface-hover transition-all duration-200 ease-out group">
                   <h3 className="text-white font-bold text-xl mb-6 group-hover:text-acid transition-colors">Unit Economics</h3>
                   <ul className="space-y-4 text-white/60 text-sm">
                     <li className="flex justify-between items-center"><span className="text-white/40">Loci One</span> <span className="font-mono text-white/80 bg-surface px-2 py-1 rounded">€149 + €9.99/mo</span></li>
@@ -303,7 +303,7 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                <div className="bg-midnight p-8 rounded-2xl border border-white/5 hover:border-white/10 hover:bg-white/[0.02] transition-colors duration-300 group">
+                <div className="bg-midnight p-8 rounded-2xl border border-white/5 hover:border-white/10 hover:bg-surface-hover transition-all duration-200 ease-out group">
                   <h3 className="text-white font-bold text-xl mb-6 group-hover:text-cyan transition-colors">The Market Context</h3>
                   <ul className="space-y-6 text-white/60 text-sm">
                     <li>

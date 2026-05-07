@@ -1,6 +1,14 @@
 import '../styles/globals.css'
 import type { Metadata, Viewport } from 'next'
+import { DM_Sans } from 'next/font/google'
 import RootClientShell from '@/components/RootClientShell'
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Loci - Memory Consolidation System',
@@ -8,8 +16,12 @@ export const metadata: Metadata = {
     "Loci is a 24-hour memory consolidation system for university students. Not less sleep - denser consolidation. Remember What Matters.",
   applicationName: 'Loci',
   icons: {
-    icon: [{ url: '/favicon-v2.svg', type: 'image/svg+xml' }],
-    shortcut: [{ url: '/favicon-v2.svg', type: 'image/svg+xml' }],
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-v2.svg?v=3', type: 'image/svg+xml' },
+    ],
+    shortcut: [{ url: '/favicon.ico' }],
+    apple: [{ url: '/favicon.ico' }],
   },
 }
 
@@ -20,7 +32,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className={`${dmSans.variable} font-sans`}>
         <RootClientShell>{children}</RootClientShell>
       </body>
     </html>

@@ -218,16 +218,16 @@ export default function Home() {
           >
             <Link
               href="/solution#simulation"
-              className="inline-flex items-center gap-2 bg-acid text-midnight font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 hover:scale-105"
+              className="inline-flex items-center gap-2 bg-acid text-midnight font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 ease-out hover:bg-acid-hover hover:scale-[1.02] hover:shadow-md"
               style={{ boxShadow: '0 0 0px rgba(198,255,0,0)' }}
-              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 0 40px rgba(198,255,0,0.3)')}
+              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 0 18px rgba(198,255,0,0.25)')}
               onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 0 0px rgba(198,255,0,0)')}
             >
               Explore Simulation →
             </Link>
             <Link
               href="/science#handshake"
-              className="inline-flex items-center gap-2 border border-violet text-white font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 hover:bg-violet/10 hover:scale-[1.02]"
+              className="inline-flex items-center gap-2 border border-violet text-white font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 ease-out hover:bg-violet/10 hover:scale-[1.01] hover:shadow-md"
             >
               See the Handshake ↓
             </Link>
