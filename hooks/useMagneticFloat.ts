@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 
 export function useMagneticFloat<T extends HTMLElement>(strength: number = 0.3) {
+  const clampedStrength = Math.min(0.15, strength)
   const ref = useRef<T>(null)
   const [canAnimate, setCanAnimate] = useState(true)
 
@@ -19,14 +20,17 @@ export function useMagneticFloat<T extends HTMLElement>(strength: number = 0.3) 
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = el.getBoundingClientRect()
+      if (rect.width < 200) return
       const centerX = rect.left + rect.width / 2
       const centerY = rect.top + rect.height / 2
-      
-      const deltaX = (e.clientX - centerX) * strength
-      const deltaY = (e.clientY - centerY) * strength
-      
-      const rotateX = (deltaY / rect.height) * -20
-      const rotateY = (deltaX / rect.width) * 20
+
+      const deltaX = (e.clientX - centerX) * clampedStrength
+      const deltaY = (e.clientY - centerY) * clampedStrength
+
+      const rawRotateX = (deltaY / rect.height) * -20
+      const rawRotateY = (deltaX / rect.width) * 20
+      const rotateX = Math.max(-8, Math.min(8, rawRotateX))
+      const rotateY = Math.max(-8, Math.min(8, rawRotateY))
 
       gsap.to(el, {
         x: deltaX,
@@ -50,7 +54,7 @@ export function useMagneticFloat<T extends HTMLElement>(strength: number = 0.3) 
         rotateX: 0, 
         rotateY: 0,
         duration: 0.7,
-        ease: "elastic.out(1, 0.4)",
+        ease: "elastic.out(1, 0.3)",
         willChange: 'transform',
         onComplete: () => {
           gsap.set(el, { willChange: 'auto' })
@@ -66,7 +70,7 @@ export function useMagneticFloat<T extends HTMLElement>(strength: number = 0.3) 
       el.removeEventListener('mouseleave', handleMouseLeave)
       gsap.killTweensOf(el)
     }
-  }, [strength, canAnimate])
+  }, [clampedStrength, canAnimate])
 
   return ref
 }

@@ -42,8 +42,8 @@ export default function NeuralPulse({ children, className = '' }: NeuralPulsePro
     
     setRipples(prev => {
       const updated = [...prev, { id, x, y }]
-      if (updated.length > 3) {
-        return updated.slice(updated.length - 3)
+      if (updated.length > 2) {
+        return updated.slice(updated.length - 2)
       }
       return updated
     })
@@ -59,7 +59,6 @@ export default function NeuralPulse({ children, className = '' }: NeuralPulsePro
       ref={cardRef}
       className={`relative overflow-hidden ${className}`}
       onMouseEnter={spawnRipple}
-      onMouseMove={spawnRipple}
     >
       <div className="relative z-10 h-full">
         {children}

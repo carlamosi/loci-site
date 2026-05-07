@@ -28,8 +28,8 @@ body {
   /* Neural Pulse */
   .neural-ripple {
     position: absolute;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     border: 1px solid currentColor;
     transform-origin: center;
@@ -43,17 +43,17 @@ body {
     transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
   }
   .glass-lift-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 8px 20px rgba(123,92,255,0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.25);
   }
   
   .glass-lift-layer {
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.35s ease;
@@ -78,8 +78,8 @@ body {
 }
 
 @keyframes neuralRipple {
-  0%   { transform: translate(-50%, -50%) scale(0); opacity: 0.5; }
-  100% { transform: translate(-50%, -50%) scale(5); opacity: 0; }
+  0%   { transform: translate(-50%, -50%) scale(0); opacity: 0.25; }
+  100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
 }
 
 @keyframes neuralBreath {
