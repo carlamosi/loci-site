@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  reactStrictMode: true,
+  transpilePackages: ['three'],
+  experimental: {
+    optimizePackageImports: ['framer-motion'],
+  },
+}
 
-export default nextConfig;
+export default nextConfig
