@@ -204,7 +204,7 @@ export default function Home() {
             transition={{ delay: 0.9, duration: 0.7 }}
             className="text-white/60 max-w-xl text-lg leading-relaxed mb-10"
           >
-            University students lose 20–40% of what they learn every night. Not because they don't
+            A single night without sleep reduces the brain's ability to form new memories by approximately 40% (Yoo et al., Nature Neuroscience, 2007). Not because they don't
             study enough. Because the biology of memory transfer fails while they sleep.{' '}
             <span className="text-white/80 font-medium">Loci fixes the transfer.</span>
           </motion.p>
@@ -289,10 +289,10 @@ export default function Home() {
                 <InteractiveCard effect="pulse" className="bg-surface border-t-4 border-t-acid">
                   <div className="p-8">
                     <div className="text-acid font-bold leading-none mb-3" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)' }}>
-                      <CountUp end={1.5} suffix="B" decimals={1} />
+                      <CountUp end={158} suffix="M" />
                     </div>
                     <p className="text-white/50 text-sm leading-relaxed">
-                      people live with chronically disrupted sleep globally - losing memory every single night
+                      Roughly 158 million university students experience measurably impaired memory consolidation every night. (60% of 264M students globally; UNESCO 2023 / PSQI data).
                     </p>
                   </div>
                 </InteractiveCard>
@@ -303,11 +303,10 @@ export default function Home() {
                 <InteractiveCard effect="pulse" className="bg-surface border-t-4 border-t-coral">
                   <div className="p-8">
                     <div className="text-coral font-bold leading-none mb-3" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)' }}>
-                      20–40%
+                      40%
                     </div>
                     <p className="text-white/50 text-sm leading-relaxed">
-                      of what you study tonight will not consolidate - not because of how long you slept,
-                      but because the coupling between signals degraded
+                      reduction in the brain's ability to form new memories after a single night without sleep (Yoo et al., 2007).
                     </p>
                   </div>
                 </InteractiveCard>
@@ -336,8 +335,7 @@ export default function Home() {
                       <CountUp end={55} suffix="M" />
                     </div>
                     <p className="text-white/50 text-sm leading-relaxed">
-                      people with dementia today. Disrupted sleep is a primary causal driver - not a
-                      symptom. The number doubles every 20 years.
+                      people with dementia today. sleep as a significant modifiable risk factor for dementia. The number doubles every 20 years.
                     </p>
                   </div>
                 </InteractiveCard>
@@ -375,7 +373,7 @@ export default function Home() {
             <p className="text-white/60 text-xl leading-relaxed max-w-2xl mx-auto mb-2">
               While you sleep, your brain runs a biological program to permanently store what you
               learned. It requires three signals to arrive in perfect sequence - nested inside each
-              other like Russian dolls.
+              other like Russian dolls. In 2023, Staresina et al. provided the first direct human neuronal evidence of the SO→spindle→ripple sequence (Nature Neuroscience, 2023).
             </p>
 
             <HandshakeDiagram />
@@ -404,8 +402,8 @@ export default function Home() {
           {[...Array(2)].map((_, rep) => (
             <span key={rep} className="flex items-center">
               {[
-                'Ngo et al. 2013', '+40-60% UP phases', '+10-20% recall improvement', 'Nature Neuroscience',
-                'Ladenbauer 2017', 'tACS-induced spindles', 'Current Biology', 'Loren Frank 2013',
+                'Ngo et al. 2013', '8dB slow-wave amplitude increase', '+10-20% recall improvement', 'Neuron',
+                'Lustenberger 2016 (Current Biology, tACS, motor memory)', 'Ladenbauer 2017 (tDCS, MCI patients, SO-spindle coupling)', 'Loren Frank 2013',
                 'awake replay discovery', 'Neuron', 'Nedergaard 2013', 'glymphatic system', 'Science',
                 'peer-reviewed neuroscience', 'spindle-ripple coupling', 'hippocampal consolidation',
                 'slow oscillation UP phase', 'sharp-wave ripple', 'memory transfer',

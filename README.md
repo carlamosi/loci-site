@@ -3,7 +3,7 @@
 > "Remember What Matters."  
 > Not less sleep. Denser consolidation.
 
-A 24-hour memory consolidation system targeting the spindle-ripple coupling failure that causes 20–40% memory loss in 1.5 billion people every night.
+A 24-hour memory consolidation system targeting the spindle-ripple coupling failure that causes significant memory loss in over 300 million with chronic sleep disorders (WHO, 2019). A single night without sleep reduces the brain's ability to form new memories by approximately 40% (Yoo et al., Nature Neuroscience, 2007).
 
 ---
 
@@ -143,8 +143,8 @@ To embed the Wedge 3 Simulator on the `/prototype` page:
 
 | Paper | Finding | Loci Application |
 |-------|---------|------------------|
-| Ngo et al., 2013 (Nature) | +40-60% UP phases with acoustic stim | Channel 1 - acoustic sync |
-| Ladenbauer et al., 2017 (Curr. Biol.) | tACS induces spindles on demand | Channel 2 - tACS spindle |
+| Ngo et al., 2013 (Neuron) | 8dB slow-wave amplitude increase | Channel 1 - acoustic sync |
+| Lustenberger 2016 / Ladenbauer 2017 | tACS/tDCS induced spindle-coupling | Channel 2 - tACS/tDCS spindle |
 | Loren Frank, 2013 (Neuron) | Awake replay in hippocampus | Wedge 2 - Replay Window |
 | Nedergaard et al., 2013 (Science) | Glymphatic clearance during sleep | Stakes: disease-level urgency |
 

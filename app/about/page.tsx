@@ -35,13 +35,13 @@ const sdgs = [
     num: 'SDG 3',
     title: 'Good Health & Wellbeing',
     color: '#4C9F38',
-    body: "Loci targets the leading preventable driver of cognitive decline: the nightly failure of spindle-ripple coupling. 55 million people with dementia. The number doubles every 20 years. Disrupted sleep is a primary cause.",
+    body: "Loci targets the leading preventable driver of cognitive decline: the nightly failure of spindle-ripple coupling. 55 million people with dementia. The number doubles every 20 years. sleep as a significant modifiable risk factor for dementia.",
   },
   {
     num: 'SDG 4',
     title: 'Quality Education',
     color: '#C5192D',
-    body: "When memory consolidation fails, learning fails. A student can study 8 hours and lose 40% of it overnight - not from lack of effort, but from biology. Loci gives that back.",
+    body: "When memory consolidation fails, learning fails. A single night without sleep reduces the brain's ability to form new memories by approximately 40% (Yoo et al., Nature Neuroscience, 2007) - not from lack of effort, but from biology. Loci gives that back.",
   },
   {
     num: 'SDG 10',
@@ -94,8 +94,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
           >
-            A moonshot project targeting the spindle-ripple coupling failure that causes 20–40%
-            memory loss in 1.5 billion people every single night.
+            A moonshot project targeting the spindle-ripple coupling failure that affects over 300 million with chronic sleep disorders (WHO, 2019) every single night. A single night without sleep reduces the brain's ability to form new memories by approximately 40% (Yoo et al., Nature Neuroscience, 2007).
           </motion.p>
         </div>
       </section>
@@ -127,7 +126,7 @@ export default function AboutPage() {
             <div className="bg-midnight rounded-2xl p-8 border-l-4 border-violet">
               <p className="text-white/70 text-lg leading-relaxed">
                 Every disrupted night<br />
-                <span className="text-violet font-medium">= 20-40% of today's learning lost</span><br />
+                <span className="text-violet font-medium">= ~40% memory formation reduction (Yoo et al., 2007)</span><br />
                 = compounding, irreversible<br />
                 = a problem nobody is solving
               </p>
@@ -303,8 +302,8 @@ export default function AboutPage() {
                   <h3 className="text-white font-bold text-xl mb-6 group-hover:text-cyan transition-colors">The Market Context</h3>
                   <ul className="space-y-6 text-white/60 text-sm">
                     <li>
-                      <strong className="text-white/90 block mb-1 text-base">158 Million Students</strong>
-                      <span className="group-hover:text-white/80 transition-colors">60% of 264M global university students experience measurably impaired memory consolidation.</span>
+                      <strong className="text-white/90 block mb-1 text-base">264 Million Students</strong>
+                      <span className="group-hover:text-white/80 transition-colors">264 million students enrolled in higher education globally (UNESCO, 2023). Across every country studied, approximately 60% of university students are poor sleepers (Pittsburgh Sleep Quality Index data). This means roughly 158 million students experience measurably impaired memory consolidation every night they study.</span>
                     </li>
                     <li>
                       <strong className="text-white/90 block mb-1 text-base">$10.95B Brain Health Market</strong>

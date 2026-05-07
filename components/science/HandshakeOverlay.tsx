@@ -92,8 +92,7 @@ export default function HandshakeOverlay({ state, transferComplete }: Props) {
               className="rounded-xl px-4 py-3 mt-5 max-w-sm hidden md:block"
               style={{ background: 'rgba(255,74,98,0.05)', border: '1px solid rgba(255,74,98,0.2)' }}>
               <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,74,98,0.8)' }}>
-                This is happening right now in 1.5 billion people. Every disrupted night.
-                20–40% of what they learned that day.
+                This affects over 300 million with chronic sleep disorders (WHO, 2019). A single night without sleep reduces memory formation by approximately 40% (Yoo et al., 2007).
               </p>
             </motion.div>
           </motion.div>
@@ -134,7 +133,7 @@ export default function HandshakeOverlay({ state, transferComplete }: Props) {
             <motion.div variants={{ hidden: enter, show: visible, out: exit }}
               className="flex gap-8 mt-6 flex-wrap">
               {[
-                { metric: '+40–60%', label: 'UP phases per night' },
+                { metric: '+8dB', label: 'Slow-wave amplitude increase' },
                 { metric: '+10–20%', label: 'Recall improvement' },
                 { metric: '< 100ms', label: 'Trigger accuracy' },
               ].map((s, i) => (
@@ -148,7 +147,7 @@ export default function HandshakeOverlay({ state, transferComplete }: Props) {
             <motion.p
               variants={{ hidden: { ...enter, transition: { delay: 0.6 } }, show: { ...visible, transition: { delay: 0.6, duration: 0.55, ease } }, out: exit }}
               className="text-white/20 text-xs uppercase tracking-widest mt-5">
-              Ngo et al. 2013 · Ladenbauer 2017 · Loren Frank 2013
+              Ngo et al. 2013 · Lustenberger 2016 · Staresina et al. 2023
             </motion.p>
           </motion.div>
         )}

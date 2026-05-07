@@ -65,7 +65,7 @@ const sciencePanels = [
     color: 'text-coral', borderColor: 'border-coral', labelColor: 'text-coral',
     label: '[SPINDLE - CARRIER WAVE]',
     plain: 'Inside that open window, a second signal appears - the Sleep Spindle. It lasts about one second and fires 12 to 15 times per second. Think of it as a container that can carry something - but only if it arrives inside the window, not outside.',
-    technical: 'Spindles (12-15Hz, ~1 second duration) originate in thalamo-reticular circuits. They appear nested within slow oscillation UP phases. Their function: synchronize hippocampal and cortical oscillatory activity to create the transfer window. Coupling accuracy of 50-100ms is critical. (Ladenbauer et al., 2017)',
+    technical: 'Spindles (12-15Hz, ~1 second duration) originate in thalamo-reticular circuits. They appear nested within slow oscillation UP phases. Their function: synchronize hippocampal and cortical oscillatory activity to create the transfer window. Coupling accuracy of 50-100ms is critical. (Lustenberger et al., 2016; Ladenbauer et al., 2017)',
     loci: "Loci's tACS channel (Channel 2) drives spindle activity on demand - firing within 100ms of UP phase detection by Channel 1.",
   },
   {
@@ -73,26 +73,26 @@ const sciencePanels = [
     color: 'text-cyan', borderColor: 'border-cyan', labelColor: 'text-cyan',
     label: '[RIPPLE - MEMORY CARRIER]',
     plain: 'The final signal is the Sharp-Wave Ripple. It comes from the hippocampus - the part of the brain that holds short-term memories. It carries a compressed replay of something you experienced. When it nests correctly inside the spindle, the cortex receives and stores it permanently.',
-    technical: 'Sharp-wave ripples (80-120Hz, ~100ms) originate in CA1 of the hippocampus. They carry temporally compressed replays of recent experience. For transfer to occur, the ripple must arrive within the spindle window. Miss the coupling - the trace does not reach the neocortex. (Buzsáki, 2015; Frank et al., 2013)',
+    technical: 'Sharp-wave ripples (80-120Hz, ~100ms) originate in CA1 of the hippocampus. They carry temporally compressed replays of recent experience. For transfer to occur, the ripple must arrive within the spindle window. Miss the coupling - the trace does not reach the neocortex. (Buzsáki, 2015; Frank et al., 2013). Kovács et al. (PNAS, 2022) showed disrupting ripples eliminates memory consolidation entirely.',
     loci: 'The olfactory anchor - the scent paired with your Lead Trace - is released during the spindle window, cueing the hippocampus to replay that specific trace.',
   },
 ]
 
 const papers = [
   {
-    journal: 'Nature Neuroscience', jColor: 'text-acid', jBg: 'bg-acid/10 border-acid/30',
+    journal: 'Neuron', jColor: 'text-acid', jBg: 'bg-acid/10 border-acid/30',
     authors: 'Ngo, Claussen, Born, Mölle · 2013',
-    headline: '+40-60% UP phases. +10-20% recall.',
+    headline: '8dB slow-wave amplitude increase. +10-20% recall.',
     plain: 'Acoustic stimulation timed to slow-wave sleep increased memory transfer windows - and measurably improved recall the next morning.',
     proves: 'Validates Channel 1 - the acoustic slow-wave synchronization layer.',
     waveColor: '#7B5CFF',
   },
   {
     journal: 'Current Biology', jColor: 'text-cyan', jBg: 'bg-cyan/10 border-cyan/30',
-    authors: 'Ladenbauer et al. · 2017',
-    headline: 'tACS-induced spindles improve memory in older adults.',
-    plain: 'Electrically-induced sleep spindles - using the same tACS approach as Loci Channel 2 - increased spindle density and produced statistically significant memory improvement.',
-    proves: 'Validates Channel 2 - tACS spindle induction on demand.',
+    authors: 'Lustenberger et al. · 2016',
+    headline: 'tACS-induced spindles enhance motor memory consolidation.',
+    plain: 'Lustenberger 2016 (Current Biology, tACS, motor memory) and Ladenbauer 2017 (tDCS, MCI patients, SO-spindle coupling) showed that targeted stimulation produces statistically significant memory improvement.',
+    proves: 'Validates Channel 2 - tACS/tDCS spindle-coupling induction.',
     waveColor: '#FF4A62',
   },
   {
@@ -189,7 +189,7 @@ export default function SciencePage() {
           </motion.h1>
           <motion.p className="text-white/60 text-2xl max-w-2xl mx-auto leading-relaxed"
             initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:.4,duration:.7}}>
-            Three signals. One sequence. Miss the nesting by 100 milliseconds and the memory does not transfer.
+            Three signals. One sequence. Miss the nesting by 100 milliseconds (Staresina et al., 2015) and the memory does not transfer.
           </motion.p>
         </div>
       </section>

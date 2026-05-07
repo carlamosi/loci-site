@@ -96,7 +96,7 @@ const specs2 = [
   { name: 'Channel 1', value: 'Acoustic · UP phase sync' },
   { name: 'Channel 2', value: 'tACS · 12-15Hz spindle' },
   { name: 'Delivery', value: 'Olfactory diffuser' },
-  { name: 'Critical timing', value: '< 100ms accuracy' },
+  { name: 'Critical timing', value: '< 100ms (Staresina et al., 2015)' },
 ]
 
 export default function SolutionPage() {
@@ -317,7 +317,7 @@ export default function SolutionPage() {
 
               <ExpandableDetail
                 preview="For the curious →"
-                detail="Channel 1 (acoustic): detects slow-wave UP phase onset via real-time EEG, fires a pink noise burst to entrain the slow oscillation. Channel 2 (tACS): receives timing signal, fires 12-15Hz alternating current within 100ms to drive thalamo-cortical spindle activity. The olfactory anchor then cues hippocampal replay of the Lead Trace during the spindle window."
+                detail="Channel 1 (acoustic): detects slow-wave UP phase onset via real-time EEG, fires a pink noise burst to entrain the slow oscillation. Channel 2 (tACS): receives timing signal, fires 12-15Hz alternating current within 100ms (Staresina et al., 2015) to drive thalamo-cortical spindle activity. The olfactory anchor then cues hippocampal replay of the Lead Trace during the spindle window (Alonso et al., 2022). Geva-Sagiv et al. (Nature Neuroscience, 2023) showed closed-loop stimulation synchronized to slow waves enhances memory consolidation; untimed stimulation does not."
               />
             </div>
           </div>
