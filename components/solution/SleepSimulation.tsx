@@ -68,7 +68,7 @@ export default function SleepSimulation() {
   // const rightConsolidated = simState.traces.filter(t => t.rightStatus === 'consolidated' || t.rightStatus === 'partial').length
 
   return (
-    <div className="bg-[#080A0F] w-full relative" id="simulation">
+    <div className="bg-[#080A0F] w-full relative">
       {/* ── HEADER BAR ── */}
       <div className="grid grid-cols-3 items-center px-8 py-4 border-b border-white/5" style={{ height: 72 }}>
         <span className="text-white/30 text-xs uppercase tracking-[0.2em] text-left">
