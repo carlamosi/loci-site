@@ -1,14 +1,12 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { usePathname } from 'next/navigation'
-import { AnimatePresence, motion } from 'framer-motion'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 
 export default function RootClientShell({ children }: { children: React.ReactNode }) {
   const cursorRef = useRef<HTMLDivElement>(null)
-  const pathname = usePathname()
+
   const posRef = useRef({ x: 0, y: 0 })
   const currentRef = useRef({ x: 0, y: 0 })
   const rafRef = useRef<number>(0)
@@ -67,18 +65,9 @@ export default function RootClientShell({ children }: { children: React.ReactNod
     <>
       {!isTouch && <div ref={cursorRef} className="cursor-dot" />}
       <Nav />
-      <AnimatePresence mode="wait">
-        <motion.main
-          key={pathname}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20, pointerEvents: 'none' }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          style={{ pointerEvents: 'auto' }}
-        >
-          {children}
-        </motion.main>
-      </AnimatePresence>
+      <main>
+        {children}
+      </main>
       <Footer />
     </>
   )
