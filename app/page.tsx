@@ -219,36 +219,7 @@ export default function Home() {
           {/* ── RIGHT COLUMN: Stats + CTAs ── */}
           <div className="flex flex-col justify-center lg:pl-12 text-center lg:text-left order-3">
 
-            {/* Stat cards — editorial data blocks */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6, duration: 0.7, ease: [0.16,1,0.3,1] }}
-              className="flex flex-col gap-4 mb-8"
-            >
-              {[
-                { value: '40%', label: 'memory loss from one bad night', color: '#FF4A62' },
-                { value: '3', label: 'brain waves. one precise window.', color: '#7B5CFF' },
-                { value: '100ms', label: 'timing window for transfer', color: '#C6FF00' },
-              ].map(({ value, label, color }, i) => (
-                <motion.div
-                  key={value}
-                  initial={{ opacity: 0, x: 16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.7 + i * 0.12, duration: 0.6, ease: [0.16,1,0.3,1] }}
-                  className="flex items-start gap-4 group"
-                >
-                  <div
-                    className="w-0.5 h-full min-h-[2.5rem] mt-1 flex-shrink-0 rounded-full"
-                    style={{ background: `linear-gradient(to bottom, ${color}, transparent)` }}
-                  />
-                  <div>
-                    <span className="font-bold text-3xl leading-none" style={{ color }}>{value}</span>
-                    <p className="text-white/40 text-xs leading-snug mt-1 max-w-[180px]">{label}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+
 
             {/* CTA buttons */}
             <motion.div

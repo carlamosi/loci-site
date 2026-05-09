@@ -10,6 +10,7 @@ import BrainWaves from '@/components/BrainWaves'
 import SectionReveal from '@/components/SectionReveal'
 import NeuralPulse from '@/components/effects/NeuralPulse'
 import GlassmorphicLift from '@/components/effects/GlassmorphicLift'
+import InteractiveCard from '@/components/InteractiveCard'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 
 gsap.registerPlugin(useGSAP)
@@ -250,19 +251,22 @@ export default function SciencePage() {
       <BrainWaves />
       <section className="py-24"><ScienceScrolly /></section>
 
-      {/* ── VALIDATION SECTION (Glassmorphism + 3D Card Effect) ── */}
-      <section className="bg-surface py-32 px-6 border-t border-white/5 relative overflow-hidden">
-        {/* Subtle background glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-violet/5 rounded-full blur-[120px] pointer-events-none" />
-        
-        <div className="max-w-6xl mx-auto relative z-10">
+      <section className="bg-surface py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <SectionReveal className="text-center mb-16">
+            <p className="text-violet text-xs uppercase tracking-widest font-medium mb-4">PEER-REVIEWED BASIS</p>
+            <h2 className="text-white font-bold text-5xl mb-4">The science Loci is built on.</h2>
+            <p className="text-white/60 text-lg max-w-2xl mx-auto">These are not peripheral references. Each paper directly supports a specific mechanism in the Loci pipeline.</p>
+          </SectionReveal>
+
+          {/* ── VALIDATION SECTION (Glassmorphism + 3D Card Effect) ── */}
           <SectionReveal>
-            <p className="text-[#7B5CFF] text-xs uppercase tracking-[0.2em] mb-12 text-center">
-              SCIENTIFIC CONSENSUS
-            </p>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-8 mb-16 relative">
+              {/* Subtle background glow for the validations */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet/5 rounded-full blur-[100px] pointer-events-none" />
+              
               {/* Validation 1 */}
-              <GlassmorphicLift className="p-8 rounded-2xl flex flex-col justify-between border border-white/5 hover:border-violet/30 bg-white/[0.02] backdrop-blur-xl transition-colors duration-500 min-h-[320px]">
+              <InteractiveCard effect="magnetic" strength={15} className="p-8 flex flex-col justify-between border border-white/5 hover:border-violet/30 bg-white/[0.02] backdrop-blur-xl transition-colors duration-500 min-h-[320px]">
                 <div>
                   <p className="text-white/90 text-xl leading-relaxed mb-6 font-medium italic">
                     "Targeting slow-oscillation up-states is an astute choice. This is precisely where spindles and ripples co-occur."
@@ -281,10 +285,10 @@ export default function SciencePage() {
                     <p className="text-white/40 text-xs">University of Oxford</p>
                   </div>
                 </div>
-              </GlassmorphicLift>
+              </InteractiveCard>
 
               {/* Validation 2 */}
-              <GlassmorphicLift className="p-8 rounded-2xl flex flex-col justify-between border border-white/5 hover:border-violet/30 bg-white/[0.02] backdrop-blur-xl transition-colors duration-500 min-h-[320px]">
+              <InteractiveCard effect="magnetic" strength={15} className="p-8 flex flex-col justify-between border border-white/5 hover:border-violet/30 bg-white/[0.02] backdrop-blur-xl transition-colors duration-500 min-h-[320px]">
                 <div>
                   <p className="text-white/90 text-xl leading-relaxed mb-6 font-medium italic">
                     "Clean EEG contact is essential. Signal noise is what makes closed-loop stimulation fail. When the hardware is right, the effect is real."
@@ -303,19 +307,10 @@ export default function SciencePage() {
                     <p className="text-white/40 text-xs">University of New Mexico</p>
                   </div>
                 </div>
-              </GlassmorphicLift>
+              </InteractiveCard>
             </div>
           </SectionReveal>
-        </div>
-      </section>
 
-      <section className="bg-surface py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <SectionReveal className="text-center mb-16">
-            <p className="text-violet text-xs uppercase tracking-widest font-medium mb-4">PEER-REVIEWED BASIS</p>
-            <h2 className="text-white font-bold text-5xl mb-4">The science Loci is built on.</h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">These are not peripheral references. Each paper directly supports a specific mechanism in the Loci pipeline.</p>
-          </SectionReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {papers.map((paper, i) => (
               <SectionReveal key={i}>

@@ -149,6 +149,22 @@ export default function SolutionPage() {
             Loci is not a sleep tracker. It does not observe - it intervenes. At the moment of
             learning. During rest. And at the exact right millisecond during sleep.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9 }}
+            className="mt-8 z-20"
+          >
+            <a
+              href="/one-pager.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-8 py-3 border border-white/20 text-white hover:bg-white hover:text-midnight font-bold text-sm tracking-wide rounded-full transition-colors duration-300 backdrop-blur-md"
+            >
+              View One-Pager
+            </a>
+          </motion.div>
         </div>
 
         <div className="relative z-10 w-full">
