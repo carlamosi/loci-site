@@ -1,6 +1,7 @@
 // ═══ FILE: app/page.tsx ═══
 'use client'
 import { useRef } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
@@ -16,8 +17,7 @@ gsap.registerPlugin(useGSAP)
 
 const ParticleCanvas = dynamic(() => import('@/components/ParticleCanvas'), { ssr: false })
 
-const words = ['Remember', 'What', 'Matters.']
-const wordColors = ['text-white', 'text-white', 'text-acid']
+
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -61,119 +61,245 @@ export default function Home() {
   return (
     <div className="bg-midnight">
 
-      {/* ── SECTION 1: HERO ─────────────────────────────────── */}
+      {/* ── SECTION 1: HERO — EDITORIAL SPLIT ──────────────────── */}
       <section
         ref={heroRef}
         className="relative min-h-screen flex flex-col overflow-hidden"
         aria-label="Hero"
       >
-        {/* Particle background */}
+        {/* Particle field */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <ParticleCanvas />
         </div>
 
-        {/* Radial glow */}
+        {/* Deep violet ambient glow — anchored to headband center */}
         <div
           className="absolute inset-0 z-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(123,92,255,0.08) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse 60% 55% at 50% 58%, rgba(123,92,255,0.13) 0%, transparent 70%)' }}
         />
         <div
           ref={glowDriftRef}
           className="absolute inset-[-15%] z-0 pointer-events-none"
           style={{
             transform: 'translate3d(0,0,0)',
-            background:
-              'radial-gradient(ellipse 55% 50% at 46% 36%, rgba(123,92,255,0.14) 0%, transparent 58%)',
+            background: 'radial-gradient(ellipse 50% 44% at 50% 56%, rgba(123,92,255,0.18) 0%, transparent 58%)',
           }}
         />
 
-        {/* Hero text */}
+        {/* ── EDITORIAL GRID ── */}
         <div
           ref={textRef}
-          className="relative z-10 flex flex-col items-center justify-center flex-1 text-center px-6 pt-24 pb-16"
+          className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] items-center gap-0 px-8 lg:px-16 pt-28 pb-8"
         >
-          {/* Eyebrow */}
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
-            className="text-violet text-xs uppercase tracking-[0.2em] font-medium mb-8"
-          >
-            MEMORY CONSOLIDATION SYSTEM · 2026
-          </motion.p>
 
-          {/* H1 */}
-          <h1 className="font-bold leading-none mb-8" style={{ fontSize: 'clamp(3rem, 10vw, 7rem)' }}>
-            {words.map((word, i) => (
-              <motion.span
-                key={word}
-                className={`${wordColors[i]} inline-block mr-[0.25em]`}
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 0.35 + i * 0.08,
-                  duration: 0.7,
-                  ease: [0.16, 1, 0.3, 1],
+          {/* ── LEFT COLUMN: Headline ── */}
+          <div className="flex flex-col justify-center lg:pr-12 text-center lg:text-left order-2 lg:order-1">
+            <motion.p
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.7, ease: [0.16,1,0.3,1] }}
+              className="text-violet text-[10px] uppercase tracking-[0.25em] font-medium mb-6"
+            >
+              Memory Consolidation System · 2026
+            </motion.p>
+
+            <h1 className="font-bold leading-[0.92] mb-6" style={{ fontSize: 'clamp(2.8rem, 7vw, 6rem)' }}>
+              {['Remember', 'What', 'Matters.'].map((word, i) => (
+                <motion.span
+                  key={word}
+                  className={`${['text-white','text-white','text-acid'][i]} block`}
+                  initial={{ opacity: 0, x: -32 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.35 + i * 0.1, duration: 0.75, ease: [0.16,1,0.3,1] }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.7 }}
+              className="text-white/50 text-base leading-relaxed max-w-sm"
+            >
+              Sleep disruption erases up to{' '}
+              <span className="text-white/80 font-semibold">40% of new memories</span>{' '}
+              before they consolidate. Loci detects the exact biological window and intervenes.
+            </motion.p>
+
+            {/* Thin horizontal rule — editorial detail */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 1.1, duration: 0.8, ease: [0.16,1,0.3,1] }}
+              className="hidden lg:block h-px bg-gradient-to-r from-violet/40 to-transparent mt-8 origin-left"
+            />
+          </div>
+
+          {/* ── CENTER COLUMN: Headband floating in space ── */}
+          <div className="relative flex items-center justify-center order-1 lg:order-2 py-8 lg:py-0">
+
+            {/* Outer pulse ring 1 */}
+            <div
+              className="absolute rounded-full border border-violet/10 pointer-events-none"
+              style={{ width: 480, height: 480, animation: 'heroRingPulse 4s ease-in-out infinite' }}
+            />
+            {/* Outer pulse ring 2 — offset phase */}
+            <div
+              className="absolute rounded-full border border-violet/8 pointer-events-none"
+              style={{ width: 380, height: 380, animation: 'heroRingPulse 4s ease-in-out 1.3s infinite' }}
+            />
+            {/* Inner ring — acid accent */}
+            <div
+              className="absolute rounded-full border border-acid/15 pointer-events-none"
+              style={{ width: 290, height: 290, animation: 'heroRingPulse 3.5s ease-in-out 0.6s infinite' }}
+            />
+
+            {/* Glow bloom beneath device */}
+            <div
+              className="absolute pointer-events-none"
+              style={{
+                width: 340,
+                height: 200,
+                background: 'radial-gradient(ellipse at 50% 60%, rgba(123,92,255,0.28) 0%, rgba(198,255,0,0.05) 40%, transparent 70%)',
+                filter: 'blur(24px)',
+                bottom: '8%',
+              }}
+            />
+
+            {/* The headband — levitating */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.88, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 1.0, ease: [0.16,1,0.3,1] }}
+              style={{ animation: 'heroFloat 6s ease-in-out infinite', position: 'relative', zIndex: 10 }}
+            >
+              {/* Subtle drop shadow beneath device */}
+              <div
+                className="absolute pointer-events-none"
+                style={{
+                  bottom: '-12px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '70%',
+                  height: 32,
+                  background: 'radial-gradient(ellipse at 50% 50%, rgba(123,92,255,0.4) 0%, transparent 70%)',
+                  filter: 'blur(12px)',
                 }}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </h1>
-
-          {/* Sub */}
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.7 }}
-            className="text-white/60 max-w-xl text-lg leading-relaxed mb-10"
-          >
-            A single night without sleep reduces the brain's ability to form new memories by approximately 40% (Yoo et al., Nature Neuroscience, 2007). Not because they don't
-            study enough. Because the biology of memory transfer fails while they sleep.{' '}
-            <span className="text-white/80 font-medium">Loci fixes the transfer.</span>
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.15, duration: 0.6 }}
-            className="flex flex-wrap gap-4 justify-center mb-16"
-          >
-            <Link
-              href="/solution#simulation"
-              className="group relative inline-flex items-center gap-2 bg-acid text-midnight font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 ease-out hover:bg-acid-hover hover:-translate-y-[1px] hover:shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-acid/40"
-            >
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100"
-                style={{ background: 'radial-gradient(120% 120% at 50% 0%, rgba(198,255,0,0.18) 0%, transparent 60%)' }}
               />
-              <span className="relative">Explore Simulation →</span>
-            </Link>
-            <Link
-              href="/science#handshake"
-              className="group inline-flex items-center gap-2 border border-violet text-white font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 ease-out hover:bg-violet/10 hover:-translate-y-[1px] hover:shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet/40"
-            >
-              <span>See the Handshake</span>
-              <span className="transition-transform duration-200 ease-out group-hover:translate-y-[1px]">↓</span>
-            </Link>
-          </motion.div>
+              <Image
+                src="/headband.png"
+                alt="Loci Memory Headband"
+                width={380}
+                height={220}
+                priority
+                className="relative z-10"
+                style={{ filter: 'drop-shadow(0 0 40px rgba(123,92,255,0.45)) drop-shadow(0 0 80px rgba(123,92,255,0.15))' }}
+              />
+            </motion.div>
 
-          {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.6 }}
-            className="flex flex-col items-center gap-1"
-          >
-            <span className="text-white/30 text-2xl" style={{ animation: 'scrollBounce 1.5s ease-in-out infinite' }}>↓</span>
-            <span className="text-white/20 text-xs tracking-widest font-mono">Scroll to understand</span>
-          </motion.div>
+            {/* LOCI logo chip on device — acid accent line */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.4, duration: 0.6 }}
+              className="absolute pointer-events-none"
+              style={{ bottom: '16%', right: '10%', zIndex: 20 }}
+            >
+              <div
+                className="text-[9px] font-mono tracking-[0.2em] text-acid/70 uppercase"
+                style={{ animation: 'heroBlink 3s ease-in-out 2s infinite' }}
+              >
+                ● EEG Active
+              </div>
+            </motion.div>
+          </div>
+
+          {/* ── RIGHT COLUMN: Stats + CTAs ── */}
+          <div className="flex flex-col justify-center lg:pl-12 text-center lg:text-left order-3">
+
+            {/* Stat cards — editorial data blocks */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6, duration: 0.7, ease: [0.16,1,0.3,1] }}
+              className="flex flex-col gap-4 mb-8"
+            >
+              {[
+                { value: '40%', label: 'memory loss from one bad night', color: '#FF4A62' },
+                { value: '3', label: 'brain waves. one precise window.', color: '#7B5CFF' },
+                { value: '100ms', label: 'timing window for transfer', color: '#C6FF00' },
+              ].map(({ value, label, color }, i) => (
+                <motion.div
+                  key={value}
+                  initial={{ opacity: 0, x: 16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.7 + i * 0.12, duration: 0.6, ease: [0.16,1,0.3,1] }}
+                  className="flex items-start gap-4 group"
+                >
+                  <div
+                    className="w-0.5 h-full min-h-[2.5rem] mt-1 flex-shrink-0 rounded-full"
+                    style={{ background: `linear-gradient(to bottom, ${color}, transparent)` }}
+                  />
+                  <div>
+                    <span className="font-bold text-3xl leading-none" style={{ color }}>{value}</span>
+                    <p className="text-white/40 text-xs leading-snug mt-1 max-w-[180px]">{label}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* CTA buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.05, duration: 0.6 }}
+              className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3"
+            >
+              <Link
+                href="/solution#simulation"
+                className="group relative inline-flex items-center justify-center gap-2 bg-acid text-midnight font-bold text-sm px-6 py-3.5 rounded-xl transition-all duration-200 ease-out hover:bg-acid-hover hover:-translate-y-[1px] hover:shadow-lg focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-acid/40"
+              >
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100"
+                  style={{ background: 'radial-gradient(120% 120% at 50% 0%, rgba(198,255,0,0.18) 0%, transparent 60%)' }}
+                />
+                <span className="relative">Explore Simulation →</span>
+              </Link>
+              <Link
+                href="/science#handshake"
+                className="group inline-flex items-center justify-center gap-2 border border-white/15 text-white/70 text-sm font-medium px-6 py-3.5 rounded-xl transition-all duration-200 ease-out hover:border-violet/50 hover:text-white hover:bg-violet/8 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet/40"
+              >
+                <span>See the Science</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+              </Link>
+            </motion.div>
+
+            {/* Thin rule — mirrors left column */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 1.2, duration: 0.8, ease: [0.16,1,0.3,1] }}
+              className="hidden lg:block h-px bg-gradient-to-l from-violet/40 to-transparent mt-8 origin-right"
+            />
+          </div>
         </div>
 
-        {/* Brain waves at bottom of hero */}
-        <div ref={wavesRef} className="relative z-10 w-full mt-auto">
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.8 }}
+          className="relative z-10 flex flex-col items-center gap-1 pb-6"
+        >
+          <span className="text-white/25 text-xl" style={{ animation: 'scrollBounce 1.5s ease-in-out infinite' }}>↓</span>
+          <span className="text-white/15 text-[10px] tracking-widest font-mono">Scroll to understand</span>
+        </motion.div>
+
+        {/* Brain waves at bottom */}
+        <div ref={wavesRef} className="relative z-10 w-full">
           <BrainWaves />
         </div>
       </section>

@@ -104,6 +104,25 @@ body {
   50% { transform: translateY(8px); }
 }
 
+/* Hero headband — gentle levitation */
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-12px) rotate(0.5deg); }
+}
+
+/* Hero EEG rings — expand and fade */
+@keyframes heroRingPulse {
+  0% { transform: scale(0.92); opacity: 0.6; }
+  50% { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(0.92); opacity: 0.6; }
+}
+
+/* EEG Active blink */
+@keyframes heroBlink {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.2; }
+}
+
 /* Acid pulse */
 @keyframes pulseAcid {
   0%, 100% { box-shadow: 0 0 20px rgba(198,255,0,0.2); }
