@@ -194,7 +194,7 @@ export default function Home() {
                 width={380}
                 height={220}
                 priority
-                className="relative z-10"
+                className="relative z-10 transition-transform duration-700 hover:scale-105"
                 style={{ filter: 'drop-shadow(0 0 40px rgba(123,92,255,0.45)) drop-shadow(0 0 80px rgba(123,92,255,0.15))' }}
               />
             </motion.div>
@@ -403,26 +403,12 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <SectionReveal>
             <p className="text-violet text-xs uppercase tracking-widest font-medium mb-4">THE MECHANISM</p>
-            <h2 className="text-white font-bold leading-tight mb-6" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="block"
-              >
-                Three signals. One sequence.
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="block text-violet"
-              >
-                Miss the nesting, the memory is gone.
-              </motion.span>
-            </h2>
+            <div className="mb-2 font-bold leading-tight" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>
+              <span className="block text-white">Three signals. One sequence.</span>
+            </div>
+            <div className="mb-6 font-bold leading-tight" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>
+              <span className="block text-violet">Miss the nesting, the memory is gone.</span>
+            </div>
             <p className="text-white/60 text-xl leading-relaxed max-w-2xl mx-auto mb-2">
               While you sleep, your brain runs a biological program to permanently store what you
               learned. It requires three signals to arrive in perfect sequence - nested inside each
@@ -445,7 +431,60 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SECTION 4: SCIENCE TICKER ───────────────────────── */}
+      {/* ── SECTION 4: VALIDATIONS ───────────────────────── */}
+      <section className="bg-surface py-32 px-6 border-t border-white/5">
+        <div className="max-w-6xl mx-auto">
+          <SectionReveal>
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Validation 1 */}
+              <div className="bg-[#0b0c10] border border-white/5 p-8 rounded-2xl flex flex-col justify-between hover:border-violet/30 transition-colors duration-500">
+                <div>
+                  <p className="text-white/90 text-xl leading-relaxed mb-6 font-medium italic">
+                    "Targeting slow-oscillation up-states is an astute choice. This is precisely where spindles and ripples co-occur."
+                  </p>
+                  <p className="text-white/50 text-sm mb-6 leading-relaxed">
+                    Lead author on the SO → spindle → ripple coordination work that Loci is built on. (Nature 2023)
+                  </p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border border-white/10 shrink-0">
+                    <Image src="/bernhard.avif" alt="Bernhard Staresina" width={64} height={64} className="w-full h-full object-cover grayscale opacity-80" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold">Bernhard Staresina</h4>
+                    <p className="text-violet text-sm">Professor of Cognitive Neuroscience</p>
+                    <p className="text-white/40 text-xs">University of Oxford</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Validation 2 */}
+              <div className="bg-[#0b0c10] border border-white/5 p-8 rounded-2xl flex flex-col justify-between hover:border-violet/30 transition-colors duration-500">
+                <div>
+                  <p className="text-white/90 text-xl leading-relaxed mb-6 font-medium italic">
+                    "Clean EEG contact is essential. Signal noise is what makes closed-loop stimulation fail. When the hardware is right, the effect is real."
+                  </p>
+                  <p className="text-white/50 text-sm mb-6 leading-relaxed">
+                    Loci’s hardware roadmap prioritizes signal quality before consumer scaling.
+                  </p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border border-white/10 shrink-0">
+                    <Image src="/vince.jpg" alt="Vince Clark" width={64} height={64} className="w-full h-full object-cover grayscale opacity-80" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold">Vince Clark</h4>
+                    <p className="text-violet text-sm">Professor of Psychology & Neuroscience</p>
+                    <p className="text-white/40 text-xs">University of New Mexico</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SectionReveal>
+        </div>
+      </section>
+
+      {/* ── SECTION 5: SCIENCE TICKER ───────────────────────── */}
       <section className="bg-midnight py-6 relative overflow-hidden">
         {/* Fade masks */}
         <div className="absolute left-0 top-0 bottom-0 w-24 ticker-fade-left z-10 pointer-events-none" />
