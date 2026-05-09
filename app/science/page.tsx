@@ -1,10 +1,9 @@
 // ═══ FILE: app/science/page.tsx ═══
 'use client'
-import { useMemo, useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import dynamic from 'next/dynamic'
 import { useGSAP } from '@gsap/react'
 import BrainWaves from '@/components/BrainWaves'
 import SectionReveal from '@/components/SectionReveal'
@@ -14,25 +13,6 @@ import InteractiveCard from '@/components/InteractiveCard'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 
 gsap.registerPlugin(useGSAP)
-
-function useNearViewport<T extends Element>(rootMargin = '800px') {
-  const ref = useRef<T | null>(null)
-  const [near, setNear] = useState(false)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-
-    const obs = new IntersectionObserver(
-      ([e]) => setNear(e.isIntersecting),
-      { root: null, rootMargin, threshold: 0.01 }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [rootMargin])
-
-  return useMemo(() => ({ ref, near }), [near])
-}
 
 function WaveViz({ phase }: { phase: number }) {
   const w = 400, h = 180

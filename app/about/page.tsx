@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import SectionReveal from '@/components/SectionReveal'
 import GlassmorphicLift from '@/components/effects/GlassmorphicLift'
-import MagneticFloat from '@/components/effects/MagneticFloat'
 import NeuralPulse from '@/components/effects/NeuralPulse'
 import InteractiveCard from '@/components/InteractiveCard'
 

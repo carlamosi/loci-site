@@ -7,8 +7,8 @@ import BrainWaves from '@/components/BrainWaves'
 import SectionReveal from '@/components/SectionReveal'
 import ScrollPin from '@/components/ScrollPin'
 import GlassmorphicLift from '@/components/effects/GlassmorphicLift'
-import MagneticFloat from '@/components/effects/MagneticFloat'
 import SleepSimulation from '@/components/solution/SleepSimulation'
+import InteractiveCard from '@/components/InteractiveCard'
 
 const ParticleCanvas = dynamic(() => import('@/components/ParticleCanvas'), { ssr: false })
 
@@ -355,12 +355,12 @@ export default function SolutionPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Band Day */}
             <SectionReveal>
-              <MagneticFloat strength={0.3} className="h-full">
-                <div className="bg-surface/40 p-10 rounded-3xl border border-white/5 hover:bg-surface-hover transition-all duration-200 ease-out group h-full">
+              <InteractiveCard effect="magnetic" strength={15} className="h-full">
+                <div className="bg-white/[0.02] backdrop-blur-2xl p-10 rounded-3xl border border-white/5 hover:bg-white/[0.05] transition-all duration-300 ease-out group h-full">
                   <p className="text-acid text-xs uppercase tracking-widest font-medium mb-6">LOCI BAND DAY</p>
                   <WristbandIllustration color="#C6FF00" />
-                  <h3 className="text-white font-bold text-3xl mt-4 mb-3">Worn during learning.</h3>
-                  <p className="text-white/60 text-base leading-relaxed mb-8">
+                  <h3 className="text-white font-bold text-3xl mt-4 mb-3 group-hover:text-acid transition-colors">Worn during learning.</h3>
+                  <p className="text-white/60 text-base leading-relaxed mb-8 group-hover:text-white/80 transition-colors">
                     Monitors your engagement in real time. Tags memories at peak learning moments.
                     Assigns an olfactory anchor to each Trace.
                   </p>
@@ -373,17 +373,17 @@ export default function SolutionPage() {
                     ))}
                   </div>
                 </div>
-              </MagneticFloat>
+              </InteractiveCard>
             </SectionReveal>
 
             {/* Band Night */}
             <SectionReveal>
-              <MagneticFloat strength={0.3} className="h-full">
-                <div className="bg-surface/40 p-10 rounded-3xl border border-white/5 hover:bg-surface-hover transition-all duration-200 ease-out group h-full">
+              <InteractiveCard effect="magnetic" strength={15} className="h-full">
+                <div className="bg-white/[0.02] backdrop-blur-2xl p-10 rounded-3xl border border-white/5 hover:bg-white/[0.05] transition-all duration-300 ease-out group h-full">
                   <p className="text-violet text-xs uppercase tracking-widest font-medium mb-6">LOCI BAND NIGHT</p>
                   <WristbandIllustration color="#7B5CFF" />
-                  <h3 className="text-white font-bold text-3xl mt-4 mb-3">Worn during sleep.</h3>
-                  <p className="text-white/60 text-base leading-relaxed mb-8">
+                  <h3 className="text-white font-bold text-3xl mt-4 mb-3 group-hover:text-violet transition-colors">Worn during sleep.</h3>
+                  <p className="text-white/60 text-base leading-relaxed mb-8 group-hover:text-white/80 transition-colors">
                     Detects the exact moment to intervene. Engineers the spindle-ripple handshake.
                     Delivers the scent that cues your brain to replay the right memory.
                   </p>
@@ -396,7 +396,7 @@ export default function SolutionPage() {
                     ))}
                   </div>
                 </div>
-              </MagneticFloat>
+              </InteractiveCard>
             </SectionReveal>
           </div>
         </div>
