@@ -11,8 +11,6 @@ import NeuralPulse from '@/components/effects/NeuralPulse'
 import GlassmorphicLift from '@/components/effects/GlassmorphicLift'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 
-const HandshakeExperience = dynamic(() => import('@/components/science/HandshakeExperience'), { ssr: false })
-
 gsap.registerPlugin(useGSAP)
 
 function useNearViewport<T extends Element>(rootMargin = '800px') {
@@ -232,13 +230,6 @@ function ScienceScrolly() {
 }
 
 export default function SciencePage() {
-  const { ref: handshakeMountRef, near: handshakeNear } = useNearViewport<HTMLDivElement>('900px')
-  const [forceHandshake, setForceHandshake] = useState(false)
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-    if (window.location.hash === '#handshake') setForceHandshake(true)
-  }, [])
 
   return (
     <div className="bg-midnight min-h-screen">
@@ -300,55 +291,6 @@ export default function SciencePage() {
         </div>
       </section>
 
-      {/* ═══ EXPERIENCE THE MECHANISM ═══ */}
-      <section id="handshake" className="bg-[#080A0F] w-full scroll-mt-24">
-        {/* Intro copy — contained */}
-        <div className="max-w-6xl mx-auto px-6 pt-24 pb-12">
-          <SectionReveal>
-            <p className="text-[#7B5CFF] text-xs uppercase tracking-[0.2em] mb-4">
-              EXPERIENCE THE MECHANISM
-            </p>
-            <h2 className="text-white font-bold leading-tight mb-4 max-w-2xl"
-              style={{ fontSize: 'clamp(2rem, 5vw, 3rem)' }}>
-              The handshake, in real time.
-            </h2>
-            <p className="text-white/60 text-lg leading-relaxed max-w-xl mb-6">
-              This is not an animation. This is the exact biological sequence Loci engineers
-              every night — rendered as it happens. Three signals. One 500-millisecond window.
-              Advance through each phase with spacebar or by clicking anywhere inside.
-            </p>
-            {/* Keyboard hint pill */}
-            <div className="inline-flex items-center gap-2 rounded-full px-4 py-2"
-              style={{ background: '#0E1018', border: '1px solid rgba(255,255,255,0.1)' }}>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ opacity: 0.3 }}>
-                <rect x="0.5" y="0.5" width="13" height="13" rx="2.5" stroke="white" strokeWidth="1" />
-                <rect x="3" y="8" width="8" height="2" rx="1" fill="white" />
-                <rect x="3" y="4" width="2" height="2" rx="0.5" fill="white" />
-                <rect x="6" y="4" width="2" height="2" rx="0.5" fill="white" />
-                <rect x="9" y="4" width="2" height="2" rx="0.5" fill="white" />
-              </svg>
-              <span className="text-white/30 text-xs uppercase tracking-widest">SPACE or CLICK to advance</span>
-            </div>
-          </SectionReveal>
-        </div>
-
-        {/* Full-bleed canvas experience */}
-        <div
-          ref={handshakeMountRef}
-          className="w-full"
-          style={{
-            marginLeft: 'calc(-50vw + 50%)',
-            width: '100vw',
-            position: 'relative',
-          }}
-        >
-          {(forceHandshake || handshakeNear) ? (
-            <HandshakeExperience />
-          ) : (
-            <div className="w-full" style={{ height: 'clamp(600px, 70vh, 900px)' }} />
-          )}
-        </div>
-      </section>
     </div>
   )
 }
