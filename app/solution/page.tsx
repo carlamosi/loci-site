@@ -430,6 +430,42 @@ export default function SolutionPage() {
           </SectionReveal>
         </div>
       </section>
+      {/* ── RESOURCES ────────────────────────────────────────── */}
+      <section className="bg-midnight py-24 px-6 relative overflow-hidden">
+        {/* Ambient Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet/5 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <SectionReveal>
+            <p className="text-acid text-xs uppercase tracking-[0.2em] font-medium mb-4">RESOURCES</p>
+            <h2 className="text-white font-bold text-5xl mb-8">Dive deeper into the vision.</h2>
+            
+            <div className="flex flex-wrap justify-center gap-6">
+              <InteractiveCard effect="magnetic" strength={10} className="w-full max-w-lg">
+                <a
+                  href="/one-pager.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-6 p-8 bg-white/[0.02] border border-white/5 rounded-[2rem] hover:bg-white/[0.06] hover:border-acid/40 transition-all duration-500 group backdrop-blur-xl"
+                >
+                  <div className="w-16 h-16 rounded-2xl bg-acid/10 flex items-center justify-center text-acid group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-acid/5">
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div className="text-left flex-1">
+                    <span className="block text-white font-bold text-2xl leading-tight mb-1">Project One-Pager</span>
+                    <span className="block text-white/40 text-base">Download executive summary (PDF)</span>
+                  </div>
+                  <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-acid/50 group-hover:bg-acid/5 transition-all duration-500">
+                    <span className="text-white/30 group-hover:text-acid group-hover:translate-x-1 transition-all duration-500">→</span>
+                  </div>
+                </a>
+              </InteractiveCard>
+            </div>
+          </SectionReveal>
+        </div>
+      </section>
     </div>
   )
 }

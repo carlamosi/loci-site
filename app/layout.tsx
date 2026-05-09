@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   description:
     "Loci is a 24-hour memory consolidation system for university students. Not less sleep - denser consolidation. Remember What Matters.",
   applicationName: 'Loci',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
 }
 
 export const viewport: Viewport = {

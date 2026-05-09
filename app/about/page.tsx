@@ -7,6 +7,7 @@ import SectionReveal from '@/components/SectionReveal'
 import GlassmorphicLift from '@/components/effects/GlassmorphicLift'
 import MagneticFloat from '@/components/effects/MagneticFloat'
 import NeuralPulse from '@/components/effects/NeuralPulse'
+import InteractiveCard from '@/components/InteractiveCard'
 
 const values = [
   {
@@ -80,13 +81,13 @@ export default function AboutPage() {
     <div className="bg-midnight min-h-screen">
 
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="pt-36 pb-24 px-6 relative">
+      <section className="pt-36 pb-24 px-6 text-center relative">
         <div className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 60% 50% at 30% 50%, rgba(123,92,255,0.07) 0%, transparent 70%)' }} />
-        <div className="max-w-5xl mx-auto relative z-10">
+          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 30%, rgba(123,92,255,0.05) 0%, transparent 60%)' }} />
+        <div className="relative z-10">
           <motion.h1
             className="text-white font-bold leading-none mb-6"
-            style={{ fontSize: 'clamp(2.5rem, 8vw, 5.5rem)', lineHeight: '1.0' }}
+            style={{ fontSize: 'clamp(4rem, 10vw, 7rem)' }}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -94,10 +95,10 @@ export default function AboutPage() {
             Built to fix<br />what sleep breaks.
           </motion.h1>
           <motion.p
-            className="text-white/60 text-xl max-w-2xl leading-relaxed"
+            className="text-white/60 text-2xl max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.7 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
           >
             A moonshot project targeting the spindle-ripple coupling failure that affects over 300 million with chronic sleep disorders (WHO, 2019) every single night. A single night without sleep reduces the brain's ability to form new memories by approximately 40% (Yoo et al., Nature Neuroscience, 2007).
           </motion.p>
@@ -151,12 +152,14 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {values.map((v, i) => (
               <SectionReveal key={i}>
-                <NeuralPulse className="h-full rounded-2xl group transition-all duration-200 ease-out hover:scale-[1.01] hover:shadow-md cursor-default">
-                  <div className={`p-8 border-t-4 ${v.color} border border-transparent ${v.hoverBorder} h-full transition-all duration-200 ease-out group-hover:bg-surface-hover`}>
-                    <h3 className="text-white font-bold text-lg mb-3 tracking-wide group-hover:text-white transition-colors">{v.title}</h3>
-                    <p className="text-white/60 text-sm leading-relaxed group-hover:text-white/80 transition-colors">{v.body}</p>
-                  </div>
-                </NeuralPulse>
+                <InteractiveCard effect="magnetic" strength={10} className="h-full">
+                  <NeuralPulse className="h-full rounded-2xl group transition-all duration-200 ease-out cursor-default">
+                    <div className={`p-8 border-t-4 ${v.color} border border-white/5 bg-white/[0.02] backdrop-blur-xl h-full transition-all duration-200 ease-out group-hover:bg-white/[0.05] group-hover:border-white/10`}>
+                      <h3 className="text-white font-bold text-lg mb-3 tracking-wide group-hover:text-white transition-colors">{v.title}</h3>
+                      <p className="text-white/60 text-sm leading-relaxed group-hover:text-white/80 transition-colors">{v.body}</p>
+                    </div>
+                  </NeuralPulse>
+                </InteractiveCard>
               </SectionReveal>
             ))}
           </div>
@@ -178,18 +181,20 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {sdgs.map((sdg, i) => (
               <SectionReveal key={i}>
-                <GlassmorphicLift className="h-full rounded-2xl group transition-all duration-300 cursor-default hover:shadow-md">
-                  <div
-                    className="p-8 border border-white/5 border-t-4 h-full transition-all duration-200 ease-out group-hover:border-white/15 group-hover:bg-surface-hover"
-                    style={{ borderTopColor: sdg.color }}
-                  >
-                    <div className="font-bold text-5xl mb-2 opacity-70 group-hover:opacity-100 transition-all duration-200 ease-out group-hover:scale-[1.01] origin-left" style={{ color: sdg.color }}>
-                      {sdg.num}
+                <InteractiveCard effect="magnetic" strength={12} className="h-full">
+                  <GlassmorphicLift className="h-full rounded-2xl group transition-all duration-300 cursor-default">
+                    <div
+                      className="p-8 border border-white/5 border-t-4 bg-white/[0.02] backdrop-blur-xl h-full transition-all duration-200 ease-out group-hover:border-white/15 group-hover:bg-white/[0.05]"
+                      style={{ borderTopColor: sdg.color }}
+                    >
+                      <div className="font-bold text-5xl mb-2 opacity-70 group-hover:opacity-100 transition-all duration-200 ease-out group-hover:scale-[1.05] origin-left" style={{ color: sdg.color }}>
+                        {sdg.num}
+                      </div>
+                      <h3 className="text-white font-bold text-lg mb-4">{sdg.title}</h3>
+                      <p className="text-white/50 text-sm leading-relaxed group-hover:text-white/70 transition-colors">{sdg.body}</p>
                     </div>
-                    <h3 className="text-white font-bold text-lg mb-4">{sdg.title}</h3>
-                    <p className="text-white/50 text-sm leading-relaxed group-hover:text-white/70 transition-colors">{sdg.body}</p>
-                  </div>
-                </GlassmorphicLift>
+                  </GlassmorphicLift>
+                </InteractiveCard>
               </SectionReveal>
             ))}
           </div>
@@ -204,16 +209,19 @@ export default function AboutPage() {
             <h2 className="text-white font-bold text-5xl">Two founders. One mechanism.</h2>
           </SectionReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+            {/* Ambient background glow for team */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-violet/5 rounded-full blur-[100px] pointer-events-none" />
+            
             {founders.map((f, i) => (
               <SectionReveal key={i}>
-                <MagneticFloat strength={0.15} className="h-full group">
-                  <div className="bg-surface p-10 border border-white/5 rounded-2xl h-full flex flex-col transition-all duration-200 ease-out hover:border-violet/25 hover:bg-surface-hover">
+                <InteractiveCard effect="magnetic" strength={15} className="h-full group">
+                  <div className="bg-white/[0.02] backdrop-blur-2xl p-10 border border-white/5 rounded-2xl h-full flex flex-col transition-all duration-300 ease-out hover:border-violet/30 hover:bg-white/[0.05]">
                     {/* Avatar */}
                     {f.photo ? (
                       <div className="relative w-32 h-32 mx-auto mb-6">
                         <Image src={f.photo} alt={f.name}
-                          fill className="object-cover rounded-full ring-2 ring-white/5 group-hover:ring-violet/30 transition-all duration-200 ease-out" priority />
+                          fill className="object-cover rounded-full ring-2 ring-white/5 group-hover:ring-violet/40 transition-all duration-300 ease-out" priority />
                       </div>
                     ) : (
                       <div className="w-32 h-32 rounded-full bg-violet/20 flex items-center justify-center mx-auto mb-6 border border-transparent group-hover:border-violet/60 transition-colors shrink-0">
@@ -221,24 +229,24 @@ export default function AboutPage() {
                       </div>
                     )}
 
-                    <h3 className="text-white font-bold text-2xl group-hover:text-acid transition-all duration-200 ease-out">{f.name}</h3>
-                    <p className="text-violet text-xs uppercase tracking-widest mt-1 mb-3 font-medium">
+                    <h3 className="text-white font-bold text-2xl group-hover:text-acid transition-all duration-300 ease-out text-center">{f.name}</h3>
+                    <p className="text-violet text-xs uppercase tracking-widest mt-1 mb-3 font-medium text-center">
                       {f.role}
                     </p>
-                    <p className="text-white/60 text-sm leading-relaxed flex-1 group-hover:text-white/80 transition-colors">{f.bio}</p>
+                    <p className="text-white/60 text-sm leading-relaxed flex-1 group-hover:text-white/90 transition-colors text-center">{f.bio}</p>
 
                     <Link
                       href={f.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface border border-white/10 hover:border-violet/50 text-white/70 hover:text-white transition-all duration-200 ease-out hover:bg-surface-hover mt-5 w-fit"
+                      className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/5 border border-white/10 hover:border-violet/50 text-white/70 hover:text-white transition-all duration-300 ease-out hover:bg-white/10 mt-6 mx-auto w-fit"
                       aria-label={`${f.name} LinkedIn`}
                     >
-                      <span className="text-xs font-medium">LinkedIn</span>
-                      <span className="transition-transform duration-200 ease-out group-hover:translate-x-0.5">→</span>
+                      <span className="text-xs font-medium uppercase tracking-wider">LinkedIn</span>
+                      <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
                     </Link>
                   </div>
-                </MagneticFloat>
+                </InteractiveCard>
               </SectionReveal>
             ))}
           </div>
