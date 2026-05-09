@@ -3,6 +3,7 @@
 import { useMemo, useRef, useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { useGSAP } from '@gsap/react'
 import BrainWaves from '@/components/BrainWaves'
@@ -287,6 +288,65 @@ export default function SciencePage() {
                 →
               </span>
             </Link>
+          </SectionReveal>
+        </div>
+      </section>
+
+      {/* ── VALIDATION SECTION (Glassmorphism + 3D Card Effect) ── */}
+      <section className="bg-surface py-32 px-6 border-t border-white/5 relative overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-violet/5 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="max-w-6xl mx-auto relative z-10">
+          <SectionReveal>
+            <p className="text-[#7B5CFF] text-xs uppercase tracking-[0.2em] mb-12 text-center">
+              SCIENTIFIC CONSENSUS
+            </p>
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Validation 1 */}
+              <GlassmorphicLift className="p-8 rounded-2xl flex flex-col justify-between border border-white/5 hover:border-violet/30 bg-white/[0.02] backdrop-blur-xl transition-colors duration-500 min-h-[320px]">
+                <div>
+                  <p className="text-white/90 text-xl leading-relaxed mb-6 font-medium italic">
+                    "Targeting slow-oscillation up-states is an astute choice. This is precisely where spindles and ripples co-occur."
+                  </p>
+                  <p className="text-white/50 text-sm mb-6 leading-relaxed">
+                    Lead author on the SO → spindle → ripple coordination work that Loci is built on. (Nature 2023)
+                  </p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border border-white/10 shrink-0">
+                    <Image src="/bernhard.avif" alt="Bernhard Staresina" width={64} height={64} className="w-full h-full object-cover grayscale opacity-80" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold">Bernhard Staresina</h4>
+                    <p className="text-violet text-sm">Professor of Cognitive Neuroscience</p>
+                    <p className="text-white/40 text-xs">University of Oxford</p>
+                  </div>
+                </div>
+              </GlassmorphicLift>
+
+              {/* Validation 2 */}
+              <GlassmorphicLift className="p-8 rounded-2xl flex flex-col justify-between border border-white/5 hover:border-violet/30 bg-white/[0.02] backdrop-blur-xl transition-colors duration-500 min-h-[320px]">
+                <div>
+                  <p className="text-white/90 text-xl leading-relaxed mb-6 font-medium italic">
+                    "Clean EEG contact is essential. Signal noise is what makes closed-loop stimulation fail. When the hardware is right, the effect is real."
+                  </p>
+                  <p className="text-white/50 text-sm mb-6 leading-relaxed">
+                    Loci’s hardware roadmap prioritizes signal quality before consumer scaling.
+                  </p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border border-white/10 shrink-0">
+                    <Image src="/vince.jpg" alt="Vince Clark" width={64} height={64} className="w-full h-full object-cover grayscale opacity-80" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold">Vince Clark</h4>
+                    <p className="text-violet text-sm">Professor of Psychology & Neuroscience</p>
+                    <p className="text-white/40 text-xs">University of New Mexico</p>
+                  </div>
+                </div>
+              </GlassmorphicLift>
+            </div>
           </SectionReveal>
         </div>
       </section>
