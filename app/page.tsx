@@ -68,7 +68,7 @@ export default function Home() {
         aria-label="Hero"
       >
         {/* Particle background */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 pointer-events-none">
           <ParticleCanvas />
         </div>
 

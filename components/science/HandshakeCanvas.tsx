@@ -253,5 +253,5 @@ export default function HandshakeCanvas({ state, onTransferComplete }: Props) {
     particlesRef.current = []
   }, [state])
 
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ display: 'block' }} />
+  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ display: 'block', pointerEvents: 'none' }} />
 }

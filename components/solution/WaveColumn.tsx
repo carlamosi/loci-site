@@ -183,7 +183,7 @@ export default function WaveColumn({ side, simState }: Props) {
   return (
     <div className="relative w-full">
       <div className="relative w-full h-32 lg:h-40">
-        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ display: 'block' }} />
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ display: 'block', pointerEvents: 'none' }} />
 
         {/* Loci badges — right side only */}
         {side === 'right' && (

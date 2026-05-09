@@ -105,7 +105,7 @@ export default function SolutionPage() {
 
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="relative overflow-hidden flex flex-col" style={{ minHeight: '70vh' }}>
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 pointer-events-none">
           <ParticleCanvas />
         </div>
         <div className="absolute inset-0 z-0 pointer-events-none"
