@@ -93,7 +93,7 @@ export default function Home() {
         >
 
           {/* ── LEFT COLUMN: Headline & CTAs ── */}
-          <div className="flex flex-col justify-center lg:pr-12 text-center lg:text-left order-2 lg:order-1">
+          <div className="flex flex-col justify-center lg:pr-12 text-center lg:text-left order-1">
             <motion.p
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -168,7 +168,7 @@ export default function Home() {
           </div>
 
           {/* ── RIGHT COLUMN: Headband floating in space ── */}
-          <div className="relative flex items-center justify-center order-1 lg:order-2 py-8 lg:py-0">
+          <div className="relative flex items-center justify-center order-2 py-8 lg:py-0">
 
             {/* Outer pulse ring 1 */}
             <div
