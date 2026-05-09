@@ -359,34 +359,46 @@ export default function Home() {
       </section>
 
       {/* ── SECTION 3: THE HANDSHAKE ─────────────────────────── */}
-      <section className="bg-surface py-32 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="bg-surface py-32 px-6 relative">
+        <div className="max-w-5xl mx-auto">
           <SectionReveal>
-            <p className="text-violet text-xs uppercase tracking-widest font-medium mb-4">THE MECHANISM</p>
-            <div className="mb-2 font-bold leading-tight" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>
-              <span className="block text-white">Three signals. One sequence.</span>
-            </div>
-            <div className="mb-6 font-bold leading-tight" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>
-              <span className="block text-violet">Miss the nesting, the memory is gone.</span>
-            </div>
-            <p className="text-white/60 text-xl leading-relaxed max-w-2xl mx-auto mb-2">
-              While you sleep, your brain runs a biological program to permanently store what you
-              learned. It requires three signals to arrive in perfect sequence - nested inside each
-              other like Russian dolls. In 2023, Staresina et al. provided the first direct human neuronal evidence of the SO→spindle→ripple sequence (Nature Neuroscience, 2023).
-            </p>
+            <InteractiveCard effect="magnetic" strength={3} className="bg-transparent border-none">
+              <div className="relative rounded-[2rem] overflow-hidden border border-white/10 bg-midnight/30 backdrop-blur-2xl px-6 py-20 lg:px-16 shadow-2xl">
+                {/* Glow effects inside the card */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-violet/10 blur-[60px] pointer-events-none" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-32 bg-acid/5 blur-[50px] pointer-events-none" />
 
-            <HandshakeDiagram />
+                <div className="relative z-10 text-center max-w-3xl mx-auto">
+                  <p className="text-violet text-xs uppercase tracking-widest font-medium mb-4">THE MECHANISM</p>
+                  <div className="mb-2 font-bold leading-tight" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>
+                    <span className="block text-white">Three signals. One sequence.</span>
+                  </div>
+                  <div className="mb-6 font-bold leading-tight" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>
+                    <span className="block text-violet">Miss the nesting, the memory is gone.</span>
+                  </div>
+                  <p className="text-white/60 text-xl leading-relaxed mb-12">
+                    While you sleep, your brain runs a biological program to permanently store what you
+                    learned. It requires three signals to arrive in perfect sequence - nested inside each
+                    other like Russian dolls. In 2023, Staresina et al. provided the first direct human neuronal evidence of the SO→spindle→ripple sequence (Nature Neuroscience, 2023).
+                  </p>
 
-            <p className="text-white/50 text-base mt-8 max-w-xl mx-auto">
-              Loci engineers this sequence - every night - for the memories that matter most to you.
-            </p>
+                  <div className="bg-midnight/40 rounded-3xl p-8 border border-white/5 mb-8 backdrop-blur-md">
+                    <HandshakeDiagram />
+                  </div>
 
-            <Link
-              href="/solution"
-              className="inline-flex items-center gap-1 text-violet font-medium mt-6 hover:underline transition-all"
-            >
-              See how →
-            </Link>
+                  <p className="text-white/50 text-base max-w-xl mx-auto">
+                    Loci engineers this sequence - every night - for the memories that matter most to you.
+                  </p>
+
+                  <Link
+                    href="/solution"
+                    className="inline-flex items-center justify-center gap-2 mt-8 px-8 py-4 bg-white/5 border border-white/10 text-white font-medium rounded-full hover:bg-white/10 hover:border-violet/40 hover:text-violet transition-all duration-300"
+                  >
+                    See how it works →
+                  </Link>
+                </div>
+              </div>
+            </InteractiveCard>
           </SectionReveal>
         </div>
       </section>

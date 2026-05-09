@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { gsap } from '@/lib/gsap'
 
 const arcs = [
@@ -146,25 +146,41 @@ export default function HandshakeDiagram() {
         </svg>
       </div>
 
-      {hovered !== null && (
-        <motion.div
-          initial={{ opacity: 0, y: 4 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-surface border border-white/10 rounded-xl px-4 py-2 text-white/70 text-sm max-w-xs text-center"
-        >
-          {arcs[hovered].tip}
-        </motion.div>
-      )}
-
-      {complete && (
-        <motion.p
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="text-acid font-bold text-xl"
-        >
-          ✓ Transfer Complete
-        </motion.p>
-      )}
+      <div className="h-20 flex flex-col items-center justify-center relative w-full mt-4">
+        <AnimatePresence mode="wait">
+          {hovered !== null ? (
+            <motion.div
+              key="tip"
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              className="absolute bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 py-3 text-white/80 text-sm max-w-sm text-center shadow-lg"
+            >
+              {arcs[hovered].tip}
+            </motion.div>
+          ) : complete ? (
+            <motion.p
+              key="complete"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="absolute text-acid font-bold text-lg tracking-wide"
+            >
+              ✓ Transfer Complete
+            </motion.p>
+          ) : (
+            <motion.p
+              key="idle"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute text-white/30 text-sm italic"
+            >
+              Hover over the sequence
+            </motion.p>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   )
 }
