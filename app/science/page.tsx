@@ -250,48 +250,6 @@ export default function SciencePage() {
       <BrainWaves />
       <section className="py-24"><ScienceScrolly /></section>
 
-      <section className="bg-surface py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <SectionReveal className="text-center mb-16">
-            <p className="text-violet text-xs uppercase tracking-widest font-medium mb-4">PEER-REVIEWED BASIS</p>
-            <h2 className="text-white font-bold text-5xl mb-4">The science Loci is built on.</h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">These are not peripheral references. Each paper directly supports a specific mechanism in the Loci pipeline.</p>
-          </SectionReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {papers.map((paper, i) => (
-              <SectionReveal key={i}>
-                <NeuralPulse className={`bg-midnight h-full rounded-3xl ${paper.jColor}`}>
-                  <div className="text-foreground p-8 border border-white/5 flex flex-col gap-4 h-full rounded-3xl">
-                    <span className={`text-xs rounded-full px-3 py-1 border w-fit font-medium ${paper.jColor} ${paper.jBg}`}>{paper.journal}</span>
-                    <p className="text-white/40 text-xs uppercase tracking-wide">{paper.authors}</p>
-                    <h3 className="text-white font-bold text-2xl leading-tight">{paper.headline}</h3>
-                    <p className="text-white/60 text-sm leading-relaxed flex-1">{paper.plain}</p>
-                    <div className="border-t border-white/5 pt-4">
-                      <p className="text-violet text-xs leading-relaxed">{paper.proves}</p>
-                    </div>
-                  </div>
-                </NeuralPulse>
-              </SectionReveal>
-            ))}
-          </div>
-
-          <SectionReveal className="mt-16 flex justify-center">
-            <Link
-              href="/solution#simulation"
-              className="group flex items-center gap-3 bg-midnight border border-white/10 hover:border-violet/50 rounded-full px-8 py-4 transition-all duration-200 ease-out hover:bg-surface-hover hover:scale-[1.01] hover:shadow-md"
-            >
-              <div className="w-2 h-2 rounded-full bg-[#C6FF00] animate-pulse" />
-              <span className="text-white/70 text-sm font-medium group-hover:text-white transition-all duration-200 ease-out">
-                See also: Sleep vs Loci simulation
-              </span>
-              <span className="text-white/30 group-hover:text-violet transition-all duration-200 ease-out translate-x-0 group-hover:translate-x-0.5">
-                →
-              </span>
-            </Link>
-          </SectionReveal>
-        </div>
-      </section>
-
       {/* ── VALIDATION SECTION (Glassmorphism + 3D Card Effect) ── */}
       <section className="bg-surface py-32 px-6 border-t border-white/5 relative overflow-hidden">
         {/* Subtle background glow */}
@@ -350,6 +308,49 @@ export default function SciencePage() {
           </SectionReveal>
         </div>
       </section>
+
+      <section className="bg-surface py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <SectionReveal className="text-center mb-16">
+            <p className="text-violet text-xs uppercase tracking-widest font-medium mb-4">PEER-REVIEWED BASIS</p>
+            <h2 className="text-white font-bold text-5xl mb-4">The science Loci is built on.</h2>
+            <p className="text-white/60 text-lg max-w-2xl mx-auto">These are not peripheral references. Each paper directly supports a specific mechanism in the Loci pipeline.</p>
+          </SectionReveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {papers.map((paper, i) => (
+              <SectionReveal key={i}>
+                <NeuralPulse className={`bg-midnight h-full rounded-3xl ${paper.jColor}`}>
+                  <div className="text-foreground p-8 border border-white/5 flex flex-col gap-4 h-full rounded-3xl">
+                    <span className={`text-xs rounded-full px-3 py-1 border w-fit font-medium ${paper.jColor} ${paper.jBg}`}>{paper.journal}</span>
+                    <p className="text-white/40 text-xs uppercase tracking-wide">{paper.authors}</p>
+                    <h3 className="text-white font-bold text-2xl leading-tight">{paper.headline}</h3>
+                    <p className="text-white/60 text-sm leading-relaxed flex-1">{paper.plain}</p>
+                    <div className="border-t border-white/5 pt-4">
+                      <p className="text-violet text-xs leading-relaxed">{paper.proves}</p>
+                    </div>
+                  </div>
+                </NeuralPulse>
+              </SectionReveal>
+            ))}
+          </div>
+
+          <SectionReveal className="mt-16 flex justify-center">
+            <Link
+              href="/solution#simulation"
+              className="group flex items-center gap-3 bg-midnight border border-white/10 hover:border-violet/50 rounded-full px-8 py-4 transition-all duration-200 ease-out hover:bg-surface-hover hover:scale-[1.01] hover:shadow-md"
+            >
+              <div className="w-2 h-2 rounded-full bg-[#C6FF00] animate-pulse" />
+              <span className="text-white/70 text-sm font-medium group-hover:text-white transition-all duration-200 ease-out">
+                See also: Sleep vs Loci simulation
+              </span>
+              <span className="text-white/30 group-hover:text-violet transition-all duration-200 ease-out translate-x-0 group-hover:translate-x-0.5">
+                →
+              </span>
+            </Link>
+          </SectionReveal>
+        </div>
+      </section>
+
 
     </div>
   )
