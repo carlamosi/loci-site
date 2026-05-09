@@ -89,10 +89,10 @@ export default function Home() {
         {/* ── EDITORIAL GRID ── */}
         <div
           ref={textRef}
-          className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] items-center gap-0 px-8 lg:px-16 pt-28 pb-8"
+          className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-8 px-8 lg:px-16 pt-28 pb-8 max-w-7xl mx-auto w-full"
         >
 
-          {/* ── LEFT COLUMN: Headline ── */}
+          {/* ── LEFT COLUMN: Headline & CTAs ── */}
           <div className="flex flex-col justify-center lg:pr-12 text-center lg:text-left order-2 lg:order-1">
             <motion.p
               initial={{ opacity: 0, x: -20 }}
@@ -121,23 +121,53 @@ export default function Home() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.7 }}
-              className="text-white/50 text-base leading-relaxed max-w-sm"
+              className="text-white/50 text-base lg:text-lg leading-relaxed max-w-lg mb-8"
             >
               Sleep disruption erases up to{' '}
               <span className="text-white/80 font-semibold">40% of new memories</span>{' '}
               before they consolidate. Loci detects the exact biological window and intervenes.
             </motion.p>
 
-            {/* Thin horizontal rule — editorial detail */}
+            {/* CTA buttons */}
             <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 1.1, duration: 0.8, ease: [0.16,1,0.3,1] }}
-              className="hidden lg:block h-px bg-gradient-to-r from-violet/40 to-transparent mt-8 origin-left"
-            />
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.05, duration: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              <Link
+                href="/solution#simulation"
+                className="group relative inline-flex items-center justify-center gap-2 bg-acid text-midnight font-bold text-sm px-8 py-4 rounded-xl transition-all duration-200 ease-out hover:bg-acid-hover hover:-translate-y-[1px] hover:shadow-[0_8px_20px_-6px_rgba(198,255,0,0.4)] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-acid/40"
+              >
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100"
+                  style={{ background: 'radial-gradient(120% 120% at 50% 0%, rgba(198,255,0,0.18) 0%, transparent 60%)' }}
+                />
+                <span className="relative">Explore Simulation →</span>
+              </Link>
+              <Link
+                href="/science#handshake"
+                className="group inline-flex items-center justify-center gap-2 border border-white/20 bg-white/5 text-white/90 text-sm font-medium px-8 py-4 rounded-xl transition-all duration-200 ease-out hover:border-violet/50 hover:bg-violet/10 hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet/40"
+              >
+                <span>See the Science</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+              </Link>
+            </motion.div>
+
+            {/* Social Proof Trust Bar */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.4, duration: 0.8 }}
+              className="mt-8 flex items-center gap-3 justify-center lg:justify-start text-[11px] uppercase tracking-wider text-white/40"
+            >
+              <div className="w-1.5 h-1.5 rounded-full bg-violet animate-pulse" />
+              <span>Based on peer-reviewed research in Nature (2023)</span>
+            </motion.div>
           </div>
 
-          {/* ── CENTER COLUMN: Headband floating in space ── */}
+          {/* ── RIGHT COLUMN: Headband floating in space ── */}
           <div className="relative flex items-center justify-center order-1 lg:order-2 py-8 lg:py-0">
 
             {/* Outer pulse ring 1 */}
@@ -168,93 +198,52 @@ export default function Home() {
               }}
             />
 
-            {/* The headband — levitating */}
+            {/* The headband — levitating inside magnetic card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.88, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 1.0, ease: [0.16,1,0.3,1] }}
-              style={{ animation: 'heroFloat 6s ease-in-out infinite', position: 'relative', zIndex: 10 }}
+              className="relative z-10 w-full flex justify-center"
             >
-              {/* Subtle drop shadow beneath device */}
-              <div
-                className="absolute pointer-events-none"
-                style={{
-                  bottom: '-12px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '70%',
-                  height: 32,
-                  background: 'radial-gradient(ellipse at 50% 50%, rgba(123,92,255,0.4) 0%, transparent 70%)',
-                  filter: 'blur(12px)',
-                }}
-              />
-              <Image
-                src="/headband.png"
-                alt="Loci Memory Headband"
-                width={380}
-                height={220}
-                priority
-                className="relative z-10 transition-transform duration-700 hover:scale-105"
-                style={{ filter: 'drop-shadow(0 0 40px rgba(123,92,255,0.45)) drop-shadow(0 0 80px rgba(123,92,255,0.15))' }}
-              />
+              <InteractiveCard effect="magnetic" strength={15} className="bg-transparent border-none w-full max-w-[450px]">
+                <div style={{ animation: 'heroFloat 6s ease-in-out infinite', position: 'relative' }} className="flex justify-center items-center w-full py-12">
+                  {/* Subtle drop shadow beneath device */}
+                  <div
+                    className="absolute pointer-events-none"
+                    style={{
+                      bottom: '20px',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: '70%',
+                      height: 32,
+                      background: 'radial-gradient(ellipse at 50% 50%, rgba(123,92,255,0.4) 0%, transparent 70%)',
+                      filter: 'blur(12px)',
+                    }}
+                  />
+                  <Image
+                    src="/headband.png"
+                    alt="Loci Memory Headband"
+                    width={380}
+                    height={220}
+                    priority
+                    className="relative z-10"
+                    style={{ filter: 'drop-shadow(0 0 40px rgba(123,92,255,0.45)) drop-shadow(0 0 80px rgba(123,92,255,0.15))' }}
+                  />
+                  {/* LOCI logo chip on device — acid accent line */}
+                  <div
+                    className="absolute pointer-events-none"
+                    style={{ bottom: '25%', right: '15%', zIndex: 20 }}
+                  >
+                    <div
+                      className="text-[9px] font-mono tracking-[0.2em] text-acid/70 uppercase"
+                      style={{ animation: 'heroBlink 3s ease-in-out 2s infinite' }}
+                    >
+                      ● EEG Active
+                    </div>
+                  </div>
+                </div>
+              </InteractiveCard>
             </motion.div>
-
-            {/* LOCI logo chip on device — acid accent line */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.4, duration: 0.6 }}
-              className="absolute pointer-events-none"
-              style={{ bottom: '16%', right: '10%', zIndex: 20 }}
-            >
-              <div
-                className="text-[9px] font-mono tracking-[0.2em] text-acid/70 uppercase"
-                style={{ animation: 'heroBlink 3s ease-in-out 2s infinite' }}
-              >
-                ● EEG Active
-              </div>
-            </motion.div>
-          </div>
-
-          {/* ── RIGHT COLUMN: Stats + CTAs ── */}
-          <div className="flex flex-col justify-center lg:pl-12 text-center lg:text-left order-3">
-
-
-
-            {/* CTA buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.05, duration: 0.6 }}
-              className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3"
-            >
-              <Link
-                href="/solution#simulation"
-                className="group relative inline-flex items-center justify-center gap-2 bg-acid text-midnight font-bold text-sm px-6 py-3.5 rounded-xl transition-all duration-200 ease-out hover:bg-acid-hover hover:-translate-y-[1px] hover:shadow-lg focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-acid/40"
-              >
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100"
-                  style={{ background: 'radial-gradient(120% 120% at 50% 0%, rgba(198,255,0,0.18) 0%, transparent 60%)' }}
-                />
-                <span className="relative">Explore Simulation →</span>
-              </Link>
-              <Link
-                href="/science#handshake"
-                className="group inline-flex items-center justify-center gap-2 border border-white/15 text-white/70 text-sm font-medium px-6 py-3.5 rounded-xl transition-all duration-200 ease-out hover:border-violet/50 hover:text-white hover:bg-violet/8 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet/40"
-              >
-                <span>See the Science</span>
-                <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
-              </Link>
-            </motion.div>
-
-            {/* Thin rule — mirrors left column */}
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 1.2, duration: 0.8, ease: [0.16,1,0.3,1] }}
-              className="hidden lg:block h-px bg-gradient-to-l from-violet/40 to-transparent mt-8 origin-right"
-            />
           </div>
         </div>
 
