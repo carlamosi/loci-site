@@ -178,9 +178,9 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {sdgs.map((sdg, i) => (
               <SectionReveal key={i}>
-                <GlassmorphicLift className="h-full rounded-2xl group transition-all duration-300 cursor-default">
+                <GlassmorphicLift className="h-full rounded-2xl group transition-all duration-300 cursor-default hover:shadow-md">
                   <div
-                    className="p-8 border-t-4 h-full transition-all duration-200 ease-out group-hover:bg-surface-hover"
+                    className="p-8 border border-white/5 border-t-4 h-full transition-all duration-200 ease-out group-hover:border-white/15 group-hover:bg-surface-hover"
                     style={{ borderTopColor: sdg.color }}
                   >
                     <div className="font-bold text-5xl mb-2 opacity-70 group-hover:opacity-100 transition-all duration-200 ease-out group-hover:scale-[1.01] origin-left" style={{ color: sdg.color }}>

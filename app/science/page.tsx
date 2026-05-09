@@ -4,12 +4,16 @@ import { useMemo, useRef, useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
+import { useGSAP } from '@gsap/react'
 import BrainWaves from '@/components/BrainWaves'
 import SectionReveal from '@/components/SectionReveal'
 import NeuralPulse from '@/components/effects/NeuralPulse'
 import GlassmorphicLift from '@/components/effects/GlassmorphicLift'
+import { gsap, ScrollTrigger } from '@/lib/gsap'
 
 const HandshakeExperience = dynamic(() => import('@/components/science/HandshakeExperience'), { ssr: false })
+
+gsap.registerPlugin(useGSAP)
 
 function useNearViewport<T extends Element>(rootMargin = '800px') {
   const ref = useRef<T | null>(null)
@@ -138,6 +142,31 @@ function ScienceScrolly() {
   const [activePanel, setActivePanel] = useState(0)
   const [expandedTech, setExpandedTech] = useState<number | null>(null)
   const panelRefs = useRef<(HTMLDivElement | null)[]>([])
+  const scrollyRootRef = useRef<HTMLDivElement>(null)
+  const vizParallaxRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) return
+
+    const root = scrollyRootRef.current
+    const viz = vizParallaxRef.current
+    if (!root || !viz) return
+
+    const st = ScrollTrigger.create({
+      trigger: root,
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 0.65,
+      onUpdate: (self) => {
+        gsap.set(viz, { y: (self.progress - 0.5) * -32 })
+      },
+    })
+
+    return () => {
+      st.kill()
+    }
+  }, [])
 
   useEffect(() => {
     const observers: IntersectionObserver[] = []
@@ -151,12 +180,12 @@ function ScienceScrolly() {
   }, [])
 
   return (
-    <div className="max-w-6xl mx-auto px-6">
+    <div ref={scrollyRootRef} className="max-w-6xl mx-auto px-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
         <div className="flex flex-col gap-24">
           {sciencePanels.map((p, i) => (
             <div key={i} ref={el => { panelRefs.current[i] = el }} className="min-h-[60vh] flex flex-col justify-center py-16">
-              <GlassmorphicLift className="p-8 rounded-3xl">
+              <GlassmorphicLift className="p-8 rounded-3xl transition-all duration-200 ease-out border border-white/5 hover:border-white/10 hover:bg-surface-hover/40">
                 <p className={`${p.color} text-xs uppercase tracking-widest font-medium mb-4`}>{p.counter}</p>
                 <h3 className="text-white font-bold text-4xl mb-6">{p.title}</h3>
                 <p className="text-white/60 text-lg leading-relaxed mb-4">{p.plain}</p>
@@ -191,7 +220,9 @@ function ScienceScrolly() {
         </div>
         <div className="hidden lg:flex items-start">
           <div className="sticky top-32 w-full flex flex-col items-center gap-4 pt-16">
-            <WaveViz phase={activePanel + 1} />
+            <div ref={vizParallaxRef} className="will-change-transform w-full flex flex-col items-center">
+              <WaveViz phase={activePanel + 1} />
+            </div>
             <p className="text-white/30 text-xs text-center max-w-xs">Scroll to see each signal appear</p>
           </div>
         </div>
